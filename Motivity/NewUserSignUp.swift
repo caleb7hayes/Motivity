@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct NewUserSignUp: View {
+    
+    
+    @StateObject var viewRouter: ViewRouter
+    
     var body: some View {
         
         ZStack{
@@ -78,11 +82,25 @@ struct NewUserSignUp: View {
                 // Sign Up + Back Arrow Stack
                 VStack{
                               
-                    Image("SIGN UP BUTTON")
+                    Button(action:{
+                        
+                        viewRouter.currentPage = .calendarPage
+                    }){
+                        
+                        Image("SIGN UP BUTTON")
+                            
+                    }
                     
-                    Image("back arrow")
-                        .padding(.top, 10)
-                        .padding(.bottom, 10)
+                    Button(action:{
+                        
+                        viewRouter.currentPage = .calendarPage
+                        
+                    }){
+                        
+                        Image("back arrow")
+                            .padding(.top, 10)
+                            .padding(.bottom, 10)
+                    }
                         
                 }
                 
@@ -94,6 +112,6 @@ struct NewUserSignUp: View {
 
 struct NewUserSignUp_Previews: PreviewProvider {
     static var previews: some View {
-        NewUserSignUp()
+        NewUserSignUp(viewRouter: ViewRouter())
     }
 }

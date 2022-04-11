@@ -17,10 +17,15 @@
 		8A72B50127E52D4E009D5CB7 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72B50027E52D4E009D5CB7 /* LoginPage.swift */; };
 		8A72B50327E52E5D009D5CB7 /* NewUserSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72B50227E52E5D009D5CB7 /* NewUserSignUp.swift */; };
 		8A72B50527E52E9D009D5CB7 /* ExisitingUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72B50427E52E9D009D5CB7 /* ExisitingUserPage.swift */; };
+		8A8A4D8527FCFDF5007FF98D /* navigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8A4D8427FCFDF5007FF98D /* navigationHelper.swift */; };
+		8A8A4D8727FF770D007FF98D /* AddTaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8A4D8627FF770C007FF98D /* AddTaskPage.swift */; };
+		8A8A4D8927FF7723007FF98D /* EditTaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8A4D8827FF7723007FF98D /* EditTaskPage.swift */; };
 		8A8CC4C627EA39CD00FA8CE9 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CC4C527EA39CD00FA8CE9 /* EventView.swift */; };
 		8A8CC4C827EA39F000FA8CE9 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CC4C727EA39F000FA8CE9 /* CalendarView.swift */; };
 		8A8CC4CA27EA3A8200FA8CE9 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CC4C927EA3A8200FA8CE9 /* SettingsPage.swift */; };
 		8A8CC4CC27EA3AA800FA8CE9 /* UserProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CC4CB27EA3AA800FA8CE9 /* UserProfilePage.swift */; };
+		8A93226B27F5FE7700112A6E /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93226A27F5FE7700112A6E /* MotherView.swift */; };
+		8A93226F27F60B4400112A6E /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93226E27F60B4400112A6E /* ViewRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,10 +59,15 @@
 		8A72B50027E52D4E009D5CB7 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 		8A72B50227E52E5D009D5CB7 /* NewUserSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserSignUp.swift; sourceTree = "<group>"; };
 		8A72B50427E52E9D009D5CB7 /* ExisitingUserPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExisitingUserPage.swift; sourceTree = "<group>"; };
+		8A8A4D8427FCFDF5007FF98D /* navigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationHelper.swift; sourceTree = "<group>"; };
+		8A8A4D8627FF770C007FF98D /* AddTaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskPage.swift; sourceTree = "<group>"; };
+		8A8A4D8827FF7723007FF98D /* EditTaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskPage.swift; sourceTree = "<group>"; };
 		8A8CC4C527EA39CD00FA8CE9 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		8A8CC4C727EA39F000FA8CE9 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		8A8CC4C927EA3A8200FA8CE9 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		8A8CC4CB27EA3AA800FA8CE9 /* UserProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePage.swift; sourceTree = "<group>"; };
+		8A93226A27F5FE7700112A6E /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
+		8A93226E27F60B4400112A6E /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,15 +118,20 @@
 		8A2615E727DA6E4E00EA429C /* Motivity */ = {
 			isa = PBXGroup;
 			children = (
-				8A2615E827DA6E4E00EA429C /* MotivityApp.swift */,
+				8A8A4D8427FCFDF5007FF98D /* navigationHelper.swift */,
 				8A2615EA27DA6E4E00EA429C /* WelcomePage.swift */,
+				8A8A4D8627FF770C007FF98D /* AddTaskPage.swift */,
+				8A8A4D8827FF7723007FF98D /* EditTaskPage.swift */,
 				8A72B50027E52D4E009D5CB7 /* LoginPage.swift */,
+				8A2615E827DA6E4E00EA429C /* MotivityApp.swift */,
 				8A72B50227E52E5D009D5CB7 /* NewUserSignUp.swift */,
 				8A72B50427E52E9D009D5CB7 /* ExisitingUserPage.swift */,
 				8A8CC4C927EA3A8200FA8CE9 /* SettingsPage.swift */,
 				8A8CC4CB27EA3AA800FA8CE9 /* UserProfilePage.swift */,
-				8A8CC4C527EA39CD00FA8CE9 /* EventView.swift */,
 				8A8CC4C727EA39F000FA8CE9 /* CalendarView.swift */,
+				8A8CC4C527EA39CD00FA8CE9 /* EventView.swift */,
+				8A93226E27F60B4400112A6E /* ViewRouter.swift */,
+				8A93226A27F5FE7700112A6E /* MotherView.swift */,
 				8A2615EC27DA6E5200EA429C /* Assets.xcassets */,
 				8A2615EE27DA6E5200EA429C /* Preview Content */,
 			);
@@ -279,14 +294,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A2615EB27DA6E4E00EA429C /* WelcomePage.swift in Sources */,
+				8A8A4D8927FF7723007FF98D /* EditTaskPage.swift in Sources */,
 				8A8CC4C827EA39F000FA8CE9 /* CalendarView.swift in Sources */,
 				8A8CC4C627EA39CD00FA8CE9 /* EventView.swift in Sources */,
+				8A93226F27F60B4400112A6E /* ViewRouter.swift in Sources */,
 				8A8CC4CA27EA3A8200FA8CE9 /* SettingsPage.swift in Sources */,
+				8A8A4D8527FCFDF5007FF98D /* navigationHelper.swift in Sources */,
 				8A72B50327E52E5D009D5CB7 /* NewUserSignUp.swift in Sources */,
 				8A72B50527E52E9D009D5CB7 /* ExisitingUserPage.swift in Sources */,
 				8A8CC4CC27EA3AA800FA8CE9 /* UserProfilePage.swift in Sources */,
 				8A2615E927DA6E4E00EA429C /* MotivityApp.swift in Sources */,
+				8A8A4D8727FF770D007FF98D /* AddTaskPage.swift in Sources */,
 				8A72B50127E52D4E009D5CB7 /* LoginPage.swift in Sources */,
+				8A93226B27F5FE7700112A6E /* MotherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

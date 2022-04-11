@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct WelcomePage: View {
     
-    @State var email = "schwahn.josiah@gmail.com"
-    @State var password = "password123"
+    
+    @StateObject var viewRouter: ViewRouter
     
     
     var body: some View {
@@ -46,22 +46,24 @@ struct ContentView: View {
                 Spacer()
                 Spacer()
                 
-                ZStack{
+                
+                //button to naviagte to the next page
+                Button(action:{
+                    
+                    withAnimation{
+                        
+                        viewRouter.currentPage = .loginPage
+                    }
+                }){
                     
                     Image("ENTER")
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading,170)
-            
-                    Image("Button Ring")
-                        .padding(.leading)
+                        .padding(.leading,160)
                     
                 }
                 
                 
-                
                 Spacer()
-                
-                
             }
             
         }
@@ -73,8 +75,10 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-.previewInterfaceOrientation(.portrait)
+        Group {
+            WelcomePage(viewRouter: ViewRouter())
+
+        }
     }
 }
 

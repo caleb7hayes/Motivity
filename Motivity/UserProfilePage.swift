@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct UserProfilePage: View {
+    
+    @StateObject var viewRouter: ViewRouter
+    
+    
     var body: some View {
    
         ZStack{
@@ -30,7 +34,7 @@ struct UserProfilePage: View {
                         .frame(width: 40, height: 40)
                     
                 }
-                
+        
                 //User Profile
                 ZStack{
                     
@@ -43,20 +47,20 @@ struct UserProfilePage: View {
                     
                 }
                 
-               // Change User Name Section
+               // Change User Name
                 HStack{
                     
                     VStack{
                         //Button Goes Here
-                       Image("LANGUAGE BUTTON")
+                       Image("USER PROFILE")
                         
                     }
                     VStack{
                         
                         ZStack{
                             Image("Motivity Rectangle")
-                            Text("Language")
-                                .font(.system(size:35))
+                            Text("Change User Name")
+                                .font(.system(size:30))
                                 .fontWeight(.bold)
                                 .foregroundColor(Color.white)
                             
@@ -69,26 +73,129 @@ struct UserProfilePage: View {
                 }
                 
                 
+                
+                // Language Section
+                 HStack{
+                     
+                     VStack{
+                         //Button Goes Here
+                        Image("PASSWORD LOCK")
+                         
+                     }
+                     VStack{
+                         
+                         ZStack{
+                             Image("Motivity Rectangle")
+                             Text("Change Password")
+                                 .font(.system(size:30))
+                                 .fontWeight(.bold)
+                                 .foregroundColor(Color.white)
+                             
+                         }
+                         
+                         
+                     }
+                     
+                     
+                 }
+                
+                
+                // Language Section
+                 HStack{
+                     
+                     VStack{
+                         //Button Goes Here
+                        Image("USER GROWTH CATEGORY BUTTON")
+                         
+                     }
+                     VStack{
+                         
+                         ZStack{
+                             Image("Motivity Rectangle")
+                             Text("User Growth Category")
+                                 .font(.system(size:25))
+                                 .fontWeight(.bold)
+                                 .foregroundColor(Color.white)
+                             
+                         }
+                         
+                         
+                     }
+                     
+                     
+                 }
+                
+                
+                
+                
+                // Language Section
+                 HStack{
+                     
+                     VStack{
+                         //Button Goes Here
+                        Image("FILLER BUTTON")
+                         
+                     }
+                     VStack{
+                         
+                         ZStack{
+                             Image("Motivity Rectangle")
+                             Text("Filler")
+                                 .font(.system(size:35))
+                                 .fontWeight(.bold)
+                                 .foregroundColor(Color.white)
+                             
+                         }
+                         
+                         
+                     }
+                     
+                     
+                 }
+                
+                
+                
+                
+                
+                
                 //Back and Confirm arrows
                 
                 HStack{
                     
                     Spacer()
-                    Image("back arrow")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 45, height: 45)
+                    Button(action:{
+                        
+                        viewRouter.currentPage = .calendarPage
+    
+                    }){
+                        
+                        Image("back arrow")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 45, height: 45)
+                    }
+                        
                     
                     Spacer()
                     
-                    Image("CONFIRM BUTTON")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 45, height: 45)
+                    Button(action:{
+                        
+                        viewRouter.currentPage = .calendarPage
+    
+                    }){
+                        
+                        Image("CONFIRM BUTTON")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 45, height: 45)
+                    }
+                        
                     Spacer()
 
                     
                 }
+                
+                
                 
                 
             }
@@ -106,6 +213,6 @@ struct UserProfilePage: View {
 
 struct UserProfilePage_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfilePage()
+        UserProfilePage(viewRouter: ViewRouter())
     }
 }

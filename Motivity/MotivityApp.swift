@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct MotivityApp: App {
+    
+    
+    @StateObject var viewRouter = ViewRouter()
+    
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MotherView(viewRouter: ViewRouter())
         }
     }
 }

@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct SettingsPage: View {
+    
+    @StateObject var viewRouter: ViewRouter
+    
+    
     var body: some View {
         
         ZStack{
@@ -104,11 +108,9 @@ struct SettingsPage: View {
                                 .foregroundColor(Color.white)
                             
                         }
-                        
-                        
+                    
                     }
-                    
-                    
+              
                 }
                 
                 //Theme Section
@@ -130,11 +132,9 @@ struct SettingsPage: View {
                                 .foregroundColor(Color.white)
                             
                         }
-                        
-                        
+                   
                     }
-                    
-                    
+
                 }
                 
                 // Productivity Goals Section
@@ -156,20 +156,17 @@ struct SettingsPage: View {
                                 .foregroundColor(Color.white)
                             
                         }
-                        
-                        
+                      
                     }
-                    
-                    
+                   
                 }
-                
                 //Filler Section
                 
                 HStack{
                     
                     VStack{
                         //Button Goes Here
-                       Image("NOTFICATIONS BUTTON")
+                       Image("FILLER BUTTON")
                         
                     }
                     VStack{
@@ -182,17 +179,12 @@ struct SettingsPage: View {
                                 .fontWeight(.bold)
                                 .foregroundColor(Color.white)
                             
-                                
-                            
                         }
-                        
-                        
+                     
                     }
-                    
-                    
+                   
                 }
-                
-                
+             
                 //ARROW AND CONFIRM BUTTON SECTION
                 
                 HStack{
@@ -210,22 +202,18 @@ struct SettingsPage: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 45, height: 45)
                     Spacer()
-
-                    
+                  
                 }
            
             }
-            
-            
-            
+    
         }
-        
     }
 }
 
 struct SettingsPage_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsPage()
+        SettingsPage(viewRouter: ViewRouter())
     }
 }
 

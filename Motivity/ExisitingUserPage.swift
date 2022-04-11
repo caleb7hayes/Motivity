@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct ExisitingUserPage: View {
+    
+    
+    @StateObject var viewRouter: ViewRouter
+    
+    
     var body: some View {
         
         
@@ -29,9 +34,9 @@ struct ExisitingUserPage: View {
                         .foregroundColor(Color.white)
                         //.padding(.vertical)
                     
+                  
                     
-                    
-                    Text("New user")
+                    Text("Exisiting user")
                         .font(.system(size: 18))
                         .fontWeight(.semibold)
                         .foregroundColor(Color.white)
@@ -72,13 +77,25 @@ struct ExisitingUserPage: View {
                 
                 // Sign Up + Back Arrow Stack
                 VStack{
-                              
-                    Image("LOGIN BUTTON")
                     
-                    Image("back arrow")
-                        .padding(.top, 10)
-                        .padding(.bottom, 10)
+                    Button(action:{
                         
+                        viewRouter.currentPage = .calendarPage
+                    }){
+                        
+                        Image("LOGIN BUTTON")
+                    }
+                    
+                    Button(action:{
+                        
+                        viewRouter.currentPage = .loginPage
+                    }){
+                        
+                        Image("back arrow")
+                            .padding(.top, 10)
+                            .padding(.bottom, 10)
+                    }
+              
                 }
                 
                 //.padding(.top, 30)
@@ -91,6 +108,6 @@ struct ExisitingUserPage: View {
 
 struct ExisitingUserPage_Previews: PreviewProvider {
     static var previews: some View {
-        ExisitingUserPage()
+        ExisitingUserPage(viewRouter: ViewRouter())
     }
 }

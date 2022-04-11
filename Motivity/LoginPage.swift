@@ -7,7 +7,12 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct LoginPage: View {
+
+    
+    @StateObject var viewRouter: ViewRouter
+
+    
     var body: some View {
         
         
@@ -57,12 +62,36 @@ struct SwiftUIView: View {
                 
                 Spacer()
                 
-                Image("Already have an account?")
+                //button to naviagte to the next page
+                Button(action:{
+                    
+                    viewRouter.currentPage = .existingUserPage
+                    print("hello")
+                }){
+                    
+                    Image("Already have an account?")
+                        .padding(.top, 23.0)
+                        .frame(width: /*@START_MENU_TOKEN@*/101.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
+                    
+                }
                 
                 
-                Image("back arrow")
-                    .padding(.top, 23.0)
-                    .frame(width: /*@START_MENU_TOKEN@*/101.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
+                
+                
+                //button to naviagte to the next page
+                Button(action:{
+                    
+                    viewRouter.currentPage = .welcomePage
+                    
+                }){
+                    
+                    Image("back arrow")
+                        .padding(.top, 23.0)
+                        .frame(width: /*@START_MENU_TOKEN@*/101.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
+                    
+                }
+                
+                
                     
                 
                 
@@ -79,6 +108,6 @@ struct SwiftUIView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        LoginPage(viewRouter: ViewRouter())
     }
 }
