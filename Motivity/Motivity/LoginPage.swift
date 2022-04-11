@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginPage: View {
 
+    //test for CJ
     
     @StateObject var viewRouter: ViewRouter
 

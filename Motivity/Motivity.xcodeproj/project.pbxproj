@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		727D92502803BF9E001DA8F5 /* MotivityWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D924F2803BF9E001DA8F5 /* MotivityWidgetModel.swift */; };
+		727D92512803BF9E001DA8F5 /* MotivityWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D924F2803BF9E001DA8F5 /* MotivityWidgetModel.swift */; };
+		72A148632803BBE6006C035F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A148622803BBE6006C035F /* WidgetKit.framework */; };
+		72A148652803BBE6006C035F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A148642803BBE6006C035F /* SwiftUI.framework */; };
+		72A148682803BBE6006C035F /* MotivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A148672803BBE6006C035F /* MotivityWidget.swift */; };
+		72A1486B2803BBE9006C035F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72A1486A2803BBE9006C035F /* Assets.xcassets */; };
+		72A1486D2803BBE9006C035F /* MotivityWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 72A148692803BBE6006C035F /* MotivityWidget.intentdefinition */; };
+		72A1486E2803BBE9006C035F /* MotivityWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 72A148692803BBE6006C035F /* MotivityWidget.intentdefinition */; };
+		72A148712803BBE9006C035F /* MotivityWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 72A148602803BBE6006C035F /* MotivityWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8A2615E927DA6E4E00EA429C /* MotivityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2615E827DA6E4E00EA429C /* MotivityApp.swift */; };
 		8A2615EB27DA6E4E00EA429C /* WelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2615EA27DA6E4E00EA429C /* WelcomePage.swift */; };
 		8A2615ED27DA6E5200EA429C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A2615EC27DA6E5200EA429C /* Assets.xcassets */; };
@@ -27,6 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		72A1486F2803BBE9006C035F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A2615DD27DA6E4E00EA429C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72A1485F2803BBE6006C035F;
+			remoteInfo = MotivityWidgetExtension;
+		};
 		8A2615F627DA6E5200EA429C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8A2615DD27DA6E4E00EA429C /* Project object */;
@@ -43,7 +59,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		72A148722803BBE9006C035F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				72A148712803BBE9006C035F /* MotivityWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		727D924F2803BF9E001DA8F5 /* MotivityWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivityWidgetModel.swift; sourceTree = "<group>"; };
+		72A148602803BBE6006C035F /* MotivityWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MotivityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		72A148622803BBE6006C035F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		72A148642803BBE6006C035F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		72A148672803BBE6006C035F /* MotivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivityWidget.swift; sourceTree = "<group>"; };
+		72A148692803BBE6006C035F /* MotivityWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = MotivityWidget.intentdefinition; sourceTree = "<group>"; };
+		72A1486A2803BBE9006C035F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72A1486C2803BBE9006C035F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A2615E527DA6E4E00EA429C /* Motivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2615E827DA6E4E00EA429C /* MotivityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivityApp.swift; sourceTree = "<group>"; };
 		8A2615EA27DA6E4E00EA429C /* WelcomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage.swift; sourceTree = "<group>"; };
@@ -67,6 +105,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		72A1485D2803BBE6006C035F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72A148652803BBE6006C035F /* SwiftUI.framework in Frameworks */,
+				72A148632803BBE6006C035F /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A2615E227DA6E4E00EA429C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,12 +138,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72A148612803BBE6006C035F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				72A148622803BBE6006C035F /* WidgetKit.framework */,
+				72A148642803BBE6006C035F /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		72A148662803BBE6006C035F /* MotivityWidget */ = {
+			isa = PBXGroup;
+			children = (
+				72A148672803BBE6006C035F /* MotivityWidget.swift */,
+				72A148692803BBE6006C035F /* MotivityWidget.intentdefinition */,
+				72A1486A2803BBE9006C035F /* Assets.xcassets */,
+				72A1486C2803BBE9006C035F /* Info.plist */,
+			);
+			path = MotivityWidget;
+			sourceTree = "<group>";
+		};
 		8A2615DC27DA6E4E00EA429C = {
 			isa = PBXGroup;
 			children = (
 				8A2615E727DA6E4E00EA429C /* Motivity */,
 				8A2615F827DA6E5200EA429C /* MotivityTests */,
 				8A26160227DA6E5200EA429C /* MotivityUITests */,
+				72A148662803BBE6006C035F /* MotivityWidget */,
+				72A148612803BBE6006C035F /* Frameworks */,
 				8A2615E627DA6E4E00EA429C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,6 +176,7 @@
 				8A2615E527DA6E4E00EA429C /* Motivity.app */,
 				8A2615F527DA6E5200EA429C /* MotivityTests.xctest */,
 				8A2615FF27DA6E5200EA429C /* MotivityUITests.xctest */,
+				72A148602803BBE6006C035F /* MotivityWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +196,7 @@
 				8A8CC4C527EA39CD00FA8CE9 /* EventView.swift */,
 				8A93226E27F60B4400112A6E /* ViewRouter.swift */,
 				8A93226A27F5FE7700112A6E /* MotherView.swift */,
+				727D924F2803BF9E001DA8F5 /* MotivityWidgetModel.swift */,
 				8A2615EC27DA6E5200EA429C /* Assets.xcassets */,
 				8A2615EE27DA6E5200EA429C /* Preview Content */,
 			);
@@ -160,6 +231,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		72A1485F2803BBE6006C035F /* MotivityWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72A148752803BBE9006C035F /* Build configuration list for PBXNativeTarget "MotivityWidgetExtension" */;
+			buildPhases = (
+				72A1485C2803BBE6006C035F /* Sources */,
+				72A1485D2803BBE6006C035F /* Frameworks */,
+				72A1485E2803BBE6006C035F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MotivityWidgetExtension;
+			productName = MotivityWidgetExtension;
+			productReference = 72A148602803BBE6006C035F /* MotivityWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		8A2615E427DA6E4E00EA429C /* Motivity */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A26160927DA6E5200EA429C /* Build configuration list for PBXNativeTarget "Motivity" */;
@@ -167,10 +255,12 @@
 				8A2615E127DA6E4E00EA429C /* Sources */,
 				8A2615E227DA6E4E00EA429C /* Frameworks */,
 				8A2615E327DA6E4E00EA429C /* Resources */,
+				72A148722803BBE9006C035F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				72A148702803BBE9006C035F /* PBXTargetDependency */,
 			);
 			name = Motivity;
 			productName = Motivity;
@@ -223,6 +313,9 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					72A1485F2803BBE6006C035F = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					8A2615E427DA6E4E00EA429C = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -252,11 +345,20 @@
 				8A2615E427DA6E4E00EA429C /* Motivity */,
 				8A2615F427DA6E5200EA429C /* MotivityTests */,
 				8A2615FE27DA6E5200EA429C /* MotivityUITests */,
+				72A1485F2803BBE6006C035F /* MotivityWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		72A1485E2803BBE6006C035F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72A1486B2803BBE9006C035F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A2615E327DA6E4E00EA429C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,6 +385,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		72A1485C2803BBE6006C035F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72A148682803BBE6006C035F /* MotivityWidget.swift in Sources */,
+				72A1486D2803BBE9006C035F /* MotivityWidget.intentdefinition in Sources */,
+				727D92512803BF9E001DA8F5 /* MotivityWidgetModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A2615E127DA6E4E00EA429C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -293,11 +405,13 @@
 				8A93226F27F60B4400112A6E /* ViewRouter.swift in Sources */,
 				8A8CC4CA27EA3A8200FA8CE9 /* SettingsPage.swift in Sources */,
 				8A8A4D8527FCFDF5007FF98D /* navigationHelper.swift in Sources */,
+				727D92502803BF9E001DA8F5 /* MotivityWidgetModel.swift in Sources */,
 				8A72B50327E52E5D009D5CB7 /* NewUserSignUp.swift in Sources */,
 				8A72B50527E52E9D009D5CB7 /* ExisitingUserPage.swift in Sources */,
 				8A8CC4CC27EA3AA800FA8CE9 /* UserProfilePage.swift in Sources */,
 				8A2615E927DA6E4E00EA429C /* MotivityApp.swift in Sources */,
 				8A72B50127E52D4E009D5CB7 /* LoginPage.swift in Sources */,
+				72A1486E2803BBE9006C035F /* MotivityWidget.intentdefinition in Sources */,
 				8A93226B27F5FE7700112A6E /* MotherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +436,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		72A148702803BBE9006C035F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72A1485F2803BBE6006C035F /* MotivityWidgetExtension */;
+			targetProxy = 72A1486F2803BBE9006C035F /* PBXContainerItemProxy */;
+		};
 		8A2615F727DA6E5200EA429C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8A2615E427DA6E4E00EA429C /* Motivity */;
@@ -335,6 +454,60 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		72A148732803BBE9006C035F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MK4QVW884A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MotivityWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MotivityWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Team-Motivity.Motivity.MotivityWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		72A148742803BBE9006C035F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MK4QVW884A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MotivityWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MotivityWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Team-Motivity.Motivity.MotivityWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		8A26160727DA6E5200EA429C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -454,6 +627,7 @@
 		8A26160A27DA6E5200EA429C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -482,6 +656,7 @@
 		8A26160B27DA6E5200EA429C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -582,6 +757,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		72A148752803BBE9006C035F /* Build configuration list for PBXNativeTarget "MotivityWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72A148732803BBE9006C035F /* Debug */,
+				72A148742803BBE9006C035F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8A2615E027DA6E4E00EA429C /* Build configuration list for PBXProject "Motivity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
