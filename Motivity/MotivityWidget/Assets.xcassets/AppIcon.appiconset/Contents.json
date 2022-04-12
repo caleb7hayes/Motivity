@@ -31,13 +31,11 @@
       "size" : "40x40"
     },
     {
-      "filename" : "Artboard 1fixed size.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "Artboard 1.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
@@ -73,7 +71,6 @@
       "size" : "40x40"
     },
     {
-      "filename" : "Artboard 176.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"
@@ -89,7 +86,6 @@
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "Artboard 11024.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

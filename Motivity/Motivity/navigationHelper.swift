@@ -22,8 +22,8 @@ enum Page{
     //still to build UX/UI Pages
     
     
-    //case addTaskPage
-    //case editTaskPage
+    case addTaskPage
+    case editTaskPage
     
     
     

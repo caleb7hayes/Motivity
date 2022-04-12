@@ -4,12 +4,11 @@
 //
 //  Created by Josiah Schwahn on 3/31/22.
 //
-
 import SwiftUI
 
 struct MotherView: View {
     
-    
+
     @StateObject var viewRouter: ViewRouter
     
     var body: some View {
@@ -27,7 +26,8 @@ struct MotherView: View {
             
         case .loginPage:
             LoginPage(viewRouter: viewRouter)
-            
+                .transition(.opacity)
+                .transition(.scale)
             
         case .existingUserPage:
             
@@ -45,8 +45,15 @@ struct MotherView: View {
                
         case .userProfilePage:
             UserProfilePage(viewRouter: viewRouter)
-                
             
+            
+        case .addTaskPage:
+            AddTaskPage(viewRouter: viewRouter)
+            
+            
+        case .editTaskPage:
+            EditTaskPage(viewRouter: viewRouter)
+    
         }
         
     }

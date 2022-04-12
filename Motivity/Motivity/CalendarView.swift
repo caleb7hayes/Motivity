@@ -4,7 +4,6 @@
 //
 //  Created by Josiah Schwahn on 3/22/22.
 //
-
 import SwiftUI
 
 struct CalendarView: View {
@@ -98,7 +97,6 @@ struct CalendarView: View {
                 }
                 
                 //Calendar Dates
-
                 
                 HStack{
                     ForEach(data, id: \.self){ item in
@@ -135,10 +133,22 @@ struct CalendarView: View {
                         .frame(width: 45, height: 45)
                     
                     Spacer()
-                    Image("ADD TASK")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 120)
+                    
+                    Button(action:{
+                        
+                        viewRouter.currentPage = .addTaskPage
+    
+                    }){
+                        
+                        Image("ADD TASK")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 120, height: 120)
+                        
+                    }
+                    
+                    
+                        
                     Spacer()
                     
                     Image("SUGGESTION BUTTON")

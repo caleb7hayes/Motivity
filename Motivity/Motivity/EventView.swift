@@ -4,7 +4,6 @@
 //
 //  Created by Josiah Schwahn on 3/22/22.
 //
-
 import SwiftUI
 
 struct EventView: View {
@@ -31,6 +30,5 @@ struct EventView_Previews: PreviewProvider {
         EventView(eventName: "devops", startTime: "11:56")
     }
 }
-
 
 
