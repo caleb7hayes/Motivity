@@ -10,9 +10,14 @@ struct AddTaskPage: View {
     
     
     @StateObject var viewRouter: ViewRouter
-    
+    @StateObject var authRouter: AuthRouter
     @State private var notifications: Bool = false
     @State private var flexibleEvent: Bool = false
+    
+    @State var name = ""
+    @State var start = ""
+    @State var dur = ""
+    @State var loc = ""
     
     
     var body: some View {
@@ -61,12 +66,12 @@ struct AddTaskPage: View {
                     
                     
                     Image("LARGE TEXT BACKGROUND")
-                    Text("Event Name")
+                    TextField("Event Name", text: $name)
                         .font(.system(size:30))
-                        .fontWeight(.bold)
+                       
                         .opacity(0.3)
                         .foregroundColor(Color.white)
-                        .padding(.leading, 20)
+                      
                      
                 }
                 
@@ -75,12 +80,12 @@ struct AddTaskPage: View {
                     
                     
                     Image("LARGE TEXT BACKGROUND")
-                    Text("Start Time")
+                    TextField("Start Time", text: $start)
                         .font(.system(size:30))
-                        .fontWeight(.bold)
+                        
                         .opacity(0.3)
                         .foregroundColor(Color.white)
-                        .padding(.leading, 20)
+                        
                      
                 }
                 
@@ -90,12 +95,10 @@ struct AddTaskPage: View {
                     
                     
                     Image("LARGE TEXT BACKGROUND")
-                    Text("Duration")
+                    TextField("Durration", text: $dur)
                         .font(.system(size:30))
-                        .fontWeight(.bold)
                         .opacity(0.3)
                         .foregroundColor(Color.white)
-                        .padding(.leading, 20)
                      
                 }
                 
@@ -105,12 +108,10 @@ struct AddTaskPage: View {
                     
                     
                     Image("LARGE TEXT BACKGROUND")
-                    Text("Location")
+                    TextField("Location", text: $loc)
                         .font(.system(size:30))
-                        .fontWeight(.bold)
                         .opacity(0.3)
                         .foregroundColor(Color.white)
-                        .padding(.leading, 20)
                      
                 }
                 
@@ -194,6 +195,7 @@ struct AddTaskPage: View {
                     Button(action:{
                         
                         viewRouter.currentPage = .calendarPage
+                        authRouter.createPost(name: name, start: start, dur: dur, loc: loc)
                         
                     }){
                         
@@ -247,6 +249,6 @@ struct toggleStyle: ToggleStyle{
 
 struct AddTaskPage_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskPage(viewRouter: ViewRouter())
+        AddTaskPage(viewRouter: ViewRouter(), authRouter: AuthRouter())
     }
 }

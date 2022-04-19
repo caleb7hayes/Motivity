@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>617698439980-gdcmjkfgkbhfnhns0g3l4492h9pe97o8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.617698439980-gdcmjkfgkbhfnhns0g3l4492h9pe97o8</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDKJKKr63tLczlWIjLuv8ZKlwCpCATAsVU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>617698439980</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Team-Motivity.Motivity</string>
+	<key>PROJECT_ID</key>
+	<string>motivity-81f3f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>motivity-81f3f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:617698439980:ios:ce799e6a339c99dc207289</string>
+	<key>DATABASE_URL</key>
+	<string>https://motivity-81f3f-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

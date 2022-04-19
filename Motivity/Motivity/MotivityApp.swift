@@ -6,17 +6,24 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 @main
 struct MotivityApp: App {
     
+    init(){
+        FirebaseApp.configure()
+    }
     
     @StateObject var viewRouter = ViewRouter()
-    
+    @StateObject var authRouter = AuthRouter()
 
     var body: some Scene {
         WindowGroup {
-            MotherView(viewRouter: ViewRouter())
+            MotherView(viewRouter: ViewRouter(), authRouter: AuthRouter())
+        
         }
     }
 }

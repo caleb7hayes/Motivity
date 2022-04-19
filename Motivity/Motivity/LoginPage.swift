@@ -11,7 +11,7 @@ struct LoginPage: View {
 
     
     @StateObject var viewRouter: ViewRouter
-
+    @StateObject var authRouter: AuthRouter
     
     var body: some View {
         
@@ -108,6 +108,6 @@ struct LoginPage: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginPage(viewRouter: ViewRouter())
+        LoginPage(viewRouter: ViewRouter(), authRouter: AuthRouter())
     }
 }

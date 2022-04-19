@@ -10,6 +10,7 @@ struct CalendarView: View {
     
     
     @StateObject var viewRouter: ViewRouter
+    @StateObject var authRouter: AuthRouter
     
     
     var data = ["Sun.", "Mon.", "Tues", "Wed.", "Thur.", "Fri.", "Sun."]
@@ -81,7 +82,7 @@ struct CalendarView: View {
                     
                     VStack{
                         
-                        Text("Josiah's Schedule")
+                        Text(authRouter.userName)
                             .font(.system(size:30))
                             .fontWeight(.black)
                             .foregroundColor(Color.white)
@@ -184,6 +185,6 @@ struct CalendarView: View {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView(viewRouter: ViewRouter())
+        CalendarView(viewRouter: ViewRouter(), authRouter: AuthRouter())
     }
 }
