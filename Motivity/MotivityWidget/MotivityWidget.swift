@@ -10,6 +10,7 @@ import SwiftUI
 import Intents
 import Foundation
 
+
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), configuration: ConfigurationIntent())
@@ -44,16 +45,13 @@ struct SimpleEntry: TimelineEntry {
 struct MotivityWidgetEntryView : View {
     var entry: Provider.Entry
 
-//    var body: some View {
-//        Text(entry.date, style: .time)
-//    }
     @Environment(\.widgetFamily) var family: WidgetFamily
     
     @ViewBuilder
     var body: some View {
         switch family {
         case .systemSmall:
-            MotivityWidgetSmallView()
+            MotivityWidgetSmallView(entry: Provider.Entry.init(date: Date(), configuration: ConfigurationIntent()))
         case .systemMedium:
             MotivityWidgetMediumView()
         case .systemLarge:
@@ -66,26 +64,48 @@ struct MotivityWidgetEntryView : View {
     }
 }
 
+//struct SimpleProvider: TimelineProvider {
+//
+//
+//    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
+//        let midnight = Calendar.current.startOfDay(for: Date())
+//        let nextMidnight = Calendar.current.date(byAdding: .day, value: 1, to: midnight)!
+//        let entries = [SimpleEntry(date: midnight)]
+//        let timeline = Timeline(entries: entries, policy: .after(nextMidnight))
+//        completion(timeline)
+//
+//    }
+//}
+
 // struct for functionality of small widget
 struct MotivityWidgetSmallView : View {
+    var entry: Provider.Entry
     var body: some View {
-        
-        ZStack{
-            
-            //background image for all pages throughout Motvitiy
+
+        ZStack {
             Image("Motivity Login Background").ignoresSafeArea()
-            
-            //vertical stack for top text
-            VStack(alignment: .leading){
-                
-                Text("Small Widget")
-                    .font(.body)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                    .padding(.leading,70)
-            }
+
+            Text(entry.date, style: .timer)
+                .multilineTextAlignment(.center)
         }
+
+        
+//        ZStack{
+//
+//            //background image for all pages throughout Motvitiy
+//
+//            //vertical stack for top text
+//            VStack(alignment: .leading){
+//
+//
+//
+////                    .font(.body)
+////                    .fontWeight(.bold)
+////                    .foregroundColor(Color.white)
+////                    .frame(maxWidth: .infinity, alignment: .leading)
+////                    .padding(.leading,70)
+//            }
+//        }
     }
 }
 
