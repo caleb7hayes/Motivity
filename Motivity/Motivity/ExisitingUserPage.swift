@@ -11,7 +11,9 @@ struct ExisitingUserPage: View {
     
     
     @StateObject var viewRouter: ViewRouter
-    
+    @StateObject var authRouter: AuthRouter
+    @State var email = ""
+    @State var password = ""
     
     var body: some View {
         
@@ -55,7 +57,12 @@ struct ExisitingUserPage: View {
                         
                         Image("Button Ring")
                         
-                        Image("EMAIL")
+                        TextField("Email", text: $email)
+                            .disableAutocorrection(true)
+                            .autocapitalization(.none)
+                            .padding()
+                            .background(Color(.secondarySystemBackground))
+                        
 
                     }
                              
@@ -63,7 +70,11 @@ struct ExisitingUserPage: View {
                         
                         Image("Button Ring")
 
-                        Image("PASSWORD")
+                        SecureField("Password", text: $password)
+                            .disableAutocorrection(true)
+                            .autocapitalization(.none)
+                            .padding()
+                            .background(Color(.secondarySystemBackground))
       
                     }
                 
@@ -79,7 +90,10 @@ struct ExisitingUserPage: View {
                 VStack{
                     
                     Button(action:{
-                        
+                        guard !email.isEmpty, !password.isEmpty else {
+                            return
+                        }
+                        authRouter.signIn(email: email, password: password)
                         viewRouter.currentPage = .calendarPage
                     }){
                         
@@ -108,6 +122,6 @@ struct ExisitingUserPage: View {
 
 struct ExisitingUserPage_Previews: PreviewProvider {
     static var previews: some View {
-        ExisitingUserPage(viewRouter: ViewRouter())
+        ExisitingUserPage(viewRouter: ViewRouter(), authRouter: AuthRouter())
     }
 }

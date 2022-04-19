@@ -1,0 +1,6 @@
+framework module Pods_Motivity_MotivityUITests {
+  umbrella header "Pods-Motivity-MotivityUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
