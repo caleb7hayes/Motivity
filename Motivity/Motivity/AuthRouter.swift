@@ -16,9 +16,8 @@ class AuthRouter: ObservableObject {
     var ref: DatabaseReference = Database.database().reference()
     var databaseHandle: DatabaseHandle?
     
-    @Published var userName = ""
     @Published var signedIn = false
-    @Published var postData = [String]()
+    @Published var events : [String:[String:Any]] = [:]
 
     var isSignedIn: Bool {
        return auth.currentUser != nil
@@ -31,7 +30,6 @@ class AuthRouter: ObservableObject {
            }
            self?.signedIn = true
            self?.userID = Auth.auth().currentUser?.uid
-           self?.userName = email
        }
     }
 
@@ -42,7 +40,6 @@ class AuthRouter: ObservableObject {
            }
            self?.signedIn = true
            self?.userID = Auth.auth().currentUser?.uid
-           self?.userName = email
        }
     }
 
@@ -53,18 +50,21 @@ class AuthRouter: ObservableObject {
     
     
     func displayPosts(){
-        databaseHandle = self.ref.child("Users").child(userID!).observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? String
-            
-            if let actualPost = post {
-                if !self.postData.contains(actualPost) {
-                    self.postData.append(actualPost)
-                }
-            }
+        databaseHandle = self.ref.child("Users").child("CJ").child("Events").observe(.value, with: { (snapshot) in
+            self.events = snapshot.value as! [String: [String: Any]]
+            print(self.events)
         })
     }
     
-    func createPost(name: String, start: String, dur: String, loc: String){
-        self.ref.child("Users").child(userID!).child("Event").child(name).setValue(["start": start, "dur": dur, "loc": loc])
+    func createEvent(name: String, start: String, dur: String){
+        self.ref.child("Users").child(userID!).child("Events").child(name).setValue(["Start": start, "Durration": dur])
+    }
+    
+    func createGoal(name: String, desc: String){
+        self.ref.child("Users").child(userID!).child("Goals").child(name).setValue(["Desc": desc])
+    }
+    
+    func createTask(name: String, desc: String){
+        self.ref.child("Users").child(userID!).child("Tasks").child(name).setValue(["Desc": desc])
     }
 }

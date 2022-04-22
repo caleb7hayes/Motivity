@@ -82,12 +82,6 @@ struct CalendarView: View {
                     
                     VStack{
                         
-                        Text(authRouter.userName)
-                            .font(.system(size:30))
-                            .fontWeight(.black)
-                            .foregroundColor(Color.white)
-                            .padding(.bottom, 0)
-                        
                         Text("April 20th - 26th")
                             .font(.system(size:16))
                             .fontWeight(.bold)
@@ -175,16 +169,30 @@ struct CalendarView: View {
                     .padding(.trailing, 200)
                     .padding(.bottom, 180)
                     .padding(.top,10)
+                 
+                /*
+                Text("Event: " + authRouter.events)
+                Text("Start: " + authRouter.start)
+                Text("Duration: " + String(authRouter.dur))
+                 */
                     
+            }.onAppear(){
+                authRouter.displayPosts()
             }
-            
-            
         }
     }
 }
+
+
+
+
+
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
         CalendarView(viewRouter: ViewRouter(), authRouter: AuthRouter())
     }
 }
+
+
+

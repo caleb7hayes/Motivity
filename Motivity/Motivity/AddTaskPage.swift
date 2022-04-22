@@ -16,9 +16,7 @@ struct AddTaskPage: View {
     
     @State var name = ""
     @State var start = ""
-    @State var dur = ""
-    @State var loc = ""
-    
+    @State var dur = ""    
     
     var body: some View {
         
@@ -108,10 +106,6 @@ struct AddTaskPage: View {
                     
                     
                     Image("LARGE TEXT BACKGROUND")
-                    TextField("Location", text: $loc)
-                        .font(.system(size:30))
-                        .opacity(0.3)
-                        .foregroundColor(Color.white)
                      
                 }
                 
@@ -195,7 +189,7 @@ struct AddTaskPage: View {
                     Button(action:{
                         
                         viewRouter.currentPage = .calendarPage
-                        authRouter.createPost(name: name, start: start, dur: dur, loc: loc)
+                        authRouter.createEvent(name: name, start: start, dur: dur)
                         
                     }){
                         
