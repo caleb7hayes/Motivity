@@ -87,6 +87,7 @@
 		3E8C62B4934744C3FBC5A85D /* Pods-Motivity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motivity.debug.xcconfig"; path = "Target Support Files/Pods-Motivity/Pods-Motivity.debug.xcconfig"; sourceTree = "<group>"; };
 		4941DAFD99391EFCCAA8FE29 /* Pods_Motivity_MotivityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motivity_MotivityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB0F874A6AF6D5FB5901AF7 /* Pods-Motivity-MotivityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motivity-MotivityUITests.debug.xcconfig"; path = "Target Support Files/Pods-Motivity-MotivityUITests/Pods-Motivity-MotivityUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7263CC80280F13B40007775E /* Motivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Motivity.entitlements; sourceTree = "<group>"; };
 		72E664F72805DEC0009A822D /* MotivityWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MotivityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		72E664F92805DEC0009A822D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		72E664FB2805DEC0009A822D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -229,6 +230,7 @@
 		8A2615E727DA6E4E00EA429C /* Motivity */ = {
 			isa = PBXGroup;
 			children = (
+				7263CC80280F13B40007775E /* Motivity.entitlements */,
 				2F06DBD3280B2E9800EF0069 /* GoogleService-Info.plist */,
 				8A8A4D8427FCFDF5007FF98D /* navigationHelper.swift */,
 				8A2615EA27DA6E4E00EA429C /* WelcomePage.swift */,
@@ -814,6 +816,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Motivity/Motivity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Motivity/Preview Content\"";
@@ -845,6 +848,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Motivity/Motivity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Motivity/Preview Content\"";
