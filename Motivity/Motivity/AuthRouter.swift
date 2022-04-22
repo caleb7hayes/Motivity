@@ -49,15 +49,22 @@ class AuthRouter: ObservableObject {
     }
     
     
-    func displayPosts(){
-        databaseHandle = self.ref.child("Users").child("CJ").child("Events").observe(.value, with: { (snapshot) in
-            self.events = snapshot.value as! [String: [String: Any]]
-            print(self.events)
+    func displayEvents(){
+        databaseHandle = self.ref.child("Users").child(userID!).child("Events").observe(.value, with: { (snapshot) in
+            if let database = snapshot.value as? [String: [String: Any]] {
+                self.events = database
+                for e in self.events{
+                    print(e.key)
+                    print(e.value["Start"] as! String)
+                    print(e.value["Duration"] as! String)
+                }
+            }
+        
         })
     }
     
     func createEvent(name: String, start: String, dur: String){
-        self.ref.child("Users").child(userID!).child("Events").child(name).setValue(["Start": start, "Durration": dur])
+        self.ref.child("Users").child(userID!).child("Events").child(name).setValue(["Start": start, "Duration": dur])
     }
     
     func createGoal(name: String, desc: String){
