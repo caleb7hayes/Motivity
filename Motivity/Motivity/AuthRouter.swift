@@ -18,12 +18,9 @@ class AuthRouter: ObservableObject {
     
     @Published var userName = ""
     @Published var signedIn = false
-    @Published var loc = ""
     @Published var start = ""
-    @Published var dur = ""
-    @Published var postData = [String]()
-    @Published var events : [String:Any] = [:]
-    @Published var keys = [String]()
+    @Published var dur = 0
+    @Published var events = ""
 
     var isSignedIn: Bool {
        return auth.currentUser != nil
@@ -58,9 +55,11 @@ class AuthRouter: ObservableObject {
     
     
     func displayPosts(){
-        databaseHandle = self.ref.child("Users").child(userID!).child("Events").observe(.value, with: { (snapshot) in
+        databaseHandle = self.ref.child("Users").child("CJ").child("Events").observe(.value, with: { (snapshot) in
             let data = snapshot.value as! [String: [String: Any]]
-            print(data["Gym"]!["Start"] as! String)
+            self.start = data["Gym"]!["Start"] as! String
+            self.dur = data["Gym"]!["Duration"] as! Int
+            self.events = "Gym"
         })
     }
     

@@ -176,9 +176,9 @@ struct CalendarView: View {
                     .padding(.bottom, 180)
                     .padding(.top,10)
                  */
-                
+                Text("Event: " + authRouter.events)
                 Text("Start: " + authRouter.start)
-                Text("Durration: " + authRouter.dur)
+                Text("Duration: " + String(authRouter.dur))
                     
             }.onAppear(){
                 authRouter.displayPosts()
