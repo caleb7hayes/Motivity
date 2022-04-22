@@ -165,7 +165,7 @@ struct CalendarView: View {
                 
                 //Daily Breakdown
                 
-                
+                /*
                 Text("Daily Breakdown")
                     
                     .font(.system(size:23))
@@ -175,10 +175,14 @@ struct CalendarView: View {
                     .padding(.trailing, 200)
                     .padding(.bottom, 180)
                     .padding(.top,10)
+                 */
+                
+                Text("Start: " + authRouter.start)
+                Text("Durration: " + authRouter.dur)
                     
+            }.onAppear(){
+                authRouter.displayPosts()
             }
-            
-            
         }
     }
 }

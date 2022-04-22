@@ -18,7 +18,12 @@ class AuthRouter: ObservableObject {
     
     @Published var userName = ""
     @Published var signedIn = false
+    @Published var loc = ""
+    @Published var start = ""
+    @Published var dur = ""
     @Published var postData = [String]()
+    @Published var events : [String:Any] = [:]
+    @Published var keys = [String]()
 
     var isSignedIn: Bool {
        return auth.currentUser != nil
@@ -53,18 +58,21 @@ class AuthRouter: ObservableObject {
     
     
     func displayPosts(){
-        databaseHandle = self.ref.child("Users").child(userID!).observe(.childAdded, with: { (snapshot) in
-            let post = snapshot.value as? String
-            
-            if let actualPost = post {
-                if !self.postData.contains(actualPost) {
-                    self.postData.append(actualPost)
-                }
-            }
+        databaseHandle = self.ref.child("Users").child(userID!).child("Events").observe(.value, with: { (snapshot) in
+            let data = snapshot.value as! [String: [String: Any]]
+            print(data["Gym"]!["Start"] as! String)
         })
     }
     
-    func createPost(name: String, start: String, dur: String, loc: String){
-        self.ref.child("Users").child(userID!).child("Event").child(name).setValue(["start": start, "dur": dur, "loc": loc])
+    func createEvent(name: String, start: String, dur: String){
+        self.ref.child("Users").child(userID!).child("Events").child(name).setValue(["Start": start, "Durration": dur])
+    }
+    
+    func createGoal(name: String, desc: String){
+        self.ref.child("Users").child(userID!).child("Goals").child(name).setValue(["Desc": desc])
+    }
+    
+    func createTask(name: String, desc: String){
+        self.ref.child("Users").child(userID!).child("Tasks").child(name).setValue(["Desc": desc])
     }
 }
