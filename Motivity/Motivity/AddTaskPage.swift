@@ -14,6 +14,11 @@ struct AddTaskPage: View {
     @State private var notifications: Bool = false
     @State private var flexibleEvent: Bool = false
     
+    @State private var eventName = ""
+    @State private var startTime = ""
+    @State private var duration = ""
+    @State private var location = ""
+    
     
     var body: some View {
         
@@ -59,28 +64,35 @@ struct AddTaskPage: View {
                 //Event Name
                 ZStack(alignment:.leading){
                     
+                    TextField("Event Name", text: $eventName)
+                                .textFieldStyle(.roundedBorder)
+                                .padding()
                     
-                    Image("LARGE TEXT BACKGROUND")
+                   /* Image("LARGE TEXT BACKGROUND")
                     Text("Event Name")
                         .font(.system(size:30))
                         .fontWeight(.bold)
                         .opacity(0.3)
                         .foregroundColor(Color.white)
-                        .padding(.leading, 20)
+                        .padding(.leading, 20)*/
                      
                 }
                 
                 //Start Time
                 ZStack(alignment:.leading){
                     
+                    TextField("Start Time", text: $startTime)
+                                .textFieldStyle(.roundedBorder)
+                                .padding()
                     
-                    Image("LARGE TEXT BACKGROUND")
+                    
+                  /*  Image("LARGE TEXT BACKGROUND")
                     Text("Start Time")
                         .font(.system(size:30))
                         .fontWeight(.bold)
                         .opacity(0.3)
                         .foregroundColor(Color.white)
-                        .padding(.leading, 20)
+                        .padding(.leading, 20)*/
                      
                 }
                 
@@ -88,14 +100,18 @@ struct AddTaskPage: View {
                 //Duration
                 ZStack(alignment:.leading){
                     
+                    TextField("Duration", text: $duration)
+                                .textFieldStyle(.roundedBorder)
+                                .padding()
                     
-                    Image("LARGE TEXT BACKGROUND")
+                    
+                  /*  Image("LARGE TEXT BACKGROUND")
                     Text("Duration")
                         .font(.system(size:30))
                         .fontWeight(.bold)
                         .opacity(0.3)
                         .foregroundColor(Color.white)
-                        .padding(.leading, 20)
+                        .padding(.leading, 20)*/
                      
                 }
                 
@@ -103,14 +119,18 @@ struct AddTaskPage: View {
                 //Location
                 ZStack(alignment:.leading){
                     
+                    TextField("Location", text: $location)
+                                .textFieldStyle(.roundedBorder)
+                                .padding()
                     
-                    Image("LARGE TEXT BACKGROUND")
+                    
+                   /* Image("LARGE TEXT BACKGROUND")
                     Text("Location")
                         .font(.system(size:30))
                         .fontWeight(.bold)
                         .opacity(0.3)
                         .foregroundColor(Color.white)
-                        .padding(.leading, 20)
+                        .padding(.leading, 20)*/
                      
                 }
                 
