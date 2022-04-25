@@ -18,6 +18,8 @@ class AuthRouter: ObservableObject {
     
     @Published var signedIn = false
     @Published var events : [String:[String:Any]] = [:]
+    @Published var goals : [String:[String:Any]] = [:]
+    @Published var tasks : [String:[String:Any]] = [:]
 
     var isSignedIn: Bool {
        return auth.currentUser != nil
@@ -66,8 +68,8 @@ class AuthRouter: ObservableObject {
     func displayGoal(){
         databaseHandle = self.ref.child("Users").child(userID!).child("Goals").observe(.value, with: { (snapshot) in
             if let database = snapshot.value as? [String: [String: Any]] {
-                self.events = database
-                for e in self.events{
+                self.goals = database
+                for e in self.goals{
                     print(e.key)
                     print(e.value["Desc"] as! String)
                 }
@@ -79,8 +81,8 @@ class AuthRouter: ObservableObject {
     func displayTask(){
         databaseHandle = self.ref.child("Users").child(userID!).child("Tasks").observe(.value, with: { (snapshot) in
             if let database = snapshot.value as? [String: [String: Any]] {
-                self.events = database
-                for e in self.events{
+                self.tasks = database
+                for e in self.tasks{
                     print(e.key)
                     print(e.value["Desc"] as! String)
                 }
