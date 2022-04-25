@@ -11,6 +11,7 @@ struct NewUserSignUp: View {
     
     
     @StateObject var viewRouter: ViewRouter
+    @StateObject var authRouter: AuthRouter
     
     var body: some View {
         
@@ -112,6 +113,6 @@ struct NewUserSignUp: View {
 
 struct NewUserSignUp_Previews: PreviewProvider {
     static var previews: some View {
-        NewUserSignUp(viewRouter: ViewRouter())
+        NewUserSignUp(viewRouter: ViewRouter(), authRouter: AuthRouter())
     }
 }

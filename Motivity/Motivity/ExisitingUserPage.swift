@@ -57,12 +57,17 @@ struct ExisitingUserPage: View {
                         
                         Image("Button Ring")
                         
+                        
+                        MotivityTextField(ourText: authRouter.userName, placeHolderView: Text("Email"), motivityLogo: "Motivity Logo")
+                        
+                        /*
+                        
                         TextField("Email", text: $email)
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
                             .padding()
                             .background(Color(.secondarySystemBackground))
-                        
+                        */
 
                     }
                              
@@ -70,11 +75,15 @@ struct ExisitingUserPage: View {
                         
                         Image("Button Ring")
 
+                        
+                        /*
                         SecureField("Password", text: $password)
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
                             .padding()
                             .background(Color(.secondarySystemBackground))
+                        
+                        */
       
                     }
                 

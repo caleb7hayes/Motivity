@@ -26,6 +26,7 @@
 		8A2615FA27DA6E5200EA429C /* MotivityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2615F927DA6E5200EA429C /* MotivityTests.swift */; };
 		8A26160427DA6E5200EA429C /* MotivityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A26160327DA6E5200EA429C /* MotivityUITests.swift */; };
 		8A26160627DA6E5200EA429C /* MotivityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A26160527DA6E5200EA429C /* MotivityUITestsLaunchTests.swift */; };
+		8A5DFE8228136D7800943841 /* MotivityTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5DFE8128136D7800943841 /* MotivityTextField.swift */; };
 		8A72B50127E52D4E009D5CB7 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72B50027E52D4E009D5CB7 /* LoginPage.swift */; };
 		8A72B50327E52E5D009D5CB7 /* NewUserSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72B50227E52E5D009D5CB7 /* NewUserSignUp.swift */; };
 		8A72B50527E52E9D009D5CB7 /* ExisitingUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72B50427E52E9D009D5CB7 /* ExisitingUserPage.swift */; };
@@ -106,6 +107,7 @@
 		8A2615FF27DA6E5200EA429C /* MotivityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MotivityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A26160327DA6E5200EA429C /* MotivityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivityUITests.swift; sourceTree = "<group>"; };
 		8A26160527DA6E5200EA429C /* MotivityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivityUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8A5DFE8128136D7800943841 /* MotivityTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivityTextField.swift; sourceTree = "<group>"; };
 		8A72B50027E52D4E009D5CB7 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 		8A72B50227E52E5D009D5CB7 /* NewUserSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserSignUp.swift; sourceTree = "<group>"; };
 		8A72B50427E52E9D009D5CB7 /* ExisitingUserPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExisitingUserPage.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				2F06DBD5280E20BB00EF0069 /* AuthRouter.swift */,
 				72E6650D2805DF7E009A822D /* AddTaskPage.swift */,
 				72E6650F2805E022009A822D /* EditTaskPage.swift */,
+				8A5DFE8128136D7800943841 /* MotivityTextField.swift */,
 				8A2615EC27DA6E5200EA429C /* Assets.xcassets */,
 				8A2615EE27DA6E5200EA429C /* Preview Content */,
 			);
@@ -578,6 +581,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A5DFE8228136D7800943841 /* MotivityTextField.swift in Sources */,
 				8A2615EB27DA6E4E00EA429C /* WelcomePage.swift in Sources */,
 				8A8CC4C827EA39F000FA8CE9 /* CalendarView.swift in Sources */,
 				8A8CC4C627EA39CD00FA8CE9 /* EventView.swift in Sources */,

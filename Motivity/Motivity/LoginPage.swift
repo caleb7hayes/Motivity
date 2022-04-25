@@ -50,14 +50,21 @@ struct LoginPage: View {
                         .frame(minWidth: 0, maxWidth:100, minHeight: 0, maxHeight:100)
                     
                     
-                    Image("SIGN UP WITH EMAIL")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 0)
-                        .padding(.top, 400)
-                        .frame(minWidth: 0, maxWidth:100, minHeight: 0, maxHeight:300)
+                    Button(action:{
+                        
+                        viewRouter.currentPage = .existingUserPage
+                        print("hello")
+                    }){
+                        
+                        Image("SIGN UP WITH EMAIL")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 0)
+                            .padding(.top, 400)
+                            .frame(minWidth: 0, maxWidth:100, minHeight: 0, maxHeight:300)
+                        
+                    }
                     
-                    
-                }
+           }
                 
                 
                 Spacer()

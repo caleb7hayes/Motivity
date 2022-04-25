@@ -14,6 +14,7 @@ enum Page{
     case welcomePage
     case loginPage
     case existingUserPage
+    case newUserPage
     case calendarPage
     case settingsPage
     case userProfilePage
