@@ -12,7 +12,12 @@ import Foundation
 import Firebase
 
 
+
 struct Provider: IntentTimelineProvider {
+    
+    @AppStorage("events", store: UserDefaults(suiteName: "Team-Motivity.Motivity"))
+    var eventData: Data = Data()
+    
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), configuration: ConfigurationIntent())
     }
@@ -65,32 +70,43 @@ struct MotivityWidgetEntryView : View {
     }
 }
 
-struct FirebaseStartupSequence: Widget {
-    
-    init() {
-        FirebaseApp.configure()
-    }
-    
-    let kind: String = "FirebaseStartupSequence"
-    
-    var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) {entry in FirebaseStartupSequence(entry: entry)}
-        .configurationDisplayName("My Widget")
-        .description("This is an example")
-    }
-}
+func getDates() -> String {
+//    print("IN GET DATES")
+////    let events = UserDefaults.group?.object(forKey: "EventsKey")
+//    var events : [String:[String:Any]] = [:]
+////    var allEvents = String()
+    let router = AuthRouter()
+    let events = router.getEvents()
 
+//    guard let dur = events["School"]["Duration"] as? String else {
+//        return "No Data"
+//    }
+//    for key in events.keys {
+//        allEvents += key
+//    }
+//    for key in events.keys {
+//        allEvents += key
+//
+//    }
+//
+//    return allEvents
+    return events
+}
 
 // struct for functionality of small widget
 struct MotivityWidgetSmallView : View {
+    let events = UserDefaults.group?.object(forKey: "EventsKey")
+    var eventData = getDates()
     var entry: Provider.Entry
     var body: some View {
-
+        
         ZStack {
             Image("Motivity Login Background").ignoresSafeArea()
-
+            Text(eventData)
             Text(entry.date, style: .timer)
                 .multilineTextAlignment(.center)
+            
+//            Text(events)
         }
 
         
@@ -137,6 +153,7 @@ struct MotivityWidgetMediumView : View {
 }
 // struct for functionality of large widget
 struct MotivityWidgetLargeView : View {
+
     var body: some View {
         
         ZStack{
@@ -146,7 +163,6 @@ struct MotivityWidgetLargeView : View {
             
             //vertical stack for top text
             VStack(alignment: .leading){
-                
                 Text("Large Widget")
                     .font(.largeTitle)
                     .fontWeight(.bold)
@@ -168,6 +184,9 @@ struct MotivityWidgetExtraLargeView : View {
 
 @main
 struct MotivityWidget: Widget {
+    
+    
+    
     let kind: String = "MotivityWidget"
 
     var body: some WidgetConfiguration {

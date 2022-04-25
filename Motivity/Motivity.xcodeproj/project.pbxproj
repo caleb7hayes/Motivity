@@ -10,6 +10,7 @@
 		11CC528362C173259F98DE04 /* Pods_MotivityWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D351A6A635218B901E205A4 /* Pods_MotivityWidgetExtension.framework */; };
 		2F06DBD4280B2E9800EF0069 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F06DBD3280B2E9800EF0069 /* GoogleService-Info.plist */; };
 		2F06DBD6280E20BB00EF0069 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F06DBD5280E20BB00EF0069 /* AuthRouter.swift */; };
+		721F7EA328137204007AFE7F /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F06DBD5280E20BB00EF0069 /* AuthRouter.swift */; };
 		72E664FA2805DEC0009A822D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E664F92805DEC0009A822D /* WidgetKit.framework */; };
 		72E664FC2805DEC0009A822D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E664FB2805DEC0009A822D /* SwiftUI.framework */; };
 		72E664FF2805DEC0009A822D /* MotivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E664FE2805DEC0009A822D /* MotivityWidget.swift */; };
@@ -572,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72E664FF2805DEC0009A822D /* MotivityWidget.swift in Sources */,
+				721F7EA328137204007AFE7F /* AuthRouter.swift in Sources */,
 				72E665042805DEC2009A822D /* MotivityWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

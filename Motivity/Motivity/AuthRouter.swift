@@ -10,6 +10,11 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
+// added for widget
+extension UserDefaults {
+    static let group = UserDefaults(suiteName: "Team-Motivity.Motivity")
+}
+
 class AuthRouter: ObservableObject {
     let auth = Auth.auth()
     var userID = Auth.auth().currentUser?.uid
@@ -18,7 +23,7 @@ class AuthRouter: ObservableObject {
     
     @Published var signedIn = false
     @Published var events : [String:[String:Any]] = [:]
-
+    
     var isSignedIn: Bool {
        return auth.currentUser != nil
     }
@@ -54,6 +59,17 @@ class AuthRouter: ObservableObject {
             self.events = snapshot.value as! [String: [String: Any]]
             print(self.events)
         })
+        //added for widget
+//        UserDefaults.group?.set(self.events, forKey: "EventsKey")
+    }
+    // added for widget
+    func getEvents() -> String {
+        print("IN GET EVENTS IN AUTH ROUTER")
+        var events = ""
+        for key in self.events.keys{
+            events += key
+        }
+        return events
     }
     
     func createEvent(name: String, start: String, dur: String){
