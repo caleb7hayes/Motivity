@@ -177,7 +177,7 @@ struct CalendarView: View {
                  */
                     
             }.onAppear(){
-                authRouter.displayPosts()
+                authRouter.displayEvent()
             }
         }
     }

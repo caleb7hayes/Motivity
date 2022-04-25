@@ -208,8 +208,6 @@ struct AddTaskPage: View {
                 .padding(.top,60)
                 
                 
-                
-                
             }
             
             
