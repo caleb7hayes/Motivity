@@ -10,6 +10,7 @@ struct MotherView: View {
     
 
     @StateObject var viewRouter: ViewRouter
+    @StateObject var authRouter: AuthRouter
     
     var body: some View {
         
@@ -25,18 +26,18 @@ struct MotherView: View {
             WelcomePage(viewRouter: viewRouter)
             
         case .loginPage:
-            LoginPage(viewRouter: viewRouter)
+            LoginPage(viewRouter: viewRouter, authRouter: authRouter)
                 .transition(.opacity)
                 .transition(.scale)
             
         case .existingUserPage:
             
-            ExisitingUserPage(viewRouter: viewRouter)
+            ExisitingUserPage(viewRouter: viewRouter, authRouter: authRouter)
             
             
         case .calendarPage:
             
-            CalendarView(viewRouter: viewRouter)
+            CalendarView(viewRouter: viewRouter, authRouter: authRouter)
           
             
         case .settingsPage:
@@ -48,7 +49,7 @@ struct MotherView: View {
             
             
         case .addTaskPage:
-            AddTaskPage(viewRouter: viewRouter)
+            AddTaskPage(viewRouter: viewRouter, authRouter: authRouter)
             
             
         case .editTaskPage:
@@ -62,6 +63,6 @@ struct MotherView: View {
 
 struct MotherView_Previews: PreviewProvider {
     static var previews: some View {
-        MotherView(viewRouter: ViewRouter())
+        MotherView(viewRouter: ViewRouter(), authRouter: AuthRouter())
     }
 }
