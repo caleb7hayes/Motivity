@@ -49,7 +49,7 @@ class AuthRouter: ObservableObject {
     }
     
     
-    func displayEvents(){
+    func displayEvent(){
         databaseHandle = self.ref.child("Users").child(userID!).child("Events").observe(.value, with: { (snapshot) in
             if let database = snapshot.value as? [String: [String: Any]] {
                 self.events = database
@@ -57,6 +57,32 @@ class AuthRouter: ObservableObject {
                     print(e.key)
                     print(e.value["Start"] as! String)
                     print(e.value["Duration"] as! String)
+                }
+            }
+        
+        })
+    }
+    
+    func displayGoal(){
+        databaseHandle = self.ref.child("Users").child(userID!).child("Goals").observe(.value, with: { (snapshot) in
+            if let database = snapshot.value as? [String: [String: Any]] {
+                self.events = database
+                for e in self.events{
+                    print(e.key)
+                    print(e.value["Desc"] as! String)
+                }
+            }
+        
+        })
+    }
+    
+    func displayTask(){
+        databaseHandle = self.ref.child("Users").child(userID!).child("Tasks").observe(.value, with: { (snapshot) in
+            if let database = snapshot.value as? [String: [String: Any]] {
+                self.events = database
+                for e in self.events{
+                    print(e.key)
+                    print(e.value["Desc"] as! String)
                 }
             }
         
