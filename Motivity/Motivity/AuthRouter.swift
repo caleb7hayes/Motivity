@@ -17,9 +17,9 @@ class AuthRouter: ObservableObject {
     var databaseHandle: DatabaseHandle?
     
     @Published var signedIn = false
-    @Published var events : [String:[String:Any]] = [:]
-    @Published var goals : [String:[String:Any]] = [:]
-    @Published var tasks : [String:[String:Any]] = [:]
+    @Published var events : [String] = []
+    @Published var goals : [String] = []
+    @Published var tasks : [String] = []
 
     var isSignedIn: Bool {
        return auth.currentUser != nil
@@ -30,7 +30,6 @@ class AuthRouter: ObservableObject {
            guard result != nil, error == nil else {
                return
            }
-           print("Sign in")
            self?.signedIn = true
            self?.userID = Auth.auth().currentUser?.uid
            
@@ -54,14 +53,14 @@ class AuthRouter: ObservableObject {
     
     
     func displayEvent(){
-        print("Display")
         databaseHandle = self.ref.child("Users").child(userID!).child("Events").observe(.value, with: { (snapshot) in
             if let database = snapshot.value as? [String: [String: Any]] {
-                self.events = database
-                for e in self.events{
-                    print(e.key)
-                    print(e.value["Start"] as! String)
-                    print(e.value["Duration"] as! String)
+                for e in database{
+                    if !self.events.contains(e.key) {
+                        self.events.append(e.key)
+                        self.events.append(e.value["Start"] as! String)
+                        self.events.append(e.value["Duration"] as! String)
+                    }
                 }
             }
         
@@ -72,10 +71,12 @@ class AuthRouter: ObservableObject {
     func displayGoal(){
         databaseHandle = self.ref.child("Users").child(userID!).child("Goals").observe(.value, with: { (snapshot) in
             if let database = snapshot.value as? [String: [String: Any]] {
-                self.goals = database
-                for e in self.goals{
-                    print(e.key)
-                    print(e.value["Desc"] as! String)
+                for e in database{
+                    if !self.goals.contains(e.key){
+                        self.goals.append(e.key)
+                        self.goals.append(e.value["Desc"] as! String)
+                    }
+                    
                 }
             }
         
@@ -85,10 +86,11 @@ class AuthRouter: ObservableObject {
     func displayTask(){
         databaseHandle = self.ref.child("Users").child(userID!).child("Tasks").observe(.value, with: { (snapshot) in
             if let database = snapshot.value as? [String: [String: Any]] {
-                self.tasks = database
-                for e in self.tasks{
-                    print(e.key)
-                    print(e.value["Desc"] as! String)
+                for e in database{
+                    if !self.tasks.contains(e.key){
+                        self.tasks.append(e.key)
+                        self.tasks.append(e.value["Desc"] as! String)
+                    }
                 }
             }
         

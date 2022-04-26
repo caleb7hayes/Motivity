@@ -87,7 +87,7 @@ struct NewUserSignUp: View {
                               
                     Button(action:{
                         authRouter.signUp(email: email, password: password)
-                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){(timer) in
+                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false){(timer) in
                             if authRouter.signedIn {
                                 viewRouter.currentPage = .calendarPage
                             }
