@@ -30,8 +30,10 @@ class AuthRouter: ObservableObject {
            guard result != nil, error == nil else {
                return
            }
+           print("Sign in")
            self?.signedIn = true
            self?.userID = Auth.auth().currentUser?.uid
+           
        }
     }
 
@@ -52,6 +54,7 @@ class AuthRouter: ObservableObject {
     
     
     func displayEvent(){
+        print("Display")
         databaseHandle = self.ref.child("Users").child(userID!).child("Events").observe(.value, with: { (snapshot) in
             if let database = snapshot.value as? [String: [String: Any]] {
                 self.events = database
@@ -63,6 +66,7 @@ class AuthRouter: ObservableObject {
             }
         
         })
+
     }
     
     func displayGoal(){

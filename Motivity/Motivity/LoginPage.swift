@@ -44,18 +44,19 @@ struct LoginPage: View {
                 //format text to top third of the screen
                 
                 ZStack(){
-                    
-                    Image("Button Ring")
-                        .padding(.top, 400)
-                        .frame(minWidth: 0, maxWidth:100, minHeight: 0, maxHeight:100)
-                    
-                    
-                    Image("SIGN UP WITH EMAIL")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 0)
-                        .padding(.top, 400)
-                        .frame(minWidth: 0, maxWidth:100, minHeight: 0, maxHeight:300)
-                    
+                    Button(action: {
+                        viewRouter.currentPage = .newUserSignUp
+                    }){
+                        Image("Button Ring")
+                            .padding(.top, 400)
+                            .frame(minWidth: 0, maxWidth:100, minHeight: 0, maxHeight:100)
+                        
+                        Image("SIGN UP WITH EMAIL")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 0)
+                            .padding(.top, 400)
+                            .frame(minWidth: 0, maxWidth:100, minHeight: 0, maxHeight:300)
+                    }
                     
                 }
                 

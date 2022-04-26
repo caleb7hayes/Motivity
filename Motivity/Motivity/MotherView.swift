@@ -55,6 +55,9 @@ struct MotherView: View {
         case .editTaskPage:
             EditTaskPage(viewRouter: viewRouter)
     
+        
+        case .newUserSignUp:
+            NewUserSignUp(viewRouter: viewRouter, authRouter: authRouter)
         }
         
     }
