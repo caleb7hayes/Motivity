@@ -61,7 +61,7 @@ struct MotherView: View {
             
             
         case .growthCategoriesPage:
-            GrowthCategories(viewRouter: viewRouter)
+            GrowthCategories(viewRouter: viewRouter, authRouter: authRouter)
     
         }
         

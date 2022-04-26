@@ -10,6 +10,7 @@ import SwiftUI
 struct GrowthCategories: View {
     
     @StateObject var viewRouter: ViewRouter
+    @StateObject var authRouter: AuthRouter
     
     //growth categories toggle switch stateObjects
     @State var categorey1: Bool = false
@@ -233,6 +234,6 @@ struct GrowthCategories: View {
 
 struct GrowthCategories_Previews: PreviewProvider {
     static var previews: some View {
-        GrowthCategories(viewRouter: ViewRouter())
+        GrowthCategories(viewRouter: ViewRouter(), authRouter: AuthRouter())
     }
 }

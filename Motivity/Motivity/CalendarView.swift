@@ -185,7 +185,9 @@ struct CalendarView: View {
             
             
             //Bottom of ZStack, add events here
+        
             
+            /*
             DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Morning Brunch", StartTime: "5:00", EventDuration: 1, eventType: "Rest")
                 .position(x: 210.0, y: 680.0)
             
@@ -196,7 +198,7 @@ struct CalendarView: View {
                 .position(x: 210.0, y: 840.0)
             
             
-
+*/
         }
         
         
@@ -206,7 +208,7 @@ struct CalendarView: View {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView(viewRouter: ViewRouter(), authRouter: AuthRouter())
+        CalendarView(viewRouter: ViewRouter(),  authRouter: AuthRouter())
     }
 }
 
