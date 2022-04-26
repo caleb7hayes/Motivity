@@ -1,21 +1,23 @@
 //
-//  AddTaskPage.swift
+//  AddEventPage.swift
 //  Motivity
 //
-//  Created by Josiah Schwahn on 4/7/22.
+//  Created by Caden Senitte on 4/25/22.
 //
+
 import SwiftUI
 
-struct AddTaskPage: View {
-    
-    
+struct AddEventPage: View {
     @StateObject var viewRouter: ViewRouter
     
-    //@State private var notifications: Bool = false
-    //@State private var flexibleEvent: Bool = false
+    @State private var notifications: Bool = false
+    @State private var flexibleEvent: Bool = false
     
-    @State private var taskName = ""
-    @State private var description = ""
+    @State private var eventName = ""
+    @State private var startTime = ""
+    @State private var duration = ""
+    @State private var location = ""
+    @State private var eventDate = Date()
     
     @StateObject var authRouter: AuthRouter
 
@@ -40,7 +42,7 @@ struct AddTaskPage: View {
                         .frame(width: 13, height: 13)
                         .padding(.top, 10)
                     
-                    Text("Add Task")
+                    Text("Add Event")
                         .font(.system(size:25))
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)
@@ -57,16 +59,34 @@ struct AddTaskPage: View {
                 
                 Image("ADD:EDIT TASK STYLE")
                     .padding(.top, -26)
-                    .padding(.bottom,  110)
+                    .padding(.bottom,  150)
                 
                 
                 
                 //Event Name
                 ZStack(alignment:.leading){
                     
-                    TextField("Task Name", text: $taskName)
+                    TextField("Event Name", text: $eventName)
                                 .textFieldStyle(.roundedBorder)
                                 .padding()
+                    
+                   /* Image("LARGE TEXT BACKGROUND")
+                    Text("Event Name")
+                        .font(.system(size:30))
+                        .fontWeight(.bold)
+                        .opacity(0.3)
+                        .foregroundColor(Color.white)
+                        .padding(.leading, 20)*/
+                     
+                }
+                
+                //Event Date
+                ZStack(alignment:.leading){
+                    
+                    DatePicker("Event Date", selection: $eventDate)
+                        .background(Color.white)
+                                .padding()
+                                
                     
                    /* Image("LARGE TEXT BACKGROUND")
                     Text("Event Name")
@@ -81,10 +101,9 @@ struct AddTaskPage: View {
                 //Start Time
                 ZStack(alignment:.leading){
                     
-                    TextField("Description", text: $description)
+                    TextField("Start Time", text: $startTime)
                                 .textFieldStyle(.roundedBorder)
                                 .padding()
-                                .padding(.bottom, 50)
                     
                     
                   /*  Image("LARGE TEXT BACKGROUND")
@@ -98,10 +117,47 @@ struct AddTaskPage: View {
                 }
                 
                 
+                //Duration
+                ZStack(alignment:.leading){
+                    
+                    TextField("Duration", text: $duration)
+                                .textFieldStyle(.roundedBorder)
+                                .padding()
+                    
+                    
+                  /*  Image("LARGE TEXT BACKGROUND")
+                    Text("Duration")
+                        .font(.system(size:30))
+                        .fontWeight(.bold)
+                        .opacity(0.3)
+                        .foregroundColor(Color.white)
+                        .padding(.leading, 20)*/
+                     
+                }
+                
+                
+                //Location
+                ZStack(alignment:.leading){
+                    
+                    TextField("Location", text: $location)
+                                .textFieldStyle(.roundedBorder)
+                                .padding()
+                    
+                    
+                   /* Image("LARGE TEXT BACKGROUND")
+                    Text("Location")
+                        .font(.system(size:30))
+                        .fontWeight(.bold)
+                        .opacity(0.3)
+                        .foregroundColor(Color.white)
+                        .padding(.leading, 20)*/
+                     
+                }
+                
                 
                 //Notifications?
                 
-              /*  HStack{
+                HStack{
                     
                     ZStack{
                         
@@ -151,7 +207,7 @@ struct AddTaskPage: View {
                     .padding(.trailing,75)
                 }
                 //padding adjustment for flexible event
-                .padding(.leading, 25)*/
+                .padding(.leading, 25)
                 
                 
                 
@@ -177,7 +233,7 @@ struct AddTaskPage: View {
                     
                     Button(action:{
                         
-                        authRouter.createTask(name: taskName, desc: description)
+                        authRouter.createEvent(name: eventName, /*datetime: eventDate,*/ start: startTime, dur: duration)
                         
                         viewRouter.currentPage = .calendarPage
                         
@@ -211,7 +267,7 @@ struct AddTaskPage: View {
 
 
 //toggle style attempt
-/*struct toggleStyle: ToggleStyle{
+struct toggleStyle: ToggleStyle{
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -227,12 +283,12 @@ struct AddTaskPage: View {
         }
 
     }
-}*/
+}
 
 
 
-struct AddTaskPage_Previews: PreviewProvider {
+struct AddEventPage_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskPage(viewRouter: ViewRouter(), authRouter: AuthRouter())
+        AddEventPage(viewRouter: ViewRouter(), authRouter: AuthRouter())
     }
 }

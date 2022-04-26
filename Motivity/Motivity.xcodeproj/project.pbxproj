@@ -37,6 +37,7 @@
 		8A93226B27F5FE7700112A6E /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93226A27F5FE7700112A6E /* MotherView.swift */; };
 		8A93226F27F60B4400112A6E /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93226E27F60B4400112A6E /* ViewRouter.swift */; };
 		A3680249C300CB732AD3A7B4 /* Pods_Motivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB635BED0371F86B16DFCEE /* Pods_Motivity.framework */; };
+		B5A0DB25281752DC004750EA /* AddEventPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0DB24281752DC004750EA /* AddEventPage.swift */; };
 		C25C68A501438FE608CC4480 /* Pods_Motivity_MotivityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4941DAFD99391EFCCAA8FE29 /* Pods_Motivity_MotivityUITests.framework */; };
 		D832BFF2009E6112B8489473 /* Pods_MotivityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF891D735022BBA8AD310E9A /* Pods_MotivityTests.framework */; };
 /* End PBXBuildFile section */
@@ -119,6 +120,7 @@
 		A0E13F92A9830E351B86AC7C /* Pods-Motivity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motivity.release.xcconfig"; path = "Target Support Files/Pods-Motivity/Pods-Motivity.release.xcconfig"; sourceTree = "<group>"; };
 		A217D97E34DBB8235DD806C8 /* Pods-MotivityWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotivityWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-MotivityWidgetExtension/Pods-MotivityWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		A74CB0F6310A5F600567538E /* Pods-MotivityWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotivityWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-MotivityWidgetExtension/Pods-MotivityWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
+		B5A0DB24281752DC004750EA /* AddEventPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventPage.swift; sourceTree = "<group>"; };
 		E054EE9FD9229DD56E951AE8 /* Pods-Motivity-MotivityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motivity-MotivityUITests.release.xcconfig"; path = "Target Support Files/Pods-Motivity-MotivityUITests/Pods-Motivity-MotivityUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E55696AD9F7827B9A537EDC3 /* Pods-MotivityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotivityTests.debug.xcconfig"; path = "Target Support Files/Pods-MotivityTests/Pods-MotivityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FBB635BED0371F86B16DFCEE /* Pods_Motivity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motivity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +246,7 @@
 				8A93226A27F5FE7700112A6E /* MotherView.swift */,
 				2F06DBD5280E20BB00EF0069 /* AuthRouter.swift */,
 				72E6650D2805DF7E009A822D /* AddTaskPage.swift */,
+				B5A0DB24281752DC004750EA /* AddEventPage.swift */,
 				72E6650F2805E022009A822D /* EditTaskPage.swift */,
 				8A2615EC27DA6E5200EA429C /* Assets.xcassets */,
 				8A2615EE27DA6E5200EA429C /* Preview Content */,
@@ -581,6 +584,7 @@
 				8A2615EB27DA6E4E00EA429C /* WelcomePage.swift in Sources */,
 				8A8CC4C827EA39F000FA8CE9 /* CalendarView.swift in Sources */,
 				8A8CC4C627EA39CD00FA8CE9 /* EventView.swift in Sources */,
+				B5A0DB25281752DC004750EA /* AddEventPage.swift in Sources */,
 				72E665102805E022009A822D /* EditTaskPage.swift in Sources */,
 				8A93226F27F60B4400112A6E /* ViewRouter.swift in Sources */,
 				8A8CC4CA27EA3A8200FA8CE9 /* SettingsPage.swift in Sources */,

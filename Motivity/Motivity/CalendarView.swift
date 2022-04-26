@@ -109,6 +109,10 @@ class CalendarViewController: ObservableObject{
 
 class CalendarViewController: UIViewController, ObservableObject{
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     
     func getCurrentWeek() -> [String]{
         let calendar = Calendar.current
@@ -298,13 +302,12 @@ class CalendarViewController: UIViewController, ObservableObject{
 struct CalendarView: View {
     
     @StateObject var viewRouter: ViewRouter
+    @StateObject var authRouter: AuthRouter
     
     @ObservedObject var appView = CalendarViewController()
     
     @EnvironmentObject var viewModel: CalendarViewController
-    
-    @Environment(\.refresh) private var refresh
-    
+        
     let calendar = Calendar.current
     
     var data = ["Sun.", "Mon.", "Tues", "Wed.", "Thur.", "Fri.", "Sat."]
@@ -435,10 +438,12 @@ struct CalendarView: View {
                     Button("Next", action:{
                         
                         y = appView.yep()
+                        //appView.viewDidLoad()
+                     
     
                     })
                     
-                   
+                        //.onAppear{appView.viewDidLoad()}
                     
                     //Text("\(self.date)")
                     
@@ -474,7 +479,7 @@ struct CalendarView: View {
                     
                     Button(action:{
                         
-                        viewRouter.currentPage = .addTaskPage
+                        viewRouter.currentPage = .addEventPage
     
                     }){
                         
@@ -498,23 +503,41 @@ struct CalendarView: View {
                 }
                 .padding(.top,50)
                 .padding(.bottom,70)
-                
+                //.padding(.bottom,170)
                 
                 //Daily Breakdown
                 
                 
-                Text("Daily Breakdown")
+              /*  Text("Daily Breakdown")
+                
                     
                     .font(.system(size:23))
                     .font(.headline)
                     .fontWeight(.black)
                     .foregroundColor(Color.white)
                     .padding(.trailing, 200)
-                    .padding(.bottom, 180)
-                    .padding(.top,10)
+                    //.padding(.bottom, 180)
+                    .padding(.top,10)*/
+                
+                /*let caden = authRouter.displayEvent2()
+                
+                ForEach(caden, id: \.self){ item in
+                    Spacer()
+                    Text(item)
+                        .font(.system(size:16))
+                        .fontWeight(.black)
+                        .foregroundColor(Color.white)
+                        
+                    Spacer()
                     
+                    
+                }*/
+                
+           /* .onAppear{ authRouter.displayEvent2()
+            }*/
+                   // .padding(.bottom, 160)
+                
             }
-            
             
         }
     }
@@ -522,6 +545,6 @@ struct CalendarView: View {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView(viewRouter: ViewRouter())
+        CalendarView(viewRouter: ViewRouter(), authRouter: AuthRouter())
     }
 }
