@@ -108,7 +108,13 @@ struct ExisitingUserPage: View {
                             return
                         }
                         authRouter.signIn(email: email, password: password)
-                        viewRouter.currentPage = .calendarPage
+                        
+                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false){(timer) in
+                            if authRouter.signedIn {
+                                viewRouter.currentPage = .calendarPage
+                            }
+                        }
+                        
                     }){
                         
                         Image("LOGIN BUTTON")

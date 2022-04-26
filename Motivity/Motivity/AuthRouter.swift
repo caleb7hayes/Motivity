@@ -16,11 +16,10 @@ class AuthRouter: ObservableObject {
     var ref: DatabaseReference = Database.database().reference()
     var databaseHandle: DatabaseHandle?
     
-    @Published var userName = ""
     @Published var signedIn = false
-    @Published var start = ""
-    @Published var dur = 0
-    @Published var events = ""
+    @Published var events : [String] = []
+    @Published var goals : [String] = []
+    @Published var tasks : [String] = []
 
     var isSignedIn: Bool {
        return auth.currentUser != nil
@@ -33,7 +32,7 @@ class AuthRouter: ObservableObject {
            }
            self?.signedIn = true
            self?.userID = Auth.auth().currentUser?.uid
-           self?.userName = email
+           
        }
     }
 
@@ -44,7 +43,6 @@ class AuthRouter: ObservableObject {
            }
            self?.signedIn = true
            self?.userID = Auth.auth().currentUser?.uid
-           self?.userName = email
        }
     }
 
@@ -54,17 +52,53 @@ class AuthRouter: ObservableObject {
     }
     
     
-    func displayPosts(){
-        databaseHandle = self.ref.child("Users").child("CJ").child("Events").observe(.value, with: { (snapshot) in
-            let data = snapshot.value as! [String: [String: Any]]
-            self.start = data["Gym"]!["Start"] as! String
-            self.dur = data["Gym"]!["Duration"] as! Int
-            self.events = "Gym"
+    func displayEvent(){
+        databaseHandle = self.ref.child("Users").child(userID!).child("Events").observe(.value, with: { (snapshot) in
+            if let database = snapshot.value as? [String: [String: Any]] {
+                for e in database{
+                    if !self.events.contains(e.key) {
+                        self.events.append(e.key)
+                        self.events.append(e.value["Start"] as! String)
+                        self.events.append(e.value["Duration"] as! String)
+                    }
+                }
+            }
+        
+        })
+
+    }
+    
+    func displayGoal(){
+        databaseHandle = self.ref.child("Users").child(userID!).child("Goals").observe(.value, with: { (snapshot) in
+            if let database = snapshot.value as? [String: [String: Any]] {
+                for e in database{
+                    if !self.goals.contains(e.key){
+                        self.goals.append(e.key)
+                        self.goals.append(e.value["Desc"] as! String)
+                    }
+                    
+                }
+            }
+        
+        })
+    }
+    
+    func displayTask(){
+        databaseHandle = self.ref.child("Users").child(userID!).child("Tasks").observe(.value, with: { (snapshot) in
+            if let database = snapshot.value as? [String: [String: Any]] {
+                for e in database{
+                    if !self.tasks.contains(e.key){
+                        self.tasks.append(e.key)
+                        self.tasks.append(e.value["Desc"] as! String)
+                    }
+                }
+            }
+        
         })
     }
     
     func createEvent(name: String, start: String, dur: String){
-        self.ref.child("Users").child(userID!).child("Events").child(name).setValue(["Start": start, "Durration": dur])
+        self.ref.child("Users").child(userID!).child("Events").child(name).setValue(["Start": start, "Duration": dur])
     }
     
     func createGoal(name: String, desc: String){

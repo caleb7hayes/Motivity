@@ -1872,7 +1872,7 @@
 		7F1B2CD5A2F5F37354F058C0B9EA0B69 /* FIRTwitterAuthCredential.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRTwitterAuthCredential.h; path = FirebaseAuth/Sources/AuthProvider/Twitter/FIRTwitterAuthCredential.h; sourceTree = "<group>"; };
 		7FB03D10510579F80A22CDE5A3C3A2A1 /* FViewProcessorResult.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FViewProcessorResult.m; path = FirebaseDatabase/Sources/FViewProcessorResult.m; sourceTree = "<group>"; };
 		7FC4F0D41A6AFB872DC3489E6DF1221F /* FIRAuthWebUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRAuthWebUtils.m; path = FirebaseAuth/Sources/Utilities/FIRAuthWebUtils.m; sourceTree = "<group>"; };
-		7FD14E20CE108224A1DDA99E80DC491E /* Pods-Motivity */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Motivity"; path = Pods_Motivity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FD14E20CE108224A1DDA99E80DC491E /* Pods_Motivity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motivity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FF1C8653F9C558E58B83FCA2B9DD00D /* FTupleFirebase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FTupleFirebase.m; path = FirebaseDatabase/Sources/Utilities/Tuples/FTupleFirebase.m; sourceTree = "<group>"; };
 		80AEBC448D7A5EB29FBC19A78DB9069F /* no_destructor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = no_destructor.h; path = util/no_destructor.h; sourceTree = "<group>"; };
 		80F227FC6AD9CE9B49EB5E449D7595F0 /* FIRAuthProto.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAuthProto.h; path = FirebaseAuth/Sources/Backend/RPC/Proto/FIRAuthProto.h; sourceTree = "<group>"; };
@@ -2602,7 +2602,7 @@
 				C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher.framework */,
 				0A9F46A999C47653013D3AD854352507 /* leveldb.framework */,
 				06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */,
-				7FD14E20CE108224A1DDA99E80DC491E /* Pods-Motivity */,
+				7FD14E20CE108224A1DDA99E80DC491E /* Pods_Motivity.framework */,
 				E1B1489A0D95284AF2CDBC41F0704D2B /* Pods-Motivity-MotivityUITests */,
 				0BD1C40F0580E39DF1EAB051AD4F7EC9 /* Pods-MotivityTests */,
 				E242BFA98600A46BA1AEA9A15B98014F /* Pods-MotivityWidgetExtension */,
@@ -4851,7 +4851,7 @@
 			);
 			name = "Pods-Motivity";
 			productName = Pods_Motivity;
-			productReference = 7FD14E20CE108224A1DDA99E80DC491E /* Pods-Motivity */;
+			productReference = 7FD14E20CE108224A1DDA99E80DC491E /* Pods_Motivity.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		BF50A4DF55ACEF13F91AFE22F5C69F11 /* Pods-MotivityTests */ = {
