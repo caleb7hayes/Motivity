@@ -58,7 +58,7 @@ struct ExisitingUserPage: View {
                         Image("Button Ring")
                         
                         
-                        MotivityTextField(ourText: authRouter.userName, placeHolderView: Text("Email"), motivityLogo: "Motivity Logo")
+                        MotivityEmailField(email: $email, placeHolderView: Text("Email"), image: "envelope")
                         
                         /*
                         
@@ -74,7 +74,12 @@ struct ExisitingUserPage: View {
                     ZStack(){
                         
                         Image("Button Ring")
+                        
+                        MotivityPasswordField(password: password, placeHolderView: Text("Password"))
 
+                        
+                        
+                        
                         
                         /*
                         SecureField("Password", text: $password)

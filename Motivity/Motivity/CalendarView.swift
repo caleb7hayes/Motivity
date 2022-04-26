@@ -46,11 +46,7 @@ struct CalendarView: View {
                             
                         
                     }
-                    
-
-                    
-                        
-                   
+     
                     Button(action:{
                         
                         viewRouter.currentPage = .userProfilePage
@@ -64,13 +60,10 @@ struct CalendarView: View {
                             .padding(.leading, 140)
                             .padding(.top,20)
                             
-                        
+            
                     }
-                        
                     
-                   
-                    
-                }
+        }
                 
                 
                 
@@ -112,6 +105,8 @@ struct CalendarView: View {
                 .padding(.top, 1.0)
                 
                 
+                    
+                
                 HStack(){
                     ForEach(dates, id: \.self){ item in
                         Spacer()
@@ -122,6 +117,10 @@ struct CalendarView: View {
                         Spacer()
                     }
                 }.padding(.bottom, 260)
+                
+                
+                
+                
                 
                 //Regformat and sugesstion button
                 
@@ -174,8 +173,14 @@ struct CalendarView: View {
                     .foregroundColor(Color.white)
                     .padding(.trailing, 200)
                     .padding(.bottom, 180)
-                    .padding(.top,10)
+                    .padding(.top,0)
                  
+                
+                
+                
+                
+                
+                
                 /*
                 Text("Event: " + authRouter.events)
                 Text("Start: " + authRouter.start)
@@ -185,7 +190,16 @@ struct CalendarView: View {
             }.onAppear(){
                 authRouter.displayPosts()
             }
+            
+            
+            
+            //Bottom of ZStack, add events here
+            
+            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Date Night", StartTime: "8:00", EventDuration: 1, eventType: "Rest")
+                .position(x: 210.0, y: 760.0)
         }
+        
+        
     }
 }
 

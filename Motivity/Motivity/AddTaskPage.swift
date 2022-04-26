@@ -58,7 +58,6 @@ struct AddTaskPage: View {
                     .padding(.bottom,  150)
                 
                 
-                
                 //Event Name
                 ZStack(alignment:.leading){
                     
