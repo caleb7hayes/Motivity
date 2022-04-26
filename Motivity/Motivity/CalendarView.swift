@@ -34,7 +34,7 @@ struct CalendarView: View {
                     Button(action:{
                         
                         viewRouter.currentPage = .userProfilePage
-    
+                        
                     }){
                         
                         Image("GEAR ICON")
@@ -43,14 +43,14 @@ struct CalendarView: View {
                             .frame(width: 45, height: 45)
                             .padding(.trailing, 140)
                             .padding(.top,00)
-                            
+                        
                         
                     }
-     
+                    
                     Button(action:{
                         
                         viewRouter.currentPage = .userProfilePage
-    
+                        
                     }){
                         
                         Image("USER PROFILE ICON")
@@ -59,11 +59,11 @@ struct CalendarView: View {
                             .frame(width: 45, height: 45)
                             .padding(.leading, 140)
                             .padding(.top,00)
-                            
-            
+                        
+                        
                     }
                     
-        }
+                }
                 
                 
                 
@@ -105,7 +105,7 @@ struct CalendarView: View {
                 .padding(.top, 1.0)
                 
                 
-                    
+                
                 
                 HStack(){
                     ForEach(dates, id: \.self){ item in
@@ -117,7 +117,7 @@ struct CalendarView: View {
                         Spacer()
                     }
                 }.padding(.bottom, 380)
-
+                
                 //Regformat and sugesstion button
                 
                 HStack{
@@ -133,7 +133,7 @@ struct CalendarView: View {
                     Button(action:{
                         
                         viewRouter.currentPage = .addTaskPage
-    
+                        
                     }){
                         
                         Image("ADD TASK")
@@ -144,7 +144,7 @@ struct CalendarView: View {
                     }
                     
                     
-                        
+                    
                     Spacer()
                     
                     Image("SUGGESTION BUTTON")
@@ -162,7 +162,7 @@ struct CalendarView: View {
                 
                 
                 Text("Daily Breakdown")
-                    
+                
                     .font(.system(size:23))
                     .font(.headline)
                     .fontWeight(.black)
@@ -170,24 +170,17 @@ struct CalendarView: View {
                     .padding(.trailing, 200)
                     .padding(.bottom, 220)
                     .padding(.top,0)
-                                
+                
                 
                 /*
-                Text("Event: " + authRouter.events)
-                Text("Start: " + authRouter.start)
-                Text("Duration: " + String(authRouter.dur))
+                 Text("Event: " + authRouter.events)
+                 Text("Start: " + authRouter.start)
+                 Text("Duration: " + String(authRouter.dur))
                  */
-                    
-            }.onAppear(){
-                authRouter.displayPosts()
-            }
+                
+            }//.onAppear(){
+            // authRouter.displayPosts()
             
-            
-            
-            //Bottom of ZStack, add events here
-        
-            
-            /*
             DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Morning Brunch", StartTime: "5:00", EventDuration: 1, eventType: "Rest")
                 .position(x: 210.0, y: 680.0)
             
@@ -198,12 +191,24 @@ struct CalendarView: View {
                 .position(x: 210.0, y: 840.0)
             
             
-*/
+            
         }
         
         
+        
+        //Bottom of ZStack, add events here
+        
+        
+        
+        
+        
+        
+        
     }
+    
+    
 }
+
 
 
 struct CalendarView_Previews: PreviewProvider {
