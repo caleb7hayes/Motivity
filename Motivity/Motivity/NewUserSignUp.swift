@@ -11,6 +11,10 @@ struct NewUserSignUp: View {
     
     
     @StateObject var viewRouter: ViewRouter
+    @StateObject var authRouter: AuthRouter
+    
+    @State var email = ""
+    @State var password = ""
     
     var body: some View {
         
@@ -52,26 +56,25 @@ struct NewUserSignUp: View {
                         
                         Image("Button Ring")
                         
-                        Image("EMAIL")
+                        TextField("Email", text: $email)
+                            .disableAutocorrection(true)
+                            .autocapitalization(.none)
+                            .padding()
+                            .background(Color(.secondarySystemBackground))
                     }
         
                     ZStack(){
                         
                         Image("Button Ring")
 
-                        Image("PASSWORD")
+                        SecureField("Password", text: $password)
+                            .disableAutocorrection(true)
+                            .autocapitalization(.none)
+                            .padding()
+                            .background(Color(.secondarySystemBackground))
      
                         
                     }
-                    
-                    ZStack(){
-                        
-                        Image("Button Ring")
-
-                        Image("PASSWORD")
-      
-                    }
-
                     
                 }
                   
@@ -83,8 +86,13 @@ struct NewUserSignUp: View {
                 VStack{
                               
                     Button(action:{
-                        
-                        viewRouter.currentPage = .calendarPage
+                        authRouter.signUp(email: email, password: password)
+                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false){(timer) in
+                            if authRouter.signedIn {
+                                viewRouter.currentPage = .calendarPage
+                            }
+                        }
+
                     }){
                         
                         Image("SIGN UP BUTTON")
@@ -93,7 +101,7 @@ struct NewUserSignUp: View {
                     
                     Button(action:{
                         
-                        viewRouter.currentPage = .calendarPage
+                        viewRouter.currentPage = .welcomePage
                         
                     }){
                         
@@ -112,6 +120,6 @@ struct NewUserSignUp: View {
 
 struct NewUserSignUp_Previews: PreviewProvider {
     static var previews: some View {
-        NewUserSignUp(viewRouter: ViewRouter())
+        NewUserSignUp(viewRouter: ViewRouter(), authRouter: AuthRouter())
     }
 }
