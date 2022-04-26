@@ -58,6 +58,10 @@ struct MotherView: View {
             
         case .editTaskPage:
             EditTaskPage(viewRouter: viewRouter)
+            
+            
+        case .growthCategoriesPage:
+            GrowthCategories(viewRouter: viewRouter)
     
         }
         

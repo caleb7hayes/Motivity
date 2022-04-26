@@ -21,9 +21,7 @@ struct AddTaskPage: View {
     var body: some View {
         
         ZStack{
-            
-            
-            
+                     
             Image("ADD:EDIT BACKGROUND").ignoresSafeArea()
             
             

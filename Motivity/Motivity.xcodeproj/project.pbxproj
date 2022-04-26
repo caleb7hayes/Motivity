@@ -38,6 +38,10 @@
 		8A8CC4CC27EA3AA800FA8CE9 /* UserProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CC4CB27EA3AA800FA8CE9 /* UserProfilePage.swift */; };
 		8A93226B27F5FE7700112A6E /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93226A27F5FE7700112A6E /* MotherView.swift */; };
 		8A93226F27F60B4400112A6E /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93226E27F60B4400112A6E /* ViewRouter.swift */; };
+		8AF80F0428187B1B00668C82 /* GrowthCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80F0328187B1B00668C82 /* GrowthCategories.swift */; };
+		8AF80F062818922300668C82 /* CalendarView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80F052818922300668C82 /* CalendarView2.swift */; };
+		8AF80F082818923100668C82 /* CalendarView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80F072818923100668C82 /* CalendarView3.swift */; };
+		8AF80F0A2818924000668C82 /* CalendarView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80F092818924000668C82 /* CalendarView4.swift */; };
 		A3680249C300CB732AD3A7B4 /* Pods_Motivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB635BED0371F86B16DFCEE /* Pods_Motivity.framework */; };
 		C25C68A501438FE608CC4480 /* Pods_Motivity_MotivityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4941DAFD99391EFCCAA8FE29 /* Pods_Motivity_MotivityUITests.framework */; };
 		D832BFF2009E6112B8489473 /* Pods_MotivityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF891D735022BBA8AD310E9A /* Pods_MotivityTests.framework */; };
@@ -120,6 +124,10 @@
 		8A8CC4CB27EA3AA800FA8CE9 /* UserProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePage.swift; sourceTree = "<group>"; };
 		8A93226A27F5FE7700112A6E /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		8A93226E27F60B4400112A6E /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		8AF80F0328187B1B00668C82 /* GrowthCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCategories.swift; sourceTree = "<group>"; };
+		8AF80F052818922300668C82 /* CalendarView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView2.swift; sourceTree = "<group>"; };
+		8AF80F072818923100668C82 /* CalendarView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView3.swift; sourceTree = "<group>"; };
+		8AF80F092818924000668C82 /* CalendarView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView4.swift; sourceTree = "<group>"; };
 		A0E13F92A9830E351B86AC7C /* Pods-Motivity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motivity.release.xcconfig"; path = "Target Support Files/Pods-Motivity/Pods-Motivity.release.xcconfig"; sourceTree = "<group>"; };
 		A217D97E34DBB8235DD806C8 /* Pods-MotivityWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotivityWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-MotivityWidgetExtension/Pods-MotivityWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		A74CB0F6310A5F600567538E /* Pods-MotivityWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotivityWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-MotivityWidgetExtension/Pods-MotivityWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +259,10 @@
 				72E6650D2805DF7E009A822D /* AddTaskPage.swift */,
 				72E6650F2805E022009A822D /* EditTaskPage.swift */,
 				8A5DFE8128136D7800943841 /* MotivityTextField.swift */,
+				8AF80F0328187B1B00668C82 /* GrowthCategories.swift */,
+				8AF80F052818922300668C82 /* CalendarView2.swift */,
+				8AF80F072818923100668C82 /* CalendarView3.swift */,
+				8AF80F092818924000668C82 /* CalendarView4.swift */,
 				8A2615EC27DA6E5200EA429C /* Assets.xcassets */,
 				8A2615EE27DA6E5200EA429C /* Preview Content */,
 			);
@@ -587,15 +599,19 @@
 				8A5DFE8228136D7800943841 /* MotivityTextField.swift in Sources */,
 				8A2615EB27DA6E4E00EA429C /* WelcomePage.swift in Sources */,
 				8A8CC4C827EA39F000FA8CE9 /* CalendarView.swift in Sources */,
+				8AF80F0A2818924000668C82 /* CalendarView4.swift in Sources */,
 				8A8CC4C627EA39CD00FA8CE9 /* EventView.swift in Sources */,
 				72E665102805E022009A822D /* EditTaskPage.swift in Sources */,
+				8AF80F062818922300668C82 /* CalendarView2.swift in Sources */,
 				8A93226F27F60B4400112A6E /* ViewRouter.swift in Sources */,
 				8A8CC4CA27EA3A8200FA8CE9 /* SettingsPage.swift in Sources */,
 				8A8A4D8527FCFDF5007FF98D /* navigationHelper.swift in Sources */,
 				8A72B50327E52E5D009D5CB7 /* NewUserSignUp.swift in Sources */,
+				8AF80F082818923100668C82 /* CalendarView3.swift in Sources */,
 				8A72B50527E52E9D009D5CB7 /* ExisitingUserPage.swift in Sources */,
 				8A8CC4CC27EA3AA800FA8CE9 /* UserProfilePage.swift in Sources */,
 				8A3B865428175DE300A24050 /* DailyBreakdownEventView.swift in Sources */,
+				8AF80F0428187B1B00668C82 /* GrowthCategories.swift in Sources */,
 				8A2615E927DA6E4E00EA429C /* MotivityApp.swift in Sources */,
 				8A72B50127E52D4E009D5CB7 /* LoginPage.swift in Sources */,
 				72E6650E2805DF7E009A822D /* AddTaskPage.swift in Sources */,

@@ -13,14 +13,14 @@ struct CalendarView: View {
     @StateObject var authRouter: AuthRouter
     
     
-    var data = ["Sun.", "Mon.", "Tues", "Wed.", "Thur.", "Fri.", "Sun."]
+    var data = ["Sun.", "Mon.", "Tues", "Wed.", "Thur.", "Fri.", "Sat`."]
     var dates = ["20", "21", "22", "23", "24", "25", "26",]
     
     var body: some View {
         
         ZStack{
             
-            Image("CALENDAR BACKGROUND").ignoresSafeArea()
+            Image("Calendar Demo View").ignoresSafeArea()
             
             
             
@@ -42,7 +42,7 @@ struct CalendarView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 45, height: 45)
                             .padding(.trailing, 140)
-                            .padding(.top,20)
+                            .padding(.top,00)
                             
                         
                     }
@@ -58,7 +58,7 @@ struct CalendarView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 45, height: 45)
                             .padding(.leading, 140)
-                            .padding(.top,20)
+                            .padding(.top,00)
                             
             
                     }
@@ -85,7 +85,7 @@ struct CalendarView: View {
                             .font(.system(size:16))
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
-                            .padding(.bottom, 10)
+                            .padding(.top,0)
                         
                     }
                 }
@@ -116,12 +116,8 @@ struct CalendarView: View {
                             .foregroundColor(Color.white)
                         Spacer()
                     }
-                }.padding(.bottom, 260)
-                
-                
-                
-                
-                
+                }.padding(.bottom, 380)
+
                 //Regformat and sugesstion button
                 
                 HStack{
@@ -143,7 +139,7 @@ struct CalendarView: View {
                         Image("ADD TASK")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 120, height: 120)
+                            .frame(width: 100, height: 100)
                         
                     }
                     
@@ -158,8 +154,8 @@ struct CalendarView: View {
                     Spacer()
                     
                 }
-                .padding(.top,50)
-                .padding(.bottom,70)
+                .padding(.top,-120)
+                .padding(.bottom,0)
                 
                 
                 //Daily Breakdown
@@ -172,14 +168,9 @@ struct CalendarView: View {
                     .fontWeight(.black)
                     .foregroundColor(Color.white)
                     .padding(.trailing, 200)
-                    .padding(.bottom, 180)
+                    .padding(.bottom, 220)
                     .padding(.top,0)
-                 
-                
-                
-                
-                
-                
+                                
                 
                 /*
                 Text("Event: " + authRouter.events)
@@ -195,17 +186,22 @@ struct CalendarView: View {
             
             //Bottom of ZStack, add events here
             
-            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Date Night", StartTime: "8:00", EventDuration: 1, eventType: "Rest")
+            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Morning Brunch", StartTime: "5:00", EventDuration: 1, eventType: "Rest")
+                .position(x: 210.0, y: 680.0)
+            
+            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Work Meeting", StartTime: "5:00", EventDuration: 1, eventType: "Work")
                 .position(x: 210.0, y: 760.0)
+            
+            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Workout w/ CJ", StartTime: "5:00", EventDuration: 1, eventType: "Health")
+                .position(x: 210.0, y: 840.0)
+            
+            
+
         }
         
         
     }
 }
-
-
-
-
 
 
 struct CalendarView_Previews: PreviewProvider {

@@ -18,6 +18,7 @@ enum Page{
     case calendarPage
     case settingsPage
     case userProfilePage
+    case growthCategoriesPage
     
     
     //still to build UX/UI Pages
