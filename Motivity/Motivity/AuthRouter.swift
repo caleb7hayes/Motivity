@@ -18,6 +18,7 @@ class AuthRouter: ObservableObject {
     var databaseHandle: DatabaseHandle?
     
     @Published var signedIn = false
+    @Published var noData = false
     @Published var events : [String] = []
     @Published var goals : [String] = []
     @Published var tasks : [String] = []
@@ -63,6 +64,8 @@ class AuthRouter: ObservableObject {
                         self.events.append(e.value["Duration"] as! String)
                     }
                 }
+            } else {
+                self.noData = true
             }
         })
         sendSmallWidgetData()

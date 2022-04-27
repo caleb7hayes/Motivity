@@ -105,7 +105,7 @@ struct ExisitingUserPage: View {
      
                                     
                                     
-                                    if authRouter.events != [] && flag{
+                                    if authRouter.events != [] && flag || authRouter.noData && flag {
                                                                              
                                         viewRouter.currentPage = .calendarPage
                                         
