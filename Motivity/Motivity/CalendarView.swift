@@ -107,7 +107,7 @@ struct CalendarView: View {
                 
                 
                 HStack(){
-                    ForEach(authRouter.events, id: \.self){ item in
+                    ForEach(dates, id: \.self){ item in
                         Spacer()
                         Text(item)
                             .font(.system(size:16))

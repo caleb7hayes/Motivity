@@ -15,8 +15,7 @@ import Firebase
 
 struct Provider: TimelineProvider {
     
-//    @AppStorage("events", store: UserDefaults(suiteName: "Team-Motivity.Motivity"))
-//    var eventData: Data = Data()
+    //    var eventData: Data = Data()
     
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date())
@@ -28,7 +27,7 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-//        print("updating timeline")
+        print("updating timeline")
         var entries: [SimpleEntry] = []
 
         let currentDate = Date()
@@ -59,9 +58,9 @@ struct MotivityWidgetEntryView : View {
         case .systemSmall:
             MotivityWidgetSmallView(entry: Provider.Entry.init(date: Date()))
         case .systemMedium:
-            MotivityWidgetMediumView()
+            MotivityWidgetMediumView(entry: Provider.Entry.init(date: Date()))
         case .systemLarge:
-            MotivityWidgetLargeView()
+            MotivityWidgetLargeView(entry: Provider.Entry.init(date: Date()))
         case .systemExtraLarge:
             MotivityWidgetExtraLargeView()
         @unknown default:
@@ -70,69 +69,98 @@ struct MotivityWidgetEntryView : View {
     }
 }
 
+
 // struct for functionality of small widget
 struct MotivityWidgetSmallView : View {
     var entry: Provider.Entry
+    
+    @State var currentData: String?
+    @State var currentStarts: String?
+    
     var body: some View {
         ZStack {
             Image("Motivity Login Background").ignoresSafeArea()
                 .padding(.leading, 20)
-//            if eventData.signedIn{
-//                Text("Signed in")
-//            }
-//            else{
-//                Text("Not Signed in \n Click here to sign in!")
-//                    .foregroundColor(Color.white)
-//                    .padding(.leading, 5)
-//            }
-            
-            Text(entry.date, style: .timer).ignoresSafeArea()
-
+            VStack (alignment: .leading) {
+                HStack{
+                    Text(currentData ?? "Please Log In")
+                        .foregroundColor(Color.white)
+                        .onAppear {
+                            currentData = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "small")
+                        }
+                    Text(currentStarts ?? "")
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.trailing)
+                        .onAppear{
+                            currentStarts = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "smallTimes")
+                        }
+                }
+            }
         }
     }
 }
 
 // struct for functionality of medium widget
 struct MotivityWidgetMediumView : View {
+    var entry: Provider.Entry
+    
+    @State var currentData: String?
+    @State var currentStarts: String?
+    
     var body: some View {
-        
-        ZStack{
-            
-            //background image for all pages throughout Motvitiy
+        ZStack {
             Image("Motivity Login Background").ignoresSafeArea()
-            
-            //vertical stack for top text
-            VStack(alignment: .leading){
-                
-                Text("Medium Widget")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                .padding(.leading, 20)
+            VStack (alignment: .leading) {
+                HStack{
+                    Text(currentData ?? "Please Log In")
+                        .foregroundColor(Color.white)
+                        .onAppear {
+                            currentData = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "medium")
+                        }
+                    Text(currentStarts ?? "")
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.trailing)
+                        .onAppear{
+                            currentStarts = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "mediumTimes")
+                        }
+                }
+                Text("You can do it!")
                     .foregroundColor(Color.white)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading,49)
             }
+            .padding(.trailing, 175)
         }
     }
 }
 // struct for functionality of large widget
 struct MotivityWidgetLargeView : View {
-
+    var entry: Provider.Entry
+    
+    @State var currentData: String?
+    @State var currentStarts: String?
+    
     var body: some View {
-        
-        ZStack{
-            
-            //background image for all pages throughout Motvitiy
+        ZStack {
             Image("Motivity Login Background").ignoresSafeArea()
-            
-            //vertical stack for top text
-            VStack(alignment: .leading){
-                Text("Large Widget")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                .padding(.leading, 20)
+            VStack (alignment: .leading) {
+                HStack{
+                    Text(currentData ?? "Please Log In")
+                        .foregroundColor(Color.white)
+                        .onAppear {
+                            currentData = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "large")
+                        }
+                    Text(currentStarts ?? "")
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.trailing)
+                        .onAppear{
+                            currentStarts = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "largeTimes")
+                        }
+                }
+                Text("You can do it!")
                     .foregroundColor(Color.white)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading,49)
             }
+            .padding(.trailing, 175)
         }
     }
 }
