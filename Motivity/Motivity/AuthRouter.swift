@@ -123,7 +123,6 @@ class AuthRouter: ObservableObject {
         var eventStarts : String = ""
         
         let seq = stride(from: 0, to: self.events.count, by: 3)
-        print(self.events.count)
         
         for i in seq{
             let currentEvent = self.events[i]
@@ -152,7 +151,6 @@ class AuthRouter: ObservableObject {
         var eventStarts : String = ""
         
         let seq = stride(from: 0, to: self.events.count, by: 3)
-        print(self.events.count)
         
         for i in seq{
             let currentEvent = self.events[i]
@@ -172,7 +170,6 @@ class AuthRouter: ObservableObject {
         var eventStarts : String = ""
         
         let seq = stride(from: 0, to: self.events.count, by: 3)
-        print(self.events.count)
         
         for i in seq{
             let currentEvent = self.events[i]

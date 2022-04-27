@@ -361,7 +361,8 @@ struct CalendarView: View {
                     .padding(.top,10)
                 
                 
-            .onAppear{ authRouter.displayEvent()
+            .onAppear{
+                authRouter.displayEvent()
             }
                    // .padding(.bottom, 160)
                 
