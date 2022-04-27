@@ -39,6 +39,7 @@ struct MotivityEmailField: View {
                     .padding(.leading,100)
                 
                 TextField("", text: $email)
+                    .foregroundColor(Color(.init(white:3, alpha: 0.87)))
                 
                 
                 
@@ -85,6 +86,7 @@ struct MotivityPasswordField: View {
                     .padding(.leading,100)
                 
                 SecureField("", text: $password)
+                    .foregroundColor(Color(.init(white:3, alpha: 0.87)))
                 
                 
                 

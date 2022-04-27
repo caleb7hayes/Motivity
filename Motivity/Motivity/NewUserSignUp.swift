@@ -80,13 +80,16 @@ struct NewUserSignUp: View {
                 VStack{
                               
                     Button(action:{
-                        
+                        var flag = true
                         authRouter.signUp(email: email, password: password)
-                                                Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false){(timer) in
-                                                    if authRouter.signedIn {
-                                                        viewRouter.currentPage = .calendarPage
-                                                    }
-                                                }
+                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){(timer) in
+                            if authRouter.signedIn && flag {
+                                
+                                flag = false
+                                viewRouter.currentPage = .calendarPage
+                                
+                            }
+                        }
                     }){
                         
                         Image("SIGN UP BUTTON")
@@ -95,7 +98,7 @@ struct NewUserSignUp: View {
                     
                     Button(action:{
                         
-                        viewRouter.currentPage = .calendarPage
+                        viewRouter.currentPage = .loginPage
                         
                     }){
                         

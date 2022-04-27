@@ -85,15 +85,21 @@ struct ExisitingUserPage: View {
                     
                     Button(action:{
                         
-                        print(password)
+                
                         
                         guard !email.isEmpty, !password.isEmpty else {
                             return
                         }
                         authRouter.signIn(email: email, password: password)
                         
-                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false){(timer) in
-                            if authRouter.signedIn {
+                
+                        var flag = true
+                        
+                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){(timer) in
+                            if authRouter.signedIn && flag {
+                                
+                                
+                                flag = false
                                 viewRouter.currentPage = .calendarPage
                             }
                         }
