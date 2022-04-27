@@ -9,6 +9,9 @@ import SwiftUI
 
 struct NewUserSignUp: View {
     
+    @State var email = ""
+    @State var password = ""
+    
     
     @StateObject var viewRouter: ViewRouter
     @StateObject var authRouter: AuthRouter
@@ -53,25 +56,18 @@ struct NewUserSignUp: View {
                         
                         Image("Button Ring")
                         
-                        Image("EMAIL")
+                        MotivityEmailField(email: $email, placeHolderView: Text("Email"), image: "envelope")
                     }
         
                     ZStack(){
                         
                         Image("Button Ring")
 
-                        Image("PASSWORD")
+                        MotivityPasswordField(password: $password, placeHolderView: Text("Password"))
      
                         
                     }
                     
-                    ZStack(){
-                        
-                        Image("Button Ring")
-
-                        Image("PASSWORD")
-      
-                    }
 
                     
                 }
@@ -85,7 +81,12 @@ struct NewUserSignUp: View {
                               
                     Button(action:{
                         
-                        viewRouter.currentPage = .calendarPage
+                        authRouter.signUp(email: email, password: password)
+                                                Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false){(timer) in
+                                                    if authRouter.signedIn {
+                                                        viewRouter.currentPage = .calendarPage
+                                                    }
+                                                }
                     }){
                         
                         Image("SIGN UP BUTTON")

@@ -54,7 +54,9 @@ struct MotivityEmailField: View {
 
 struct MotivityPasswordField: View {
     
-    @State var password: String
+    
+    
+    @Binding var password: String
     
     let placeHolderView: Text
     

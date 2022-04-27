@@ -75,11 +75,7 @@ struct CalendarView: View {
                     
                     VStack{
                         
-                        Text(authRouter.userName)
-                            .font(.system(size:30))
-                            .fontWeight(.black)
-                            .foregroundColor(Color.white)
-                            .padding(.bottom, 0)
+                        
                         
                         Text("April 20th - 26th")
                             .font(.system(size:16))

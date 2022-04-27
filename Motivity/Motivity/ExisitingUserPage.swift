@@ -10,6 +10,7 @@ import SwiftUI
 struct ExisitingUserPage: View {
     
     
+    
     @StateObject var viewRouter: ViewRouter
     @StateObject var authRouter: AuthRouter
     @State var email = ""
@@ -59,15 +60,7 @@ struct ExisitingUserPage: View {
                         
                         
                         MotivityEmailField(email: $email, placeHolderView: Text("Email"), image: "envelope")
-                        
-                        /*
-                        
-                        TextField("Email", text: $email)
-                            .disableAutocorrection(true)
-                            .autocapitalization(.none)
-                            .padding()
-                            .background(Color(.secondarySystemBackground))
-                        */
+
 
                     }
                              
@@ -75,24 +68,11 @@ struct ExisitingUserPage: View {
                         
                         Image("Button Ring")
                         
-                        MotivityPasswordField(password: password, placeHolderView: Text("Password"))
+                        MotivityPasswordField(password: $password, placeHolderView: Text("Password"))
+              
 
-                        
-                        
-                        
-                        
-                        /*
-                        SecureField("Password", text: $password)
-                            .disableAutocorrection(true)
-                            .autocapitalization(.none)
-                            .padding()
-                            .background(Color(.secondarySystemBackground))
-                        
-                        */
-      
                     }
                 
-                    
                     
                 }
                   
@@ -104,6 +84,9 @@ struct ExisitingUserPage: View {
                 VStack{
                     
                     Button(action:{
+                        
+                        print(password)
+                        
                         guard !email.isEmpty, !password.isEmpty else {
                             return
                         }
