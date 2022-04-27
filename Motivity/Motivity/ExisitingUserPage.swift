@@ -97,10 +97,27 @@ struct ExisitingUserPage: View {
                         
                         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){(timer) in
                             if authRouter.signedIn && flag {
+                                                        
+                                authRouter.displayEvent()
                                 
                                 
-                                flag = false
-                                viewRouter.currentPage = .calendarPage
+                                Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){(timer2) in
+     
+                                    
+                                    
+                                    if authRouter.events != [] && flag{
+                                                                             
+                                        viewRouter.currentPage = .calendarPage
+                                        
+                                        flag = false
+                                        
+                                    }
+                                    
+                                }
+                                
+                                
+                                
+                                
                             }
                         }
                         
