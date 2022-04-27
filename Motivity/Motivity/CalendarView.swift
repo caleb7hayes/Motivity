@@ -177,9 +177,7 @@ struct CalendarView: View {
                 
                 
             }.onAppear(){
-                
                 authRouter.displayEvent()
-                
             }
             
             
@@ -200,8 +198,9 @@ struct CalendarView: View {
             
             else if eventSize == 1 {
                 
-                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[2], EventDuration: Int(event[1]) ?? 0, eventType: "Rest")
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
                     .position(x: 210.0, y: 680.0)
+                
                 
                 
                 
@@ -210,11 +209,12 @@ struct CalendarView: View {
             else if eventSize == 2 {
                 
                 
-                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[2], EventDuration: Int(event[1]) ?? 1, eventType: "Rest")
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
                     .position(x: 210.0, y: 680.0)
                 
-                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[3], StartTime: event[5], EventDuration: Int(event[4]) ?? 1, eventType: "Work")
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
                     .position(x: 210.0, y: 760.0)
+                
                 
                 
                 
@@ -224,14 +224,14 @@ struct CalendarView: View {
              else if eventSize == 3 {
                 
                 
-                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[2], EventDuration: Int(event[1]) ?? 1, eventType: "Rest")
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
                     .position(x: 210.0, y: 680.0)
                 
-                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[3], StartTime: event[5], EventDuration: Int(event[4]) ?? 1, eventType: "Work")
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
                     .position(x: 210.0, y: 760.0)
                 
                 
-                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[6], StartTime: event[8], EventDuration: Int(event[7]) ?? 1, eventType: "Health")
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[10], StartTime: event[14], EventDuration: Int(event[11]) ?? 1, eventType: event[12])
                     .position(x: 210.0, y: 840.0)
             
             }
