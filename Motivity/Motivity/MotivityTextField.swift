@@ -40,6 +40,8 @@ struct MotivityEmailField: View {
                 
                 TextField("", text: $email)
                     .foregroundColor(Color(.init(white:3, alpha: 0.87)))
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
                 
                 
                 
@@ -87,6 +89,9 @@ struct MotivityPasswordField: View {
                 
                 SecureField("", text: $password)
                     .foregroundColor(Color(.init(white:3, alpha: 0.87)))
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                
                 
                 
                 

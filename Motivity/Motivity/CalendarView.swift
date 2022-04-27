@@ -16,6 +16,7 @@ struct CalendarView: View {
     var data = ["Sun.", "Mon.", "Tues", "Wed.", "Thur.", "Fri.", "Sat`."]
     var dates = ["20", "21", "22", "23", "24", "25", "26",]
     
+
     var body: some View {
         
         ZStack{
@@ -168,23 +169,26 @@ struct CalendarView: View {
                     .padding(.top,0)
                 
                 
-                /*
-                 Text("Event: " + authRouter.events)
-                 Text("Start: " + authRouter.start)
-                 Text("Duration: " + String(authRouter.dur))
-                 */
+
                 
-            }//.onAppear(){
-            // authRouter.displayPosts()
+            }
             
-            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Morning Brunch", StartTime: "5:00", EventDuration: 1, eventType: "Rest")
+            
+            
+            let e = authRouter.events
+            
+            
+            
+        
+            
+            DailyBreakdownEventView(authRouter: AuthRouter(), Event: e[0], StartTime: e[2], EventDuration: 1, eventType: "Rest")
                 .position(x: 210.0, y: 680.0)
             
-            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Work Meeting", StartTime: "5:00", EventDuration: 1, eventType: "Work")
-                .position(x: 210.0, y: 760.0)
+            //DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Work Meeting", StartTime: "5:00", EventDuration: 1, eventType: "Work")
+              //  .position(x: 210.0, y: 760.0)
             
-            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Workout w/ CJ", StartTime: "5:00", EventDuration: 1, eventType: "Health")
-                .position(x: 210.0, y: 840.0)
+          //  DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Workout w/ CJ", StartTime: "5:00", EventDuration: 1, eventType: "Health")
+               // .position(x: 210.0, y: 840.0)
             
             
             
