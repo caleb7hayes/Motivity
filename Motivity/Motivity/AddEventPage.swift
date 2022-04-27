@@ -1,21 +1,42 @@
 //
-//  AddTaskPage.swift
+//  AddEventPage.swift
 //  Motivity
 //
-//  Created by Josiah Schwahn on 4/7/22.
+//  Created by Caden Senitte on 4/25/22.
 //
+
 import SwiftUI
 
-struct AddTaskPage: View {
+class AddEventController: UIViewController, ObservableObject{
     
+    func dateToString(picker: Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        let pick = dateFormatter.string(from: picker)
+        return String(pick)
+    }
     
+    func timeToString(picker: Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm"
+        let pick = dateFormatter.string(from: picker)
+        return String(pick)
+    }
+    
+}
+
+struct AddEventPage: View {
     @StateObject var viewRouter: ViewRouter
+    @ObservedObject var appView = AddEventController()
     
-    //@State private var notifications: Bool = false
-    //@State private var flexibleEvent: Bool = false
+    @State private var notifications: Bool = false
+    @State private var flexibleEvent: Bool = false
     
-    @State private var taskName = ""
-    @State private var description = ""
+    @State private var eventName = ""
+    //@State private var startTime = ""
+    @State private var duration = ""
+    @State private var eType = ""
+    @State private var eventDate = Date()
     
     @StateObject var authRouter: AuthRouter
 
@@ -23,7 +44,9 @@ struct AddTaskPage: View {
     var body: some View {
         
         ZStack{
-                     
+            
+            
+            
             Image("ADD:EDIT BACKGROUND").ignoresSafeArea()
             
             
@@ -38,7 +61,7 @@ struct AddTaskPage: View {
                         .frame(width: 13, height: 13)
                         .padding(.top, 10)
                     
-                    Text("Add Task")
+                    Text("Add Event")
                         .font(.system(size:25))
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)
@@ -55,13 +78,14 @@ struct AddTaskPage: View {
                 
                 Image("ADD:EDIT TASK STYLE")
                     .padding(.top, -26)
-                    .padding(.bottom,  110)
+                    .padding(.bottom,  150)
+                
                 
                 
                 //Event Name
                 ZStack(alignment:.leading){
                     
-                    TextField("Task Name", text: $taskName)
+                    TextField("Event Name", text: $eventName)
                                 .textFieldStyle(.roundedBorder)
                                 .padding()
                     
@@ -75,13 +99,32 @@ struct AddTaskPage: View {
                      
                 }
                 
-                //Start Time
+                //Event Date
                 ZStack(alignment:.leading){
                     
-                    TextField("Description", text: $description)
+                    DatePicker("Event Date", selection: $eventDate)
+                        .background(Color.white)
+                                .padding()
+                    
+                    
+                                
+                    
+                   /* Image("LARGE TEXT BACKGROUND")
+                    Text("Event Name")
+                        .font(.system(size:30))
+                        .fontWeight(.bold)
+                        .opacity(0.3)
+                        .foregroundColor(Color.white)
+                        .padding(.leading, 20)*/
+                     
+                }
+                
+                //Start Time
+             /*   ZStack(alignment:.leading){
+                    
+                    TextField("Start Time", text: $startTime)
                                 .textFieldStyle(.roundedBorder)
                                 .padding()
-                                .padding(.bottom, 50)
                     
                     
                   /*  Image("LARGE TEXT BACKGROUND")
@@ -92,13 +135,72 @@ struct AddTaskPage: View {
                         .foregroundColor(Color.white)
                         .padding(.leading, 20)*/
                      
+                }*/
+                
+                
+                //Duration
+                ZStack(alignment:.leading){
+                    
+                    TextField("Duration", text: $duration)
+                                .textFieldStyle(.roundedBorder)
+                                .padding()
+                    
+                    
+                  /*  Image("LARGE TEXT BACKGROUND")
+                    Text("Duration")
+                        .font(.system(size:30))
+                        .fontWeight(.bold)
+                        .opacity(0.3)
+                        .foregroundColor(Color.white)
+                        .padding(.leading, 20)*/
+                     
                 }
                 
+                
+                //Location
+                ZStack(alignment:.leading){
+                    
+                    /*TextField("Event Type", text: $eType)
+                                .textFieldStyle(.roundedBorder)
+                                .padding()*/
+                    Menu {
+                        Button {
+                            
+                        } label: {
+                            Text("Health")
+                            Image(systemName: "arrow.down.right.circle")
+                        }
+                        Button {
+                            
+                        } label: {
+                            Text("Work")
+                            Image(systemName: "arrow.up.and.down.circle")
+                        }
+                        Button {
+                            
+                        } label: {
+                            Text("Rest")
+                            Image(systemName: "arrow.up.and.down.circle")
+                        }
+                    } label: {
+                         Text("Event Type")
+                         Image(systemName: "tag.circle")
+                    }
+                    
+                   /* Image("LARGE TEXT BACKGROUND")
+                    Text("Location")
+                        .font(.system(size:30))
+                        .fontWeight(.bold)
+                        .opacity(0.3)
+                        .foregroundColor(Color.white)
+                        .padding(.leading, 20)*/
+                     
+                }
                 
                 
                 //Notifications?
                 
-              /*  HStack{
+                HStack{
                     
                     ZStack{
                         
@@ -148,7 +250,7 @@ struct AddTaskPage: View {
                     .padding(.trailing,75)
                 }
                 //padding adjustment for flexible event
-                .padding(.leading, 25)*/
+                .padding(.leading, 25)
                 
                 
                 
@@ -172,9 +274,14 @@ struct AddTaskPage: View {
                     Spacer()
                     Spacer()
                     
+                    let castDate = appView.dateToString(picker: eventDate)
+                
+                    let castTime = appView.timeToString(picker: eventDate)
+                    
                     Button(action:{
                         
-                        authRouter.createTask(name: taskName, desc: description)
+                        
+                        authRouter.createEvent(name: eventName, startDate: castDate, startTime: castTime, dur: duration, eventType: eType)
                         
                         viewRouter.currentPage = .calendarPage
                         
@@ -185,6 +292,8 @@ struct AddTaskPage: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 45, height: 45)
                     }
+                    
+                    
                     
                     
                     Spacer()
@@ -208,7 +317,7 @@ struct AddTaskPage: View {
 
 
 //toggle style attempt
-/*struct toggleStyle: ToggleStyle{
+struct toggleStyle: ToggleStyle{
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -224,12 +333,12 @@ struct AddTaskPage: View {
         }
 
     }
-}*/
+}
 
 
 
-struct AddTaskPage_Previews: PreviewProvider {
+struct AddEventPage_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskPage(viewRouter: ViewRouter(), authRouter: AuthRouter())
+        AddEventPage(viewRouter: ViewRouter(), authRouter: AuthRouter())
     }
 }

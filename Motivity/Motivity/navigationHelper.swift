@@ -27,7 +27,11 @@ enum Page{
     case addEventPage
     case addTaskPage
     case editTaskPage
+    
+    case addEventPage
+    
     case newUserSignUp
+    
     
     
 }
