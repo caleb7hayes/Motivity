@@ -35,6 +35,10 @@ struct MotherView: View {
             ExisitingUserPage(viewRouter: viewRouter, authRouter: authRouter)
             
             
+        case .newUserPage:
+            NewUserSignUp(viewRouter: viewRouter, authRouter: authRouter)
+            
+            
         case .calendarPage:
             
             CalendarView(viewRouter: viewRouter, authRouter: authRouter)
@@ -54,6 +58,10 @@ struct MotherView: View {
             
         case .editTaskPage:
             EditTaskPage(viewRouter: viewRouter)
+            
+            
+        case .growthCategoriesPage:
+            GrowthCategories(viewRouter: viewRouter, authRouter: authRouter)
     
         
         case .newUserSignUp:

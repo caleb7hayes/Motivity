@@ -9,12 +9,12 @@ import SwiftUI
 
 struct NewUserSignUp: View {
     
+    @State var email = ""
+    @State var password = ""
+    
     
     @StateObject var viewRouter: ViewRouter
     @StateObject var authRouter: AuthRouter
-    
-    @State var email = ""
-    @State var password = ""
     
     var body: some View {
         
@@ -56,25 +56,19 @@ struct NewUserSignUp: View {
                         
                         Image("Button Ring")
                         
-                        TextField("Email", text: $email)
-                            .disableAutocorrection(true)
-                            .autocapitalization(.none)
-                            .padding()
-                            .background(Color(.secondarySystemBackground))
+                        MotivityEmailField(email: $email, placeHolderView: Text("Email"), image: "envelope")
                     }
         
                     ZStack(){
                         
                         Image("Button Ring")
 
-                        SecureField("Password", text: $password)
-                            .disableAutocorrection(true)
-                            .autocapitalization(.none)
-                            .padding()
-                            .background(Color(.secondarySystemBackground))
+                        MotivityPasswordField(password: $password, placeHolderView: Text("Password"))
      
                         
                     }
+                    
+
                     
                 }
                   
@@ -86,13 +80,16 @@ struct NewUserSignUp: View {
                 VStack{
                               
                     Button(action:{
+                        var flag = true
                         authRouter.signUp(email: email, password: password)
-                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false){(timer) in
-                            if authRouter.signedIn {
+                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){(timer) in
+                            if authRouter.signedIn && flag {
+                                
+                                flag = false
                                 viewRouter.currentPage = .calendarPage
+                                
                             }
                         }
-
                     }){
                         
                         Image("SIGN UP BUTTON")
@@ -101,7 +98,7 @@ struct NewUserSignUp: View {
                     
                     Button(action:{
                         
-                        viewRouter.currentPage = .welcomePage
+                        viewRouter.currentPage = .loginPage
                         
                     }){
                         

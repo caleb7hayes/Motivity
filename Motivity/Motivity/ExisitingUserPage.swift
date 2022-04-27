@@ -10,6 +10,7 @@ import SwiftUI
 struct ExisitingUserPage: View {
     
     
+    
     @StateObject var viewRouter: ViewRouter
     @StateObject var authRouter: AuthRouter
     @State var email = ""
@@ -57,28 +58,21 @@ struct ExisitingUserPage: View {
                         
                         Image("Button Ring")
                         
-                        TextField("Email", text: $email)
-                            .disableAutocorrection(true)
-                            .autocapitalization(.none)
-                            .padding()
-                            .background(Color(.secondarySystemBackground))
                         
+                        MotivityEmailField(email: $email, placeHolderView: Text("Email"), image: "envelope")
+
 
                     }
                              
                     ZStack(){
                         
                         Image("Button Ring")
+                        
+                        MotivityPasswordField(password: $password, placeHolderView: Text("Password"))
+              
 
-                        SecureField("Password", text: $password)
-                            .disableAutocorrection(true)
-                            .autocapitalization(.none)
-                            .padding()
-                            .background(Color(.secondarySystemBackground))
-      
                     }
                 
-                    
                     
                 }
                   
@@ -90,13 +84,22 @@ struct ExisitingUserPage: View {
                 VStack{
                     
                     Button(action:{
+                        
+                
+                        
                         guard !email.isEmpty, !password.isEmpty else {
                             return
                         }
                         authRouter.signIn(email: email, password: password)
                         
-                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false){(timer) in
-                            if authRouter.signedIn {
+                
+                        var flag = true
+                        
+                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){(timer) in
+                            if authRouter.signedIn && flag {
+                                
+                                
+                                flag = false
                                 viewRouter.currentPage = .calendarPage
                             }
                         }

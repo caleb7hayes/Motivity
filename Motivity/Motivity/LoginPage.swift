@@ -32,6 +32,7 @@ struct LoginPage: View {
                     .font(.system(size:55))
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
+                    .padding(.bottom, 10)
                 
                 
                 
@@ -39,29 +40,33 @@ struct LoginPage: View {
                     .font(.system(size: 18))
                     .fontWeight(.semibold)
                     .foregroundColor(Color.white)
+                    .padding(.bottom, 210)
                 
                 
                 //format text to top third of the screen
                 
                 ZStack(){
-                    Button(action: {
-                        viewRouter.currentPage = .newUserSignUp
+                    
+                    Image("Button Ring")
+                        .padding(.bottom, 40)
+                    
+                    
+                    Button(action:{
+                        
+                        viewRouter.currentPage = .newUserPage
+                        
                     }){
-                        Image("Button Ring")
-                            .padding(.top, 400)
-                            .frame(minWidth: 0, maxWidth:100, minHeight: 0, maxHeight:100)
                         
                         Image("SIGN UP WITH EMAIL")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading, 0)
-                            .padding(.top, 400)
-                            .frame(minWidth: 0, maxWidth:100, minHeight: 0, maxHeight:300)
+                            .padding(.bottom, 40)
+                        
+                        
                     }
                     
                 }
                 
                 
-                Spacer()
+                
                 
                 //button to naviagte to the next page
                 Button(action:{
@@ -71,8 +76,8 @@ struct LoginPage: View {
                 }){
                     
                     Image("Already have an account?")
-                        .padding(.top, 23.0)
-                        .frame(width: /*@START_MENU_TOKEN@*/101.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
+                        .padding(.bottom, 70.0)
+                        
                     
                 }
                 
@@ -87,8 +92,9 @@ struct LoginPage: View {
                 }){
                     
                     Image("back arrow")
-                        .padding(.top, 23.0)
-                        .frame(width: /*@START_MENU_TOKEN@*/101.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
+                        .padding(.bottom, 100.0)
+                        .frame(width: 150, height: 150)
+                    
                     
                 }
                 
@@ -96,7 +102,7 @@ struct LoginPage: View {
                     
                 
                 
-                Spacer()
+                
                 
                 
             }

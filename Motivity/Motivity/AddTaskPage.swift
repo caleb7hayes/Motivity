@@ -21,9 +21,7 @@ struct AddTaskPage: View {
     var body: some View {
         
         ZStack{
-            
-            
-            
+                     
             Image("ADD:EDIT BACKGROUND").ignoresSafeArea()
             
             
@@ -56,7 +54,6 @@ struct AddTaskPage: View {
                 Image("ADD:EDIT TASK STYLE")
                     .padding(.top, -26)
                     .padding(.bottom,  150)
-                
                 
                 
                 //Event Name

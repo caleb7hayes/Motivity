@@ -12,6 +12,9 @@ struct UserProfilePage: View {
     @StateObject var viewRouter: ViewRouter
     
     
+
+    
+    
     var body: some View {
    
         ZStack{
@@ -100,22 +103,43 @@ struct UserProfilePage: View {
                  }
                 
                 
-                // Language Section
+                // User Growth Category
                  HStack{
                      
                      VStack{
-                         //Button Goes Here
-                        Image("USER GROWTH CATEGORY BUTTON")
+                         
+                         Button(action:{
+                             
+                             viewRouter.currentPage = .growthCategoriesPage
+         
+                         }){
+                             
+                             Image("USER GROWTH CATEGORY BUTTON")
+                    
+                         }
+                         
+                         
                          
                      }
                      VStack{
                          
                          ZStack{
                              Image("Motivity Rectangle")
-                             Text("User Growth Category")
-                                 .font(.system(size:25))
-                                 .fontWeight(.bold)
-                                 .foregroundColor(Color.white)
+                             
+                             
+                             Button(action:{
+                                 
+                                 viewRouter.currentPage = .growthCategoriesPage
+             
+                             }){
+                                 
+                                 Text("Growth Categories")
+                                     .font(.system(size:25))
+                                     .fontWeight(.bold)
+                                     .foregroundColor(Color.white)
+                             }
+                             
+                             
                              
                          }
                          

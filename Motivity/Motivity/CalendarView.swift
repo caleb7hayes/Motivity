@@ -13,14 +13,14 @@ struct CalendarView: View {
     @StateObject var authRouter: AuthRouter
     
     
-    var data = ["Sun.", "Mon.", "Tues", "Wed.", "Thur.", "Fri.", "Sun."]
+    var data = ["Sun.", "Mon.", "Tues", "Wed.", "Thur.", "Fri.", "Sat`."]
     var dates = ["20", "21", "22", "23", "24", "25", "26",]
     
     var body: some View {
         
         ZStack{
             
-            Image("CALENDAR BACKGROUND").ignoresSafeArea()
+            Image("Calendar Demo View").ignoresSafeArea()
             
             
             
@@ -34,7 +34,7 @@ struct CalendarView: View {
                     Button(action:{
                         
                         viewRouter.currentPage = .userProfilePage
-    
+                        
                     }){
                         
                         Image("GEAR ICON")
@@ -42,19 +42,15 @@ struct CalendarView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 45, height: 45)
                             .padding(.trailing, 140)
-                            .padding(.top,20)
-                            
+                            .padding(.top,00)
+                        
                         
                     }
                     
-
-                    
-                        
-                   
                     Button(action:{
                         
                         viewRouter.currentPage = .userProfilePage
-    
+                        
                     }){
                         
                         Image("USER PROFILE ICON")
@@ -62,13 +58,10 @@ struct CalendarView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 45, height: 45)
                             .padding(.leading, 140)
-                            .padding(.top,20)
-                            
+                            .padding(.top,00)
+                        
                         
                     }
-                        
-                    
-                   
                     
                 }
                 
@@ -82,11 +75,13 @@ struct CalendarView: View {
                     
                     VStack{
                         
+                        
+                        
                         Text("April 20th - 26th")
                             .font(.system(size:16))
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
-                            .padding(.bottom, 10)
+                            .padding(.top,0)
                         
                     }
                 }
@@ -106,6 +101,8 @@ struct CalendarView: View {
                 .padding(.top, 1.0)
                 
                 
+                
+                
                 HStack(){
                     ForEach(dates, id: \.self){ item in
                         Spacer()
@@ -115,7 +112,7 @@ struct CalendarView: View {
                             .foregroundColor(Color.white)
                         Spacer()
                     }
-                }.padding(.bottom, 260)
+                }.padding(.bottom, 380)
                 
                 //Regformat and sugesstion button
                 
@@ -132,18 +129,18 @@ struct CalendarView: View {
                     Button(action:{
                         
                         viewRouter.currentPage = .addTaskPage
-    
+                        
                     }){
                         
                         Image("ADD TASK")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 120, height: 120)
+                            .frame(width: 100, height: 100)
                         
                     }
                     
                     
-                        
+                    
                     Spacer()
                     
                     Image("SUGGESTION BUTTON")
@@ -153,45 +150,66 @@ struct CalendarView: View {
                     Spacer()
                     
                 }
-                .padding(.top,50)
-                .padding(.bottom,70)
+                .padding(.top,-120)
+                .padding(.bottom,0)
                 
                 
                 //Daily Breakdown
                 
                 
                 Text("Daily Breakdown")
-                    
+                
                     .font(.system(size:23))
                     .font(.headline)
                     .fontWeight(.black)
                     .foregroundColor(Color.white)
                     .padding(.trailing, 200)
-                    .padding(.bottom, 180)
-                    .padding(.top,10)
-                 
+                    .padding(.bottom, 220)
+                    .padding(.top,0)
+                
+                
                 /*
-                Text("Event: " + authRouter.events)
-                Text("Start: " + authRouter.start)
-                Text("Duration: " + String(authRouter.dur))
+                 Text("Event: " + authRouter.events)
+                 Text("Start: " + authRouter.start)
+                 Text("Duration: " + String(authRouter.dur))
                  */
-                    
-            }.onAppear(){
-
-                authRouter.displayEvent()
-            }
+                
+            }//.onAppear(){
+            // authRouter.displayPosts()
+            
+            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Morning Brunch", StartTime: "5:00", EventDuration: 1, eventType: "Rest")
+                .position(x: 210.0, y: 680.0)
+            
+            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Work Meeting", StartTime: "5:00", EventDuration: 1, eventType: "Work")
+                .position(x: 210.0, y: 760.0)
+            
+            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Workout w/ CJ", StartTime: "5:00", EventDuration: 1, eventType: "Health")
+                .position(x: 210.0, y: 840.0)
+            
+            
+            
         }
+        
+        
+        
+        //Bottom of ZStack, add events here
+        
+        
+        
+        
+        
+        
+        
     }
+    
+    
 }
-
-
-
 
 
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView(viewRouter: ViewRouter(), authRouter: AuthRouter())
+        CalendarView(viewRouter: ViewRouter(),  authRouter: AuthRouter())
     }
 }
 
