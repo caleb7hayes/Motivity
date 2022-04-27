@@ -160,13 +160,32 @@ struct AddEventPage: View {
                 //Location
                 ZStack(alignment:.leading){
                     
-                    TextField("Event Type", text: $eType)
+                    /*TextField("Event Type", text: $eType)
                                 .textFieldStyle(.roundedBorder)
-                                .padding()
-                   /* Menu("SELECT AN EVENT TYPE") {
-                        Button("select", action: )
-                        
-                    }*/
+                                .padding()*/
+                    Menu {
+                        Button {
+                            
+                        } label: {
+                            Text("Health")
+                            Image(systemName: "arrow.down.right.circle")
+                        }
+                        Button {
+                            
+                        } label: {
+                            Text("Work")
+                            Image(systemName: "arrow.up.and.down.circle")
+                        }
+                        Button {
+                            
+                        } label: {
+                            Text("Rest")
+                            Image(systemName: "arrow.up.and.down.circle")
+                        }
+                    } label: {
+                         Text("Event Type")
+                         Image(systemName: "tag.circle")
+                    }
                     
                    /* Image("LARGE TEXT BACKGROUND")
                     Text("Location")

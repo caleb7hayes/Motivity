@@ -12,11 +12,6 @@ var totalSquares = [Date]()
 
 class CalendarViewController: UIViewController, ObservableObject{
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    
     func getCurrentWeek() -> [String]{
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
@@ -25,14 +20,9 @@ class CalendarViewController: UIViewController, ObservableObject{
 
         let formatter = DateFormatter()
         formatter.dateFormat = "d"
-        //formatter.dateStyle = .short
-        //formatter.timeStyle = .none
-
-
 
         let days = (weekdays.lowerBound ..< weekdays.upperBound)
-            .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }  // use `compactMap` in Xcode 9.3 and later
-            //.filter { !calendar.isDateInWeekend($0) }
+            .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }
 
         return days.map{ formatter.string(from: $0) }
     }
@@ -302,19 +292,7 @@ struct CalendarView: View {
                 HStack(){
                     
                     
-                    var y = appView.getCurrentWeek()
-                    
-                    Button("Next", action:{
-                        
-                        y = appView.yep()
-                        //appView.viewDidLoad()
-                     
-    
-                    })
-                    
-                        //.onAppear{appView.viewDidLoad()}
-                    
-                    //Text("\(self.date)")
+                    let y = appView.getCurrentWeek()
                     
                     ForEach(y, id: \.self){ item in
                         Spacer()
