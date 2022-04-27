@@ -259,12 +259,6 @@ struct CalendarView: View {
                     
                     VStack{
                         
-                        Text("Josiah's Schedule")
-                            .font(.system(size:30))
-                            .fontWeight(.black)
-                            .foregroundColor(Color.white)
-                            .padding(.bottom, 0)
-                        
                         Text(date, style: .date)
                             .font(.system(size:16))
                             .fontWeight(.bold)
@@ -371,6 +365,61 @@ struct CalendarView: View {
             }
                    // .padding(.bottom, 160)
                 
+                
+                
+                
+                let event = authRouter.events
+                
+                let eventSize = event.count / 3
+        
+                
+                if eventSize == 0 {
+                    
+                    
+                    
+                    
+                }
+                
+                
+                else if eventSize == 1 {
+                    
+                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
+                        .position(x: 210.0, y: 680.0)
+                    
+                    
+                    
+                    
+                }
+                
+                else if eventSize == 2 {
+                    
+                    
+                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
+                        .position(x: 210.0, y: 680.0)
+                    
+                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
+                        .position(x: 210.0, y: 760.0)
+                    
+                    
+                    
+                    
+                    
+                }
+                
+                 else if eventSize == 3 {
+                    
+                    
+                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
+                        .position(x: 210.0, y: 680.0)
+                    
+                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
+                        .position(x: 210.0, y: 760.0)
+                    
+                    
+                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[10], StartTime: event[14], EventDuration: Int(event[11]) ?? 1, eventType: event[12])
+                        .position(x: 210.0, y: 840.0)
+                
+                }
             }
             
         }
