@@ -9,55 +9,58 @@ import WidgetKit
 import SwiftUI
 import Intents
 import Foundation
+import Firebase
 
-struct Provider: IntentTimelineProvider {
+
+
+struct Provider: TimelineProvider {
+    
+    //    var eventData: Data = Data()
+    
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+        SimpleEntry(date: Date())
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+        let entry = SimpleEntry(date: Date())
         completion(entry)
     }
 
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        print("updating timeline")
         var entries: [SimpleEntry] = []
 
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+//        let midnight = Calendar.current.startOfDay(for: currentDate)
+//        let nextMidnight = Calendar.current.date(byAdding: .day, value: 1, to: midnight)
+//        for offset in 0 ..< 60 * 24{
+        let entryDate = SimpleEntry(date: currentDate)
+        entries.append(entryDate)
+//        }
+        let refreshDate = Calendar.current.date(byAdding: .minute, value: 2, to: Date())!
+        let timeline = Timeline(entries: entries, policy: .after(refreshDate))
         completion(timeline)
-    }
+        }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationIntent
 }
 
 struct MotivityWidgetEntryView : View {
     var entry: Provider.Entry
 
-//    var body: some View {
-//        Text(entry.date, style: .time)
-//    }
     @Environment(\.widgetFamily) var family: WidgetFamily
     
     @ViewBuilder
     var body: some View {
         switch family {
         case .systemSmall:
-            MotivityWidgetSmallView()
+            MotivityWidgetSmallView(entry: Provider.Entry.init(date: Date()))
         case .systemMedium:
-            MotivityWidgetMediumView()
+            MotivityWidgetMediumView(entry: Provider.Entry.init(date: Date()))
         case .systemLarge:
-            MotivityWidgetLargeView()
+            MotivityWidgetLargeView(entry: Provider.Entry.init(date: Date()))
         case .systemExtraLarge:
             MotivityWidgetExtraLargeView()
         @unknown default:
@@ -66,24 +69,32 @@ struct MotivityWidgetEntryView : View {
     }
 }
 
+
 // struct for functionality of small widget
 struct MotivityWidgetSmallView : View {
+    var entry: Provider.Entry
+    
+    @State var currentData: String?
+    @State var currentStarts: String?
+    
     var body: some View {
-        
-        ZStack{
-            
-            //background image for all pages throughout Motvitiy
+        ZStack {
             Image("Motivity Login Background").ignoresSafeArea()
-            
-            //vertical stack for top text
-            VStack(alignment: .leading){
-                
-                Text("Small Widget")
-                    .font(.body)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                    .padding(.leading,70)
+                .padding(.leading, 20)
+            VStack (alignment: .leading) {
+                HStack{
+                    Text(currentData ?? "Please Log In")
+                        .foregroundColor(Color.white)
+                        .onAppear {
+                            currentData = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "small")
+                        }
+                    Text(currentStarts ?? "")
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.trailing)
+                        .onAppear{
+                            currentStarts = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "smallTimes")
+                        }
+                }
             }
         }
     }
@@ -91,45 +102,65 @@ struct MotivityWidgetSmallView : View {
 
 // struct for functionality of medium widget
 struct MotivityWidgetMediumView : View {
+    var entry: Provider.Entry
+    
+    @State var currentData: String?
+    @State var currentStarts: String?
+    
     var body: some View {
-        
-        ZStack{
-            
-            //background image for all pages throughout Motvitiy
+        ZStack {
             Image("Motivity Login Background").ignoresSafeArea()
-            
-            //vertical stack for top text
-            VStack(alignment: .leading){
-                
-                Text("Medium Widget")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                .padding(.leading, 20)
+            VStack (alignment: .leading) {
+                HStack{
+                    Text(currentData ?? "Please Log In")
+                        .foregroundColor(Color.white)
+                        .onAppear {
+                            currentData = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "medium")
+                        }
+                    Text(currentStarts ?? "")
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.trailing)
+                        .onAppear{
+                            currentStarts = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "mediumTimes")
+                        }
+                }
+                Text("You can do it!")
                     .foregroundColor(Color.white)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading,49)
             }
+            .padding(.trailing, 175)
         }
     }
 }
 // struct for functionality of large widget
 struct MotivityWidgetLargeView : View {
+    var entry: Provider.Entry
+    
+    @State var currentData: String?
+    @State var currentStarts: String?
+    
     var body: some View {
-        
-        ZStack{
-            
-            //background image for all pages throughout Motvitiy
+        ZStack {
             Image("Motivity Login Background").ignoresSafeArea()
-            
-            //vertical stack for top text
-            VStack(alignment: .leading){
-                
-                Text("Large Widget")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                .padding(.leading, 20)
+            VStack (alignment: .leading) {
+                HStack{
+                    Text(currentData ?? "Please Log In")
+                        .foregroundColor(Color.white)
+                        .onAppear {
+                            currentData = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "large")
+                        }
+                    Text(currentStarts ?? "")
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.trailing)
+                        .onAppear{
+                            currentStarts = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "largeTimes")
+                        }
+                }
+                Text("You can do it!")
                     .foregroundColor(Color.white)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading,49)
             }
+            .padding(.trailing, 175)
         }
     }
 }
@@ -144,10 +175,11 @@ struct MotivityWidgetExtraLargeView : View {
 
 @main
 struct MotivityWidget: Widget {
+    
     let kind: String = "MotivityWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
             MotivityWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Motivity")
@@ -158,7 +190,7 @@ struct MotivityWidget: Widget {
 
 struct MotivityWidget_Previews: PreviewProvider {
     static var previews: some View {
-        MotivityWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+        MotivityWidgetEntryView(entry: SimpleEntry(date: Date()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

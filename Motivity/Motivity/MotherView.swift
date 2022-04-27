@@ -66,6 +66,9 @@ struct MotherView: View {
         
         case .newUserSignUp:
             NewUserSignUp(viewRouter: viewRouter, authRouter: authRouter)
+            
+        case .addEventPage:
+            AddEventPage(viewRouter: viewRouter, authRouter: authRouter)
         }
         
     }

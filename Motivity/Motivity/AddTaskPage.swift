@@ -10,13 +10,15 @@ struct AddTaskPage: View {
     
     
     @StateObject var viewRouter: ViewRouter
-    @StateObject var authRouter: AuthRouter
-    @State private var notifications: Bool = false
-    @State private var flexibleEvent: Bool = false
     
-    @State var name = ""
-    @State var start = ""
-    @State var dur = ""    
+    //@State private var notifications: Bool = false
+    //@State private var flexibleEvent: Bool = false
+    
+    @State private var taskName = ""
+    @State private var description = ""
+    
+    @StateObject var authRouter: AuthRouter
+
     
     var body: some View {
         
@@ -53,63 +55,50 @@ struct AddTaskPage: View {
                 
                 Image("ADD:EDIT TASK STYLE")
                     .padding(.top, -26)
-                    .padding(.bottom,  150)
+                    .padding(.bottom,  110)
                 
                 
                 //Event Name
                 ZStack(alignment:.leading){
                     
+                    TextField("Task Name", text: $taskName)
+                                .textFieldStyle(.roundedBorder)
+                                .padding()
                     
-                    Image("LARGE TEXT BACKGROUND")
-                    TextField("Event Name", text: $name)
+                   /* Image("LARGE TEXT BACKGROUND")
+                    Text("Event Name")
                         .font(.system(size:30))
-                       
+                        .fontWeight(.bold)
                         .opacity(0.3)
                         .foregroundColor(Color.white)
-                      
+                        .padding(.leading, 20)*/
                      
                 }
                 
                 //Start Time
                 ZStack(alignment:.leading){
                     
+                    TextField("Description", text: $description)
+                                .textFieldStyle(.roundedBorder)
+                                .padding()
+                                .padding(.bottom, 50)
                     
-                    Image("LARGE TEXT BACKGROUND")
-                    TextField("Start Time", text: $start)
+                    
+                  /*  Image("LARGE TEXT BACKGROUND")
+                    Text("Start Time")
                         .font(.system(size:30))
-                        
+                        .fontWeight(.bold)
                         .opacity(0.3)
                         .foregroundColor(Color.white)
-                        
+                        .padding(.leading, 20)*/
                      
                 }
                 
-                
-                //Duration
-                ZStack(alignment:.leading){
-                    
-                    
-                    Image("LARGE TEXT BACKGROUND")
-                    TextField("Durration", text: $dur)
-                        .font(.system(size:30))
-                        .opacity(0.3)
-                        .foregroundColor(Color.white)
-                     
-                }
-                
-                
-                //Location
-                ZStack(alignment:.leading){
-                    
-                    
-                    Image("LARGE TEXT BACKGROUND")
-                     
-                }
                 
                 
                 //Notifications?
                 
-                HStack{
+              /*  HStack{
                     
                     ZStack{
                         
@@ -159,7 +148,7 @@ struct AddTaskPage: View {
                     .padding(.trailing,75)
                 }
                 //padding adjustment for flexible event
-                .padding(.leading, 25)
+                .padding(.leading, 25)*/
                 
                 
                 
@@ -185,8 +174,9 @@ struct AddTaskPage: View {
                     
                     Button(action:{
                         
+                        authRouter.createTask(name: taskName, desc: description)
+                        
                         viewRouter.currentPage = .calendarPage
-                        authRouter.createEvent(name: name, start: start, dur: dur)
                         
                     }){
                         
@@ -205,6 +195,8 @@ struct AddTaskPage: View {
                 .padding(.top,60)
                 
                 
+                
+                
             }
             
             
@@ -216,7 +208,7 @@ struct AddTaskPage: View {
 
 
 //toggle style attempt
-struct toggleStyle: ToggleStyle{
+/*struct toggleStyle: ToggleStyle{
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -232,7 +224,7 @@ struct toggleStyle: ToggleStyle{
         }
 
     }
-}
+}*/
 
 
 

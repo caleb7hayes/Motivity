@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import WidgetKit
 
 class AuthRouter: ObservableObject {
     let auth = Auth.auth()
@@ -17,6 +18,7 @@ class AuthRouter: ObservableObject {
     var databaseHandle: DatabaseHandle?
     
     @Published var signedIn = false
+    @Published var noData = false
     @Published var events : [String] = []
     @Published var goals : [String] = []
     @Published var tasks : [String] = []
@@ -47,8 +49,8 @@ class AuthRouter: ObservableObject {
     }
 
     func signOut(){
-       try? auth.signOut()
-       self.signedIn = false
+        try? auth.signOut()
+        self.signedIn = false
     }
     
     
@@ -58,14 +60,19 @@ class AuthRouter: ObservableObject {
                 for e in database{
                     if !self.events.contains(e.key) {
                         self.events.append(e.key)
-                        self.events.append(e.value["Start"] as! String)
                         self.events.append(e.value["Duration"] as! String)
+                        self.events.append(e.value["EventType"] as! String)
+                        self.events.append(e.value["StartDate"] as! String)
+                        self.events.append(e.value["StartTime"] as! String)
                     }
                 }
+            } else {
+                self.noData = true
             }
-        
         })
-
+        sendSmallWidgetData()
+        sendMediumWidgetData()
+        sendLargeWidgetData()
     }
     
     func displayGoal(){
@@ -97,9 +104,9 @@ class AuthRouter: ObservableObject {
         })
     }
     
-    func createEvent(name: String, start: String, dur: String){
-        self.ref.child("Users").child(userID!).child("Events").child(name).setValue(["Start": start, "Duration": dur])
-    }
+    func createEvent(name: String, startDate: String, startTime: String, dur: String, eventType: String){
+            self.ref.child("Users").child(userID!).child("Events").child(name).setValue(["StartDate": startDate, "StartTime": startTime, "Duration": dur, "EventType": eventType])
+        }
     
     func createGoal(name: String, desc: String){
         self.ref.child("Users").child(userID!).child("Goals").child(name).setValue(["Desc": desc])
@@ -107,5 +114,72 @@ class AuthRouter: ObservableObject {
     
     func createTask(name: String, desc: String){
         self.ref.child("Users").child(userID!).child("Tasks").child(name).setValue(["Desc": desc])
+    }
+    
+    
+    //function to send data to small widget
+    func sendSmallWidgetData () -> Void {
+        var eventData : String = ""
+        var eventStarts : String = ""
+        
+        let seq = stride(from: 0, to: self.events.count, by: 3)
+        
+        for i in seq{
+            let currentEvent = self.events[i]
+            let currentEventStart = self.events[i+1]
+            if currentEvent.count > 12{
+                let index = currentEvent.index(currentEvent.startIndex, offsetBy: 11)
+                let subString = currentEvent[..<index]
+                eventData += subString + "..."
+                eventStarts += currentEventStart
+            }
+            else{
+                eventData += currentEvent
+                eventStarts += currentEventStart
+            }
+            eventData += "\n"
+            eventStarts += "\n"
+        }
+        UserDefaults(suiteName: "group.motivity.widget")!.set(eventData, forKey: "small")
+        UserDefaults(suiteName: "group.motivity.widget")!.set(eventStarts, forKey: "smallTimes")
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    //function to send data to medium widget
+    func sendMediumWidgetData() -> Void {
+        var eventData : String = ""
+        var eventStarts : String = ""
+        
+        let seq = stride(from: 0, to: self.events.count, by: 3)
+        
+        for i in seq{
+            let currentEvent = self.events[i]
+            let currentEventStart = self.events[i+1]
+            eventData += currentEvent + "\n"
+            eventStarts += currentEventStart + "\n"
+            
+        }
+        UserDefaults(suiteName: "group.motivity.widget")!.set(eventData, forKey: "medium")
+        UserDefaults(suiteName: "group.motivity.widget")!.set(eventStarts, forKey: "mediumTimes")
+        WidgetCenter.shared.reloadAllTimelines()    }
+    
+    
+    // function to send information to largeWidget
+    func sendLargeWidgetData() -> Void {
+        var eventData : String = ""
+        var eventStarts : String = ""
+        
+        let seq = stride(from: 0, to: self.events.count, by: 3)
+        
+        for i in seq{
+            let currentEvent = self.events[i]
+            let currentEventStart = self.events[i+1]
+            eventData += currentEvent + "\n"
+            eventStarts += currentEventStart + "\n"
+            
+        }
+        UserDefaults(suiteName: "group.motivity.widget")!.set(eventData, forKey: "large")
+        UserDefaults(suiteName: "group.motivity.widget")!.set(eventStarts, forKey: "largeTimes")
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
