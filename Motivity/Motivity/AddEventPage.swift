@@ -10,7 +10,7 @@ import SwiftUI
 struct Types {
 
   var selection = [
-    "Select Event Type", "Health", "Work", "Rest"
+    " Select Event Type", "Health", "Work", "Rest"
   ]
 }
 
@@ -114,9 +114,16 @@ struct AddEventPage: View {
                 //Event Date
                 ZStack(alignment:.leading){
                     
-                    DatePicker("Event Date", selection: $eventDate)
+                    DatePicker(" Event Date", selection: $eventDate)
                         .background(Color.white)
+                        .cornerRadius(5)
                                 .padding()
+                                .foregroundColor(.gray)
+                                
+                                .frame(width: 430, height: 55)
+                                
+                                
+                                
                     
                     
                                 
@@ -158,6 +165,7 @@ struct AddEventPage: View {
                                 .padding()
                     
                     
+                    
                   /*  Image("LARGE TEXT BACKGROUND")
                     Text("Duration")
                         .font(.system(size:30))
@@ -171,46 +179,6 @@ struct AddEventPage: View {
                 
                 //Location
                 ZStack(alignment:.leading){
-                    
-                    /*TextField("Event Type", text: $eType)
-                                .textFieldStyle(.roundedBorder)
-                                .padding()*/
-                    /*Menu {
-                        Button {
-                            
-                        } label: {
-                            Text("Health")
-                            Image(systemName: "heart")
-                        }
-                        Button {
-                            
-                        } label: {
-                            Text("Work")
-                            Image(systemName: "hammer")
-                        }
-                        Button {
-                            
-                        } label: {
-                            Text("Rest")
-                            Image(systemName: "sleep")
-                        }
-                    } label: {
-                         Text("Event Type")
-                            .font(.system(size:20))
-                            .fontWeight(.bold)
-                            .opacity(0.3)
-                            .foregroundColor(Color.white)
-                            .padding(.trailing, 30)
-                         Image(systemName: "tag.circle")
-                    }*/
-                    
-                   /* Image("LARGE TEXT BACKGROUND")
-                    Text("Location")
-                        .font(.system(size:30))
-                        .fontWeight(.bold)
-                        .opacity(0.3)
-                        .foregroundColor(Color.white)
-                        .padding(.leading, 20)*/
                     
                     
                        Menu {
@@ -232,16 +200,17 @@ struct AddEventPage: View {
                            }}}
                 label:{
                     Text("\(types.selection[selectedType])")
-                        //.font(.system(size:))
-                        .fontWeight(.bold)
-                        .opacity(0.3)
-                      .frame(minWidth: 120, minHeight: 40, alignment: .center)
+                        .opacity(0.5)
+                      .frame(minWidth: 145, minHeight: 35, alignment: .center)
                       .font(.headline)
                       .foregroundColor(.gray)
                       .multilineTextAlignment(.center)
                       .id(selectedType)
                       .padding([.trailing], 250)
                       .background(.white)
+                      .cornerRadius(5)
+                      
+                      
                 }
                 .padding([.bottom], 50)
                     
