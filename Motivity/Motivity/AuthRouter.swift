@@ -58,8 +58,12 @@ class AuthRouter: ObservableObject {
                 for e in database{
                     if !self.events.contains(e.key) {
                         self.events.append(e.key)
-                        self.events.append(e.value["Start"] as! String)
                         self.events.append(e.value["Duration"] as! String)
+                        self.events.append(e.value["EventType"] as! String)
+                        self.events.append(e.value["StartDate"] as! String)
+                        self.events.append(e.value["StartTime"] as! String)
+                        //self.events.append(e.value["Duration"] as! String)
+                        //self.events.append(e.value["Datetime"] as! String)
                     }
                 }
             }
@@ -97,8 +101,10 @@ class AuthRouter: ObservableObject {
         })
     }
     
-    func createEvent(name: String, /*datetime: Date,*/ start: String, dur: String){
-        self.ref.child("Users").child(userID!).child("Events").child(name).setValue([/*"Datetime": datetime,*/ "Start": start, "Duration": dur])
+    func createEvent(name: String, startDate: String, startTime: String, dur: String, eventType: String){
+        print(startTime)
+        self.ref.child("Users").child(userID!).child("Events").child(name).setValue(["StartDate": startDate, "StartTime": startTime, "Duration": dur, "EventType": eventType])
+        print(startTime)
     }
     
     func createGoal(name: String, desc: String){
@@ -108,27 +114,6 @@ class AuthRouter: ObservableObject {
     func createTask(name: String, desc: String){
         self.ref.child("Users").child(userID!).child("Tasks").child(name).setValue(["Desc": desc])
     }
-    
-   /* func displayEvent2() -> [String]{
-        var ight = [String]()
-        databaseHandle = self.ref.child("Users").child(userID!).child("Events").observe(.value, with: { (snapshot) in
-            if let database = snapshot.value as? [String: [String: Any]] {
-                self.events = database
-                for e in self.events{
-                    //ight.append(contentsOf: database)
-                    //print(e.key)
-                    //print(e.value["Start"] as! String)
-                    //print(e.value["Duration"] as! String)
-                    //return (e.value["Start"] as! String)
-                    ight.append(e.key)
-                    ight.append(e.value["Start"] as! String)
-                    ight.append(e.value["Duration"] as! String)
-                }
-                
-            }
-        
-        })
-        return ight
-    }*/
+
     
 }

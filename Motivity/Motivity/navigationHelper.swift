@@ -27,6 +27,8 @@ enum Page{
     
     case addEventPage
     
+    case newUserSignUp
+    
     
     
 }

@@ -7,16 +7,35 @@
 
 import SwiftUI
 
+class AddEventController: UIViewController, ObservableObject{
+    
+    func dateToString(picker: Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        let pick = dateFormatter.string(from: picker)
+        return String(pick)
+    }
+    
+    func timeToString(picker: Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm"
+        let pick = dateFormatter.string(from: picker)
+        return String(pick)
+    }
+    
+}
+
 struct AddEventPage: View {
     @StateObject var viewRouter: ViewRouter
+    @ObservedObject var appView = AddEventController()
     
     @State private var notifications: Bool = false
     @State private var flexibleEvent: Bool = false
     
     @State private var eventName = ""
-    @State private var startTime = ""
+    //@State private var startTime = ""
     @State private var duration = ""
-    @State private var location = ""
+    @State private var eType = ""
     @State private var eventDate = Date()
     
     @StateObject var authRouter: AuthRouter
@@ -86,6 +105,8 @@ struct AddEventPage: View {
                     DatePicker("Event Date", selection: $eventDate)
                         .background(Color.white)
                                 .padding()
+                    
+                    
                                 
                     
                    /* Image("LARGE TEXT BACKGROUND")
@@ -99,7 +120,7 @@ struct AddEventPage: View {
                 }
                 
                 //Start Time
-                ZStack(alignment:.leading){
+             /*   ZStack(alignment:.leading){
                     
                     TextField("Start Time", text: $startTime)
                                 .textFieldStyle(.roundedBorder)
@@ -114,7 +135,7 @@ struct AddEventPage: View {
                         .foregroundColor(Color.white)
                         .padding(.leading, 20)*/
                      
-                }
+                }*/
                 
                 
                 //Duration
@@ -139,10 +160,13 @@ struct AddEventPage: View {
                 //Location
                 ZStack(alignment:.leading){
                     
-                    TextField("Location", text: $location)
+                    TextField("Event Type", text: $eType)
                                 .textFieldStyle(.roundedBorder)
                                 .padding()
-                    
+                   /* Menu("SELECT AN EVENT TYPE") {
+                        Button("select", action: )
+                        
+                    }*/
                     
                    /* Image("LARGE TEXT BACKGROUND")
                     Text("Location")
@@ -231,9 +255,14 @@ struct AddEventPage: View {
                     Spacer()
                     Spacer()
                     
+                    let castDate = appView.dateToString(picker: eventDate)
+                
+                    let castTime = appView.timeToString(picker: eventDate)
+                    
                     Button(action:{
                         
-                        authRouter.createEvent(name: eventName, /*datetime: eventDate,*/ start: startTime, dur: duration)
+                        
+                        authRouter.createEvent(name: eventName, startDate: castDate, startTime: castTime, dur: duration, eventType: eType)
                         
                         viewRouter.currentPage = .calendarPage
                         
@@ -244,6 +273,8 @@ struct AddEventPage: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 45, height: 45)
                     }
+                    
+                    
                     
                     
                     Spacer()
