@@ -21,7 +21,7 @@ struct DailyBreakdownEventView: View {
     var eventType: String // 'work' or 'health' or 'rest'
   
     
-    func endTime(startTime: String, eventduration:Int) -> String{
+    func endTime(startTime: String, eventduration: Int) -> String{
         let ch = Character(":")
         let startHour = startTime.split(separator: ch)
         let newHour = Int(startHour[0])! + eventduration
@@ -170,12 +170,28 @@ struct DailyBreakdownEventView: View {
     }
 }
 
+
+
+
+
+
+
+
+
+
 struct DailyBreakdownEventView_Previews: PreviewProvider {
     static var previews: some View {
         
-        DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Date Night", StartTime: "11:00", EventDuration: 1, eventType: "Rest")
         
+        VStack{
+            
+            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Date Night", StartTime: "11:00", EventDuration: 1, eventType: "Rest")
+            
+            
+            
         
+            
+        }
         
         
     }

@@ -16,7 +16,12 @@ struct CalendarView: View {
     var data = ["Sun.", "Mon.", "Tues", "Wed.", "Thur.", "Fri.", "Sat`."]
     var dates = ["20", "21", "22", "23", "24", "25", "26",]
     
-
+    
+    
+    
+    
+    
+    
     var body: some View {
         
         ZStack{
@@ -169,45 +174,79 @@ struct CalendarView: View {
                     .padding(.top,0)
                 
                 
-
+                
+                
+            }.onAppear(){
+                
+                authRouter.displayEvent()
                 
             }
             
             
             
-            let e = authRouter.events
+            
+            let event = authRouter.events
+            
+            let eventSize = event.count / 3
+    
+            
+            if eventSize == 0 {
+                
+                
+                
+                
+            }
             
             
+            else if eventSize == 1 {
+                
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[2], EventDuration: Int(event[1]) ?? 0, eventType: "Rest")
+                    .position(x: 210.0, y: 680.0)
+                
+                
+                
+            }
             
-        
+            else if eventSize == 2 {
+                
+                
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[2], EventDuration: Int(event[1]) ?? 1, eventType: "Rest")
+                    .position(x: 210.0, y: 680.0)
+                
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[3], StartTime: event[5], EventDuration: Int(event[4]) ?? 1, eventType: "Work")
+                    .position(x: 210.0, y: 760.0)
+                
+                
+                
+                
+            }
             
-            DailyBreakdownEventView(authRouter: AuthRouter(), Event: e[0], StartTime: e[2], EventDuration: 1, eventType: "Rest")
-                .position(x: 210.0, y: 680.0)
+             else if eventSize == 3 {
+                
+                
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[2], EventDuration: Int(event[1]) ?? 1, eventType: "Rest")
+                    .position(x: 210.0, y: 680.0)
+                
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[3], StartTime: event[5], EventDuration: Int(event[4]) ?? 1, eventType: "Work")
+                    .position(x: 210.0, y: 760.0)
+                
+                
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[6], StartTime: event[8], EventDuration: Int(event[7]) ?? 1, eventType: "Health")
+                    .position(x: 210.0, y: 840.0)
             
-            //DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Work Meeting", StartTime: "5:00", EventDuration: 1, eventType: "Work")
-              //  .position(x: 210.0, y: 760.0)
-            
-          //  DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Workout w/ CJ", StartTime: "5:00", EventDuration: 1, eventType: "Health")
-               // .position(x: 210.0, y: 840.0)
-            
-            
-            
+            }
+             
+          
         }
-        
-        
         
         //Bottom of ZStack, add events here
         
-        
-        
-        
-        
-        
-        
     }
-    
-    
+   
 }
+
+
+
 
 
 
