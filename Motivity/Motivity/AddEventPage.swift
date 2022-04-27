@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+struct Types {
+
+  var selection = [
+    "Select Event Type", "Health", "Work", "Rest"
+  ]
+}
+
+
+
 class AddEventController: UIViewController, ObservableObject{
     
     func dateToString(picker: Date) -> String{
@@ -33,12 +42,15 @@ struct AddEventPage: View {
     @State private var flexibleEvent: Bool = false
     
     @State private var eventName = ""
-    //@State private var startTime = ""
     @State private var duration = ""
-    @State private var eType = ""
+    //@State private var eType = ""
     @State private var eventDate = Date()
     
     @StateObject var authRouter: AuthRouter
+    
+    let types = Types()
+    
+    @State var selectedType: Int = .zero
 
     
     var body: some View {
@@ -163,29 +175,34 @@ struct AddEventPage: View {
                     /*TextField("Event Type", text: $eType)
                                 .textFieldStyle(.roundedBorder)
                                 .padding()*/
-                    Menu {
+                    /*Menu {
                         Button {
                             
                         } label: {
                             Text("Health")
-                            Image(systemName: "arrow.down.right.circle")
+                            Image(systemName: "heart")
                         }
                         Button {
                             
                         } label: {
                             Text("Work")
-                            Image(systemName: "arrow.up.and.down.circle")
+                            Image(systemName: "hammer")
                         }
                         Button {
                             
                         } label: {
                             Text("Rest")
-                            Image(systemName: "arrow.up.and.down.circle")
+                            Image(systemName: "sleep")
                         }
                     } label: {
                          Text("Event Type")
+                            .font(.system(size:20))
+                            .fontWeight(.bold)
+                            .opacity(0.3)
+                            .foregroundColor(Color.white)
+                            .padding(.trailing, 30)
                          Image(systemName: "tag.circle")
-                    }
+                    }*/
                     
                    /* Image("LARGE TEXT BACKGROUND")
                     Text("Location")
@@ -194,6 +211,41 @@ struct AddEventPage: View {
                         .opacity(0.3)
                         .foregroundColor(Color.white)
                         .padding(.leading, 20)*/
+                    
+                    
+                       Menu {
+                         ForEach(types.selection.indices, id: \.self) { indice in
+                           Button(action: {
+                             selectedType = indice
+                           }) {
+                             HStack {
+                               if selectedType == indice {
+                                 HStack {
+                                   Text("\(types.selection[indice])")
+                                   Image(systemName: "checkmark")
+                                 }
+                               }
+                               else {
+                                 Text("\(types.selection[indice])")
+                               }
+                             }
+                           }}}
+                label:{
+                    Text("\(types.selection[selectedType])")
+                        //.font(.system(size:))
+                        .fontWeight(.bold)
+                        .opacity(0.3)
+                      .frame(minWidth: 120, minHeight: 40, alignment: .center)
+                      .font(.headline)
+                      .foregroundColor(.gray)
+                      .multilineTextAlignment(.center)
+                      .id(selectedType)
+                      .padding([.trailing], 250)
+                      .background(.white)
+                }
+                .padding([.bottom], 50)
+                    
+                    
                      
                 }
                 
@@ -278,10 +330,12 @@ struct AddEventPage: View {
                 
                     let castTime = appView.timeToString(picker: eventDate)
                     
+                    let castType = types.selection[selectedType]
+                    
                     Button(action:{
                         
                         
-                        authRouter.createEvent(name: eventName, startDate: castDate, startTime: castTime, dur: duration, eventType: eType)
+                        authRouter.createEvent(name: eventName, startDate: castDate, startTime: castTime, dur: duration, eventType: castType)
                         
                         viewRouter.currentPage = .calendarPage
                         

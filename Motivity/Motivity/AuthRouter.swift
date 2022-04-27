@@ -102,9 +102,9 @@ class AuthRouter: ObservableObject {
     }
     
     func createEvent(name: String, startDate: String, startTime: String, dur: String, eventType: String){
-        print(startTime)
+        print(eventType)
         self.ref.child("Users").child(userID!).child("Events").child(name).setValue(["StartDate": startDate, "StartTime": startTime, "Duration": dur, "EventType": eventType])
-        print(startTime)
+        print(eventType)
     }
     
     func createGoal(name: String, desc: String){
