@@ -24,7 +24,7 @@ enum Page{
     
     //still to build UX/UI Pages
     
-    
+    case addEventPage
     case addTaskPage
     case editTaskPage
     case newUserSignUp

@@ -60,8 +60,10 @@ class AuthRouter: ObservableObject {
                 for e in database{
                     if !self.events.contains(e.key) {
                         self.events.append(e.key)
-                        self.events.append(e.value["Start"] as! String)
                         self.events.append(e.value["Duration"] as! String)
+                        self.events.append(e.value["EventType"] as! String)
+                        self.events.append(e.value["StartDate"] as! String)
+                        self.events.append(e.value["StartTime"] as! String)
                     }
                 }
             } else {
@@ -102,9 +104,9 @@ class AuthRouter: ObservableObject {
         })
     }
     
-    func createEvent(name: String, start: String, dur: String){
-        self.ref.child("Users").child(userID!).child("Events").child(name).setValue(["Start": start, "Duration": dur])
-    }
+    func createEvent(name: String, startDate: String, startTime: String, dur: String, eventType: String){
+            self.ref.child("Users").child(userID!).child("Events").child(name).setValue(["StartDate": startDate, "StartTime": startTime, "Duration": dur, "EventType": eventType])
+        }
     
     func createGoal(name: String, desc: String){
         self.ref.child("Users").child(userID!).child("Goals").child(name).setValue(["Desc": desc])
