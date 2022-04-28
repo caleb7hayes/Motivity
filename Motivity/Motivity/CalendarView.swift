@@ -71,7 +71,7 @@ struct CalendarView: View {
                     
                     Button(action:{
                         
-                        viewRouter.currentPage = .userProfilePage
+                        viewRouter.currentPage = .settingsPage
     
                     }){
                         
@@ -274,12 +274,18 @@ struct CalendarView: View {
           
             }
             
-             else if eventSize == 3 {
+             else {
                 
                 
                 DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
                     .position(x: 210.0, y: 680)
+                 
+                 
+                 MainCalendarEventView(authRouter: AuthRouter(), eventDate: event[3], Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
                 
+                 
+                 
+                 
                 DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
                     .position(x: 210.0, y: 760)
                 
