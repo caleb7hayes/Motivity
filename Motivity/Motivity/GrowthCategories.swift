@@ -166,8 +166,8 @@ struct GrowthCategories: View {
                     ZStack{
                         
                         Image("growthCategoriesBackground")
-                        Text("Silence and Solitude")
-                            .font(.system(size:23))
+                        Text("Entertainment")
+                            .font(.system(size:26))
                             .fontWeight(.semibold)
                             .foregroundColor(Color.white)
                     

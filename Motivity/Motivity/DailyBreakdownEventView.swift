@@ -267,14 +267,14 @@ struct MainCalendarEventView: View {
             let yLocationCG = eventYPostion(StartTime: StartTime)
             
             
-            if EventDuration == 1{
+            if EventDuration <= 1{
                 
                 Image("green short")
                     .position(x: xLocationCG, y: yLocationCG)
                 
             }
             
-            else if EventDuration == 2{
+            else if EventDuration <= 3{
                 
                 Image("green med")
                     .position(x: xLocationCG, y: yLocationCG)
@@ -282,7 +282,7 @@ struct MainCalendarEventView: View {
                 
             }
             
-            else if EventDuration == 4{
+            else{
                 
                 Image("green long")
                     .position(x: xLocationCG, y: yLocationCG)
@@ -298,14 +298,14 @@ struct MainCalendarEventView: View {
             let yLocationCG = eventYPostion(StartTime: StartTime)
             
             
-            if EventDuration == 1{
+            if EventDuration <= 1{
                 
                 Image("red short")
                     .position(x: xLocationCG, y: yLocationCG)
                 
             }
             
-            else if EventDuration == 2{
+            else if EventDuration <= 3{
                 
                 Image("red med")
                     .position(x: xLocationCG, y: yLocationCG)
@@ -313,7 +313,7 @@ struct MainCalendarEventView: View {
                 
             }
             
-            else if EventDuration == 4{
+            else {
                 
                 Image("red long")
                     .position(x: xLocationCG, y: yLocationCG)
