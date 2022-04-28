@@ -7,8 +7,6 @@
 import SwiftUI
 import Foundation
 
-var selectedDate = Date()
-var totalSquares = [Date]()
 
 class CalendarViewController: UIViewController, ObservableObject{
     
@@ -27,146 +25,13 @@ class CalendarViewController: UIViewController, ObservableObject{
         return days.map{ formatter.string(from: $0) }
     }
     
-    func yep() -> [String]{
-        return ["1", "2", "3", "4", "5", "6", "7"]
-    }
-    
-
-    //var totalSquares = [Date]()
-    let calendar = Calendar.current
-    
-    
-    func dayOfMonth2(date: Date) -> Int
-    {
-        let components = calendar.dateComponents([.day], from: date)
-        return components.day!
-    }
-    
-    
-    
-    
-    
-    func addDays(date: Date, days: Int) -> Date
-    {
-        return calendar.date(byAdding: .day, value: days, to: date)!
-        
-    }
-    
-    
-    
-    
-    func sundayForDate(date: Date) -> Date
-    {
-        var current = date
-        let oneWeekAgo = addDays(date: current, days: -7)
-        
-        while(current > oneWeekAgo)
-        {
-            let currentWeekDay = calendar.dateComponents([.weekday], from: current).weekday
-            if(currentWeekDay == 1)
-            {
-                return current
-            }
-            current = addDays(date: current, days: -1)
-        }
-        return current
-    }
-    
-    
-    
-    
-    func setWeekView() -> [Date]//[String]
-    {
-        
-        var current = self.sundayForDate(date: selectedDate)
-        let nextSunday = self.addDays(date: current, days: 7)
-        
-        while (current < nextSunday)
-        {
-            totalSquares.append(current)
-            
-            current = self.addDays(date: current, days: 1)
-        }
-        
-        //let strings:[String] = totalSquares as! [String]
-        //return strings
-        
-        return totalSquares
-        
-        
-      
-    }
-    
-    
-    
-    func addDays2(date: Date, days: Int) -> Date
-    {
-        return calendar.date(byAdding: .day, value: days, to: date)!
-    }
-    
-    
-  /*  func dayOfMonth() -> [String]
-    {
-        //let components = calendar.dateComponents([.day], from: date)
-        //return components.day!
-        let date = Date()
-        let currentWeekDay = calendar.dateComponents([.weekday], from: date).weekday
-        let components = calendar.dateComponents([.day], from: date)
-        var strings = [String]()
-        
-        //calendar.date(byAdding: .day, value: days, //to: date)!
-        
-        if(currentWeekDay == 1)
-        {
-            strings = [String(components.day!),
-                       String(components.day! + 1),
-                       String(components.day! + 2),
-                       String(components.day! + 3),
-                       String(components.day! + 4),
-                       String(components.day! + 5),
-                       String(components.day! + 6)]
-            
-        }
-        else if(currentWeekDay == 4)
-        {
-            /*strings = [String(components.day! - 1),
-                       String(components.day!),
-                       String(components.day! + 1),
-                       String(components.day! + 2),
-                       String(components.day! + 3),
-                       String(components.day! + 4),
-                       String(components.day! + 14)]*/
-            
-            return calendar.dateComponents(([.day], from: date) byAdding: .day, value: 1 to: date)!
-            
-        }
-        
-        
-       /* return [String(components.day! - 1),
-                String(components.day!),
-                String(components.day! + 1),
-                String(components.day! + 2),
-                String(components.day! + 3),
-                String(components.day! + 4),
-                String(components.day! + 15)]*/
-        //return strings
-        
-    }*/
     
 
     
-  /*  public func doSomething() -> [String]{
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d"
-        
-        let go = [formatter.string(from: date), formatter.string(from: date), formatter.string(from: date), formatter.string(from: date), formatter.string(from: date), formatter.string(from: date), formatter.string(from: date)]
-        
-        return go
-    }*/
     
 
 }
+
 
 
 struct CalendarView: View {
@@ -197,7 +62,7 @@ struct CalendarView: View {
         
         ZStack{
             
-            Image("CALENDAR BACKGROUND").ignoresSafeArea()
+            Image("Calendar Demo View").ignoresSafeArea()
             
             
             
@@ -305,6 +170,7 @@ struct CalendarView: View {
                     
                     
                 }.padding(.bottom, 260)
+                     
                 
                 //Regformat and sugesstion button
                 
@@ -342,7 +208,7 @@ struct CalendarView: View {
                     Spacer()
                     
                 }
-                .padding(.top,50)
+                .padding(.top,20)
                 .padding(.bottom,70)
                 //.padding(.bottom,170)
                 
@@ -356,12 +222,10 @@ struct CalendarView: View {
                     .font(.headline)
                     .fontWeight(.black)
                     .foregroundColor(Color.white)
-                    .padding(.trailing, 200)
-                    .padding(.bottom, 180)
-                    .padding(.top,10)
+                    .position(x: 100, y: 0)
                 
                 
-            .onAppear{
+            }.onAppear{
                 authRouter.displayEvent()
             }
                    // .padding(.bottom, 160)
@@ -371,11 +235,9 @@ struct CalendarView: View {
                 
                 let event = authRouter.events
                 
-                let eventSize = event.count / 3
-        
+                let eventSize = event.count / 5
                 
                 if eventSize == 0 {
-                    
                     
                     
                     
@@ -421,9 +283,10 @@ struct CalendarView: View {
                         .position(x: 210.0, y: 840.0)
                 
                 }
+                 
             }
             
-        }
+        
     }
 }
 

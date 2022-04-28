@@ -25,12 +25,12 @@ struct DailyBreakdownEventView: View {
         let ch = Character(":")
         let startHour = startTime.split(separator: ch)
         let newHour = Int(startHour[0])! + eventduration
-        return String(newHour)
+        return String(newHour) + ":" + String(startHour[1])
     }
     
     var body: some View {
         
-        if eventType == "Rest"{
+        if eventType.isEqual("Rest"){
             
             ZStack{
                 
@@ -46,7 +46,7 @@ struct DailyBreakdownEventView: View {
                             .fontWeight(.black)
                             .foregroundColor(Color.white)
                         
-                        Text(endTime(startTime: StartTime, eventduration: EventDuration) + ":00")
+                        Text(endTime(startTime: StartTime, eventduration: EventDuration))
                             .font(.system(size:14))
                             .fontWeight(.black)
                             .foregroundColor(Color.white)
@@ -74,7 +74,7 @@ struct DailyBreakdownEventView: View {
             
         }
         
-        if eventType == "Work"{
+        if eventType.isEqual("Work"){
             
             ZStack{
                 
@@ -90,7 +90,7 @@ struct DailyBreakdownEventView: View {
                             .fontWeight(.black)
                             .foregroundColor(Color.white)
                         
-                        Text(endTime(startTime: StartTime, eventduration: EventDuration) + ":00")
+                        Text(endTime(startTime: StartTime, eventduration: EventDuration))
                             .font(.system(size:14))
                             .fontWeight(.black)
                             .foregroundColor(Color.white)
@@ -119,7 +119,7 @@ struct DailyBreakdownEventView: View {
         }
         
         
-        if eventType == "Health"{
+        if eventType.isEqual("Health"){
             
             ZStack{
                 
@@ -135,7 +135,7 @@ struct DailyBreakdownEventView: View {
                             .fontWeight(.black)
                             .foregroundColor(Color.white)
                         
-                        Text(endTime(startTime: StartTime, eventduration: EventDuration) + ":00")
+                        Text(endTime(startTime: StartTime, eventduration: EventDuration))
                             .font(.system(size:14))
                             .fontWeight(.black)
                             .foregroundColor(Color.white)
