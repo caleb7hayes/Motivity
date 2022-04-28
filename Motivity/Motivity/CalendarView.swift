@@ -170,13 +170,20 @@ struct CalendarView: View {
                 //Regformat and sugesstion button
                 
                 HStack{
-                    
+
                     Spacer()
-                    Image("REFORMAT BUTTON")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 45, height: 45)
-                    
+                    Button(action: {
+                        
+                        viewRouter.currentPage = .changeView1
+                        
+                        
+                        
+                    }) {
+                        Image("REFORMAT BUTTON")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 45, height: 45)
+                    }
                     Spacer()
                     
                     Button(action:{

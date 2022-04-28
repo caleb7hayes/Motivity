@@ -69,6 +69,21 @@ struct MotherView: View {
             
         case .addEventPage:
             AddEventPage(viewRouter: viewRouter, authRouter: authRouter)
+            
+            
+        case .changeView1:
+            CalendarView2(viewRouter: viewRouter, authRouter: authRouter)
+            
+            
+        case .changeView2:
+            CalendarView3(viewRouter: viewRouter, authRouter: authRouter)
+            
+            
+        case .changeView3:
+            CalendarView4(viewRouter: viewRouter, authRouter: authRouter)
+        
+
+            
         }
         
     }
