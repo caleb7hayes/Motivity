@@ -79,8 +79,8 @@ struct MotivityWidgetSmallView : View {
     
     var body: some View {
         ZStack {
-            Image("Motivity Login Background").ignoresSafeArea()
-                .padding(.leading, 20)
+            Image("Widget Background2").ignoresSafeArea()
+                .padding(.trailing, 100)
             VStack (alignment: .leading) {
                 HStack{
                     Text(currentData ?? "Please Log In")
@@ -106,29 +106,38 @@ struct MotivityWidgetMediumView : View {
     
     @State var currentData: String?
     @State var currentStarts: String?
+    @State var currentDay: String?
     
     var body: some View {
         ZStack {
-            Image("Motivity Login Background").ignoresSafeArea()
-                .padding(.leading, 20)
-            VStack (alignment: .leading) {
-                HStack{
-                    Text(currentData ?? "Please Log In")
-                        .foregroundColor(Color.white)
-                        .onAppear {
-                            currentData = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "medium")
-                        }
-                    Text(currentStarts ?? "")
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.trailing)
-                        .onAppear{
-                            currentStarts = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "mediumTimes")
-                        }
+            Image("Widget Background2").ignoresSafeArea()
+//                .padding(.leading, 20)
+            HStack{
+                VStack (alignment: .leading) {
+                    HStack{
+                        Text(currentData ?? "Please Log In")
+                            .foregroundColor(Color.white)
+                            .bold()
+                            .onAppear {
+                                currentData = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "medium")
+                            }
+                        Text(currentStarts ?? "")
+                            .foregroundColor(Color.white)
+                            .bold()
+                            .multilineTextAlignment(.trailing)
+                            .onAppear{
+                                currentStarts = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "mediumTimes")
+                            }
+                    }
                 }
-                Text("You can do it!")
+                Text("You have 4 hours\nof free time today\nfind time to get\noutside!")
                     .foregroundColor(Color.white)
+                    .padding(.leading, 15)
+                    .padding(.bottom, 20)
+                
             }
-            .padding(.trailing, 175)
+            
+//           .padding(.trailing, 20)
         }
     }
 }
@@ -138,12 +147,19 @@ struct MotivityWidgetLargeView : View {
     
     @State var currentData: String?
     @State var currentStarts: String?
+    @State var currentDay: String?
     
     var body: some View {
         ZStack {
-            Image("Motivity Login Background").ignoresSafeArea()
+            Image("Widget Background").ignoresSafeArea()
                 .padding(.leading, 20)
             VStack (alignment: .leading) {
+                Text(currentDay ?? "")
+                    .foregroundColor(Color.white)
+                    .onAppear{
+                        currentDay = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "largeDay")
+                    }
+                    .padding(.bottom, 100)
                 HStack{
                     Text(currentData ?? "Please Log In")
                         .foregroundColor(Color.white)

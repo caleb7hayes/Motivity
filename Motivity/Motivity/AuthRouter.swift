@@ -116,17 +116,43 @@ class AuthRouter: ObservableObject {
         self.ref.child("Users").child(userID!).child("Tasks").child(name).setValue(["Desc": desc])
     }
     
-    
+    func getDay() -> String {
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "EEEE"
+        let day = df.string(from: date)
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: date)
+        let dayOfMonth = components.day
+        let monthDay = String(dayOfMonth!)
+        
+        var finalString = ""
+        
+        if monthDay == "1"{
+            finalString += day + " the " + monthDay + "st"
+        }
+        else if monthDay == "2"{
+            finalString += day + " the " + monthDay + "nd"
+        }
+        else if monthDay == "3"{
+            finalString += day + " the " + monthDay + "rd"
+        }
+        else{
+            finalString += day + " the " + monthDay + "th"
+        }
+        
+        return finalString
+    }
     //function to send data to small widget
     func sendSmallWidgetData () -> Void {
         var eventData : String = ""
         var eventStarts : String = ""
         
         let seq = stride(from: 0, to: self.events.count, by: 5)
-        print(self.events.count)
         for i in seq{
             let currentEvent = self.events[i]
-            let currentEventStart = self.events[i+1]
+            let currentEventStart = self.events[i+4]
             if currentEvent.count > 12{
                 let index = currentEvent.index(currentEvent.startIndex, offsetBy: 11)
                 let subString = currentEvent[..<index]
@@ -140,6 +166,8 @@ class AuthRouter: ObservableObject {
             eventData += "\n"
             eventStarts += "\n"
         }
+        let dayData = getDay()
+        UserDefaults(suiteName: "group.motivity.widget")!.set(dayData, forKey: "smallDay")
         UserDefaults(suiteName: "group.motivity.widget")!.set(eventData, forKey: "small")
         UserDefaults(suiteName: "group.motivity.widget")!.set(eventStarts, forKey: "smallTimes")
         WidgetCenter.shared.reloadAllTimelines()
@@ -151,17 +179,29 @@ class AuthRouter: ObservableObject {
         var eventStarts : String = ""
         
         let seq = stride(from: 0, to: self.events.count, by: 5)
-        
         for i in seq{
             let currentEvent = self.events[i]
-            let currentEventStart = self.events[i+1]
-            eventData += currentEvent + "\n"
-            eventStarts += currentEventStart + "\n"
-            
+            let currentEventStart = self.events[i+4]
+            if currentEvent.count > 12{
+                let index = currentEvent.index(currentEvent.startIndex, offsetBy: 11)
+                let subString = currentEvent[..<index]
+                eventData += subString + "..."
+                eventStarts += currentEventStart
+            }
+            else{
+                eventData += currentEvent
+                eventStarts += currentEventStart
+            }
+        eventData += "\n"
+        eventStarts += "\n"
         }
+        let dayData = getDay()
+        UserDefaults(suiteName: "group.motivity.widget")!.set(dayData, forKey: "mediumDay")
         UserDefaults(suiteName: "group.motivity.widget")!.set(eventData, forKey: "medium")
         UserDefaults(suiteName: "group.motivity.widget")!.set(eventStarts, forKey: "mediumTimes")
-        WidgetCenter.shared.reloadAllTimelines()    }
+        WidgetCenter.shared.reloadAllTimelines()
+        
+    }
     
     
     // function to send information to largeWidget
@@ -173,11 +213,13 @@ class AuthRouter: ObservableObject {
         
         for i in seq{
             let currentEvent = self.events[i]
-            let currentEventStart = self.events[i+1]
+            let currentEventStart = self.events[i+4]
             eventData += currentEvent + "\n"
             eventStarts += currentEventStart + "\n"
             
         }
+        let dayData = getDay()
+        UserDefaults(suiteName: "group.motivity.widget")!.set(dayData, forKey: "largeDay")
         UserDefaults(suiteName: "group.motivity.widget")!.set(eventData, forKey: "large")
         UserDefaults(suiteName: "group.motivity.widget")!.set(eventStarts, forKey: "largeTimes")
         WidgetCenter.shared.reloadAllTimelines()
