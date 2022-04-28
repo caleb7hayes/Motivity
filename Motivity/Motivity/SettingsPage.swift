@@ -190,19 +190,36 @@ struct SettingsPage: View {
                 HStack{
                     
                     Spacer()
-                    Image("back arrow")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 45, height: 45)
+                    Button(action:{
+                        
+                        viewRouter.currentPage = .calendarPage
+    
+                    }){
+                        
+                        Image("back arrow")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 45, height: 45)
+                    }
+                        
                     
                     Spacer()
                     
-                    Image("CONFIRM BUTTON")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 45, height: 45)
+                    Button(action:{
+                        
+                        viewRouter.currentPage = .calendarPage
+    
+                    }){
+                        
+                        Image("CONFIRM BUTTON")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 45, height: 45)
+                    }
+                        
                     Spacer()
-                  
+
+                    
                 }
            
             }

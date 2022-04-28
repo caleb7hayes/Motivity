@@ -71,7 +71,7 @@ struct CalendarView: View {
                     
                     Button(action:{
                         
-                        viewRouter.currentPage = .userProfilePage
+                        viewRouter.currentPage = .settingsPage
     
                     }){
                         
@@ -195,11 +195,15 @@ struct CalendarView: View {
                     
                         
                     Spacer()
-                    
+                    Button(action: {
+                        authRouter.createIdea()
+                    }) {
                     Image("SUGGESTION BUTTON")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 45, height: 45)
+                    
+                    }
                     Spacer()
                     
                 }
@@ -255,8 +259,12 @@ struct CalendarView: View {
             
             else if eventSize == 1 {
                 
+                
+                //----------EVENT ONE------------
                 DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
                     .position(x: 210.0, y: 680.0)
+                
+                MainCalendarEventView(authRouter: AuthRouter(), eventDate: event[3], Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
                 
                 
                 
@@ -266,26 +274,50 @@ struct CalendarView: View {
             else if eventSize == 2 {
                 
                 
+                //----------EVENT ONE------------
+                
                 DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
                     .position(x: 210.0, y: 680.0)
                 
+                MainCalendarEventView(authRouter: AuthRouter(), eventDate: event[3], Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
+                
+                //----------EVENT TWO------------
+                
                 DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
                     .position(x: 210.0, y: 760.0)
+                
+                MainCalendarEventView(authRouter: AuthRouter(), eventDate: event[8], Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
           
             }
             
-             else if eventSize == 3 {
+             else {
                 
-                
+                //----------EVENT ONE------------
+                 
                 DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
                     .position(x: 210.0, y: 680)
+                 
+                 
+                 MainCalendarEventView(authRouter: AuthRouter(), eventDate: event[3], Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
                 
+                 
+                 //----------EVENT TWO------------
+                 
                 DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
                     .position(x: 210.0, y: 760)
+                 
+                 
+                 MainCalendarEventView(authRouter: AuthRouter(), eventDate: event[8], Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
                 
+                 
+                 //----------EVENT THREE------------
+                 
                 
                 DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[10], StartTime: event[14], EventDuration: Int(event[11]) ?? 1, eventType: event[12])
                     .position(x: 210.0, y: 840)
+                 
+                 
+                 MainCalendarEventView(authRouter: AuthRouter(), eventDate: event[13], Event: event[10], StartTime: event[14], EventDuration: Int(event[11]) ?? 1, eventType: event[12])
             
             }
             

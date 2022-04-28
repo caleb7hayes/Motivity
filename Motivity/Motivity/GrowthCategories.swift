@@ -166,8 +166,8 @@ struct GrowthCategories: View {
                     ZStack{
                         
                         Image("growthCategoriesBackground")
-                        Text("Silence and Solitude")
-                            .font(.system(size:23))
+                        Text("Entertainment")
+                            .font(.system(size:26))
                             .fontWeight(.semibold)
                             .foregroundColor(Color.white)
                     
@@ -204,7 +204,12 @@ struct GrowthCategories: View {
                     Spacer()
                     
                     Button(action:{
-                        
+                        authRouter.categorey1 = categorey1
+                        authRouter.categorey2 = categorey2
+                        authRouter.categorey3 = categorey3
+                        authRouter.categorey4 = categorey4
+                        authRouter.categorey5 = categorey5
+                        authRouter.categorey6 = categorey6
                         viewRouter.currentPage = .userProfilePage
     
                     }){
