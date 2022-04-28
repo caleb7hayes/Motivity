@@ -27,7 +27,7 @@ class AddEventController: UIViewController, ObservableObject{
     
     func timeToString(picker: Date) -> String{
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mm"
+        dateFormatter.dateFormat = "HH:mm"
         let pick = dateFormatter.string(from: picker)
         return String(pick)
     }

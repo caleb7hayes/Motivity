@@ -204,7 +204,12 @@ struct GrowthCategories: View {
                     Spacer()
                     
                     Button(action:{
-                        
+                        authRouter.categorey1 = categorey1
+                        authRouter.categorey2 = categorey2
+                        authRouter.categorey3 = categorey3
+                        authRouter.categorey4 = categorey4
+                        authRouter.categorey5 = categorey5
+                        authRouter.categorey6 = categorey6
                         viewRouter.currentPage = .userProfilePage
     
                     }){
