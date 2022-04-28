@@ -8,6 +8,7 @@ import SwiftUI
 import Foundation
 
 
+
 class CalendarViewController: UIViewController, ObservableObject{
     
     func getCurrentWeek() -> [String]{
@@ -25,13 +26,8 @@ class CalendarViewController: UIViewController, ObservableObject{
         return days.map{ formatter.string(from: $0) }
     }
     
-    
-
-    
-    
 
 }
-
 
 
 struct CalendarView: View {
@@ -170,7 +166,6 @@ struct CalendarView: View {
                     
                     
                 }.padding(.bottom, 260)
-                     
                 
                 //Regformat and sugesstion button
                 
@@ -208,85 +203,93 @@ struct CalendarView: View {
                     Spacer()
                     
                 }
-                .padding(.top,20)
+                .padding(.top,-10)
                 .padding(.bottom,70)
                 //.padding(.bottom,170)
                 
                 //Daily Breakdown
                 
                 
-                Text("Daily Breakdown")
+                Text("")
                 
-                    
+                  
                     .font(.system(size:23))
                     .font(.headline)
                     .fontWeight(.black)
                     .foregroundColor(Color.white)
-                    .position(x: 100, y: 0)
+                    .padding(.trailing, 200)
+                    .padding(.bottom, 180)
+                    .padding(.top,10)
                 
                 
-            }.onAppear{
+                
+                    
+                
+                
+            .onAppear{
                 authRouter.displayEvent()
             }
                    // .padding(.bottom, 160)
                 
                 
-                
-                
-                let event = authRouter.events
-                
-                let eventSize = event.count / 5
-                
-                if eventSize == 0 {
-                    
-                    
-                    
-                }
-                
-                
-                else if eventSize == 1 {
-                    
-                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
-                        .position(x: 210.0, y: 680.0)
-                    
-                    
-                    
-                    
-                }
-                
-                else if eventSize == 2 {
-                    
-                    
-                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
-                        .position(x: 210.0, y: 680.0)
-                    
-                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
-                        .position(x: 210.0, y: 760.0)
-                    
-                    
-                    
-                    
-                    
-                }
-                
-                 else if eventSize == 3 {
-                    
-                    
-                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
-                        .position(x: 210.0, y: 680.0)
-                    
-                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
-                        .position(x: 210.0, y: 760.0)
-                    
-                    
-                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[10], StartTime: event[14], EventDuration: Int(event[11]) ?? 1, eventType: event[12])
-                        .position(x: 210.0, y: 840.0)
-                
-                }
-                 
             }
             
-        
+            Text("Daily Breakdown")
+                .font(.system(size:23))
+                .font(.headline)
+                .fontWeight(.black)
+                .foregroundColor(Color.white)
+                .position(x: 120, y: 610)
+            
+            
+            
+            let event = authRouter.events
+            
+            let eventSize = event.count / 5
+    
+            
+            if eventSize == 0 {
+      
+            }
+            
+            
+            else if eventSize == 1 {
+                
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
+                    .position(x: 210.0, y: 680.0)
+                
+                
+                
+                
+            }
+            
+            else if eventSize == 2 {
+                
+                
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
+                    .position(x: 210.0, y: 680.0)
+                
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
+                    .position(x: 210.0, y: 760.0)
+          
+            }
+            
+             else if eventSize == 3 {
+                
+                
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[0], StartTime: event[4], EventDuration: Int(event[1]) ?? 1, eventType: event[2])
+                    .position(x: 210.0, y: 680)
+                
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[5], StartTime: event[9], EventDuration: Int(event[6]) ?? 1, eventType: event[7])
+                    .position(x: 210.0, y: 760)
+                
+                
+                DailyBreakdownEventView(authRouter: AuthRouter(), Event: event[10], StartTime: event[14], EventDuration: Int(event[11]) ?? 1, eventType: event[12])
+                    .position(x: 210.0, y: 840)
+            
+            }
+            
+        }
     }
 }
 

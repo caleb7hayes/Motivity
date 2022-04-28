@@ -19,7 +19,7 @@ struct DailyBreakdownEventView: View {
     var EventDuration: Int
     
     var eventType: String // 'work' or 'health' or 'rest'
-  
+    
     
     func endTime(startTime: String, eventduration: Int) -> String{
         let ch = Character(":")
@@ -66,10 +66,10 @@ struct DailyBreakdownEventView: View {
                         .font(.system(size:14))
                         .fontWeight(.black)
                         .foregroundColor(Color.white)
-                
+                    
                     Spacer()
                 }
-               
+                
             }
             
         }
@@ -110,10 +110,10 @@ struct DailyBreakdownEventView: View {
                         .font(.system(size:14))
                         .fontWeight(.black)
                         .foregroundColor(Color.white)
-                
+                    
                     Spacer()
                 }
-               
+                
             }
             
         }
@@ -155,10 +155,10 @@ struct DailyBreakdownEventView: View {
                         .font(.system(size:14))
                         .fontWeight(.black)
                         .foregroundColor(Color.white)
-                
+                    
                     Spacer()
                 }
-               
+                
             }
             
         }
@@ -172,27 +172,192 @@ struct DailyBreakdownEventView: View {
 
 
 
-
-
-
-
-
-
-
-struct DailyBreakdownEventView_Previews: PreviewProvider {
-    static var previews: some View {
+struct MainCalendarEventView: View {
+    
+    
+    @StateObject var authRouter: AuthRouter
+    
+    
+    let eventDate: String
+    let Event: String
+    let StartTime: String
+    var EventDuration: Int
+    
+    var eventType: String // 'work' or 'health' or 'rest'
+    
+    
+    func eventXPostion(eventDate: String) -> String {
         
+        var xPostion: Int
         
-        VStack{
-            
-            DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Date Night", StartTime: "11:00", EventDuration: 1, eventType: "Rest")
-            
-            
-            
-        
-            
+        switch eventDate{
+        case "24":
+            xPostion = 32
+        case "25":
+            xPostion = 91
+        case "26":
+            xPostion = 154
+        case "27":
+            xPostion = 222
+        case "28":
+            xPostion = 285
+        case "29":
+            xPostion = 345
+        case "30":
+            xPostion = 400
+        default:
+            xPostion = 0
         }
+    
+        return String(xPostion)
+        
+    }
+    
+    
+    
+    func eventYPostion(StartTime:String) -> CGFloat{
+        let ch = Character(":")
+        let startHour = StartTime.split(separator: ch)
+        let startHourString = String(startHour[0])
+        var yPosition: CGFloat
+        let StartTimeCGFloat = CGFloat(Double(startHourString) ?? 0)
+        yPosition = 180 + ((StartTimeCGFloat * 11.00))
+        return yPosition
+        
+    }
+    
+    
+    
+    var body: some View {
+        
+        if eventType == "Work"{
+            
+            let xLocation = eventXPostion(eventDate: eventDate)
+            let xLocationCG = CGFloat(Double(xLocation) ?? 0)
+            
+            let yLocationCG = eventYPostion(StartTime: StartTime)
+            
+            
+            if EventDuration == 1{
+                
+                Image("blue short")
+                    .position(x: xLocationCG, y: yLocationCG)
+                
+            }
+            
+            else if EventDuration == 2{
+                
+                Image("blue med")
+                    .position(x: xLocationCG, y: yLocationCG)
+                
+                
+            }
+            
+            else if EventDuration == 4{
+                
+                Image("blue long")
+                    .position(x: xLocationCG, y: yLocationCG)
+                
+            }
+        }
+        
+        if eventType == "Health"{
+            
+            let xLocation = eventXPostion(eventDate: eventDate)
+            let xLocationCG = CGFloat(Double(xLocation) ?? 0)
+            
+            let yLocationCG = eventYPostion(StartTime: StartTime)
+            
+            
+            if EventDuration == 1{
+                
+                Image("green short")
+                    .position(x: xLocationCG, y: yLocationCG)
+                
+            }
+            
+            else if EventDuration == 2{
+                
+                Image("green med")
+                    .position(x: xLocationCG, y: yLocationCG)
+                
+                
+            }
+            
+            else if EventDuration == 4{
+                
+                Image("green long")
+                    .position(x: xLocationCG, y: yLocationCG)
+                
+            }
+        }
+        
+        if eventType == "Rest"{
+            
+            let xLocation = eventXPostion(eventDate: eventDate)
+            let xLocationCG = CGFloat(Double(xLocation) ?? 0)
+            
+            let yLocationCG = eventYPostion(StartTime: StartTime)
+            
+            
+            if EventDuration == 1{
+                
+                Image("red short")
+                    .position(x: xLocationCG, y: yLocationCG)
+                
+            }
+            
+            else if EventDuration == 2{
+                
+                Image("red med")
+                    .position(x: xLocationCG, y: yLocationCG)
+                
+                
+            }
+            
+            else if EventDuration == 4{
+                
+                Image("red long")
+                    .position(x: xLocationCG, y: yLocationCG)
+                
+            }
+        }
+
+        
+        
         
         
     }
 }
+
+
+    
+    struct DailyBreakdownEventView_Previews: PreviewProvider {
+        static var previews: some View {
+            
+            
+            
+            ZStack{
+                
+                Image("Calendar Demo View").ignoresSafeArea()
+                VStack{
+                    
+                    
+                    
+                    MainCalendarEventView(authRouter: AuthRouter(),eventDate: "30", Event: "Mother's Day", StartTime: "13:00", EventDuration: 4, eventType: "Rest")
+                    
+                    
+                }
+                
+                
+                
+                    
+                    DailyBreakdownEventView(authRouter: AuthRouter(), Event: "Test", StartTime: "12:00", EventDuration: 4, eventType: "Work")
+                     .position(x: 210, y: 710 )
+                    
+                
+            }
+            
+        }
+    }
+
