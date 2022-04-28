@@ -167,12 +167,35 @@ class AuthRouter: ObservableObject {
         
     }
     
+    func getCat () -> String {
+        if categorey1{
+            return "During your free time\ntoday, find time to \nrest! You deserve it🧘"
+        }
+        else if categorey2 {
+            return "In your free time \ntoday, let's do some \nself-relfection😌"
+        }
+        else if categorey3 {
+            return "Looks like you\n have time to go the\n gym today!💪"
+        }
+        else if categorey4{
+            return "Take a minute\n get out in the \ncommunity today!"
+        }
+        else if categorey5{
+            return "Find some time \nto read scripture or\n pray today🙏"
+        }
+        else if categorey6{
+            return "Lets find time to \nread a book today!📚"
+        }
+        else{
+            return ""
+        }
+    }
+    
     
     //function to send data to small widget
     func sendSmallWidgetData () -> Void {
         var eventData : String = ""
         var eventStarts : String = ""
-        
         let seq = stride(from: 0, to: self.events.count, by: 5)
         for i in seq{
             let currentEvent = self.events[i]
@@ -220,6 +243,10 @@ class AuthRouter: ObservableObject {
         eventStarts += "\n"
         }
         let dayData = getDay()
+        let cat = getCat()
+        if cat != ""{
+            UserDefaults(suiteName: "group.motivity.widget")!.set(cat, forKey: "mediumCat")
+        }
         UserDefaults(suiteName: "group.motivity.widget")!.set(dayData, forKey: "mediumDay")
         UserDefaults(suiteName: "group.motivity.widget")!.set(eventData, forKey: "medium")
         UserDefaults(suiteName: "group.motivity.widget")!.set(eventStarts, forKey: "mediumTimes")

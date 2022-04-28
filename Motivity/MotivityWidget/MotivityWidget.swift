@@ -85,6 +85,7 @@ struct MotivityWidgetSmallView : View {
                 HStack{
                     Text(currentData ?? "Please Log In")
                         .foregroundColor(Color.white)
+                        .bold()
                         .onAppear {
                             currentData = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "small")
                         }
@@ -107,6 +108,7 @@ struct MotivityWidgetMediumView : View {
     @State var currentData: String?
     @State var currentStarts: String?
     @State var currentDay: String?
+    @State var userCat: String?
     
     var body: some View {
         ZStack {
@@ -130,10 +132,12 @@ struct MotivityWidgetMediumView : View {
                             }
                     }
                 }
-                Text("You have 4 hours\nof free time today\nfind time to get\noutside!")
+                Text(userCat ?? "")
+                    .padding(.leading, 25)
                     .foregroundColor(Color.white)
-                    .padding(.leading, 15)
-                    .padding(.bottom, 20)
+                    .onAppear{
+                        userCat = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "mediumCat")
+                    }
                 
             }
             
