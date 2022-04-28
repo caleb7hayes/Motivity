@@ -22,6 +22,13 @@ class AuthRouter: ObservableObject {
     @Published var events : [String] = []
     @Published var goals : [String] = []
     @Published var tasks : [String] = []
+    
+    @Published var categorey1: Bool = false
+    @Published var categorey2: Bool = false
+    @Published var categorey3: Bool = false
+    @Published var categorey4: Bool = false
+    @Published var categorey5: Bool = false
+    @Published var categorey6: Bool = false
 
     var isSignedIn: Bool {
        return auth.currentUser != nil
@@ -114,6 +121,21 @@ class AuthRouter: ObservableObject {
     
     func createTask(name: String, desc: String){
         self.ref.child("Users").child(userID!).child("Tasks").child(name).setValue(["Desc": desc])
+    }
+    
+    func createIdea(){
+        if categorey1 && categorey2 {
+        self.ref.child("Users").child(userID!).child("Events").child("Read").setValue(["StartDate": "30", "StartTime": "8:00", "Duration": "1", "EventType": "Rest"])
+        } else if categorey1 && categorey3 {
+        self.ref.child("Users").child(userID!).child("Events").child("Massage").setValue(["StartDate": "29", "StartTime": "13:00", "Duration": "1", "EventType": "Health"])
+        } else if categorey1 && categorey6{
+            self.ref.child("Users").child(userID!).child("Events").child("Netflix").setValue(["StartDate": "29", "StartTime": "20:00", "Duration": "2", "EventType": "Rest"])
+        } else if categorey3 && categorey4 {
+            self.ref.child("Users").child(userID!).child("Events").child("Community Run").setValue(["StartDate": "29", "StartTime": "8:00", "Duration": "1", "EventType": "Health"])
+        } else if categorey5 {
+            self.ref.child("Users").child(userID!).child("Events").child("Go to Church").setValue(["StartDate": "29", "StartTime": "9:00", "Duration": "2", "EventType": "Rest"])
+        }
+        
     }
     
     
