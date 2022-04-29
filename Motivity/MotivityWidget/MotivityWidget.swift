@@ -14,9 +14,7 @@ import Firebase
 
 
 struct Provider: TimelineProvider {
-    
-    //    var eventData: Data = Data()
-    
+        
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date())
     }
@@ -31,12 +29,8 @@ struct Provider: TimelineProvider {
         var entries: [SimpleEntry] = []
 
         let currentDate = Date()
-//        let midnight = Calendar.current.startOfDay(for: currentDate)
-//        let nextMidnight = Calendar.current.date(byAdding: .day, value: 1, to: midnight)
-//        for offset in 0 ..< 60 * 24{
         let entryDate = SimpleEntry(date: currentDate)
         entries.append(entryDate)
-//        }
         let refreshDate = Calendar.current.date(byAdding: .minute, value: 2, to: Date())!
         let timeline = Timeline(entries: entries, policy: .after(refreshDate))
         completion(timeline)
@@ -113,7 +107,6 @@ struct MotivityWidgetMediumView : View {
     var body: some View {
         ZStack {
             Image("Widget Background2").ignoresSafeArea()
-//                .padding(.leading, 20)
             HStack{
                 VStack (alignment: .leading) {
                     HStack{
@@ -131,17 +124,16 @@ struct MotivityWidgetMediumView : View {
                                 currentStarts = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "mediumTimes")
                             }
                     }
-                }
+                }.padding(.top, 20)
                 Text(userCat ?? "")
                     .padding(.leading, 25)
                     .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
                     .onAppear{
                         userCat = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "mediumCat")
                     }
                 
             }
-            
-//           .padding(.trailing, 20)
         }
     }
 }
@@ -203,7 +195,7 @@ struct MotivityWidget: Widget {
             MotivityWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Motivity")
-        .description("Motivity Widgets")
+        .description("Motivity Widgets!")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }

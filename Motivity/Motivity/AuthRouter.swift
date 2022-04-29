@@ -169,7 +169,7 @@ class AuthRouter: ObservableObject {
     
     func getCat () -> String {
         if categorey1{
-            return "During your free time\ntoday, find time to \nrest! You deserve it🧘"
+            return "During your free\n time today, find\ntime to rest!\nYou deserve it🧘"
         }
         else if categorey2 {
             return "In your free time \ntoday, let's do some \nself-relfection😌"
@@ -229,7 +229,7 @@ class AuthRouter: ObservableObject {
         for i in seq{
             let currentEvent = self.events[i]
             let currentEventStart = self.events[i+4]
-            if currentEvent.count > 12{
+            if currentEvent.count > 9{
                 let index = currentEvent.index(currentEvent.startIndex, offsetBy: 11)
                 let subString = currentEvent[..<index]
                 eventData += subString + "..."
@@ -251,7 +251,6 @@ class AuthRouter: ObservableObject {
         UserDefaults(suiteName: "group.motivity.widget")!.set(eventData, forKey: "medium")
         UserDefaults(suiteName: "group.motivity.widget")!.set(eventStarts, forKey: "mediumTimes")
         WidgetCenter.shared.reloadAllTimelines()
-        
     }
     
     
