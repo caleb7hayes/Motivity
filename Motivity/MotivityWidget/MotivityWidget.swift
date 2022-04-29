@@ -73,7 +73,7 @@ struct MotivityWidgetSmallView : View {
     
     var body: some View {
         ZStack {
-            Image("Widget Background2").ignoresSafeArea()
+            Image("widgetBackground").ignoresSafeArea()
                 .padding(.trailing, 100)
             VStack (alignment: .leading) {
                 HStack{
@@ -106,7 +106,7 @@ struct MotivityWidgetMediumView : View {
     
     var body: some View {
         ZStack {
-            Image("Widget Background2").ignoresSafeArea()
+            Image("widgetBackground").ignoresSafeArea()
             HStack{
                 VStack (alignment: .leading) {
                     HStack{
@@ -147,7 +147,7 @@ struct MotivityWidgetLargeView : View {
     
     var body: some View {
         ZStack {
-            Image("Widget Background").ignoresSafeArea()
+            Image("widgetBackground").ignoresSafeArea()
                 .padding(.leading, 20)
             VStack (alignment: .leading) {
                 Text(currentDay ?? "")
