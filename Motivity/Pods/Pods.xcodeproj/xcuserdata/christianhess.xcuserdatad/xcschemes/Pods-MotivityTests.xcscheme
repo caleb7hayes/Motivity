@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1240"
+   LastUpgradeVersion = "1320"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BF3FED634A2BF46547EBAAAAFC470CB6"
-               BuildableName = "Pods_Motivity.framework"
-               BlueprintName = "Pods-Motivity"
+               BlueprintIdentifier = "BF50A4DF55ACEF13F91AFE22F5C69F11"
+               BuildableName = "Pods_MotivityTests.framework"
+               BlueprintName = "Pods-MotivityTests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

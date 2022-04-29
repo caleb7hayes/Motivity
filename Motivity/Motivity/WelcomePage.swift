@@ -6,9 +6,8 @@
 //
 
 import SwiftUI
-
+import WidgetKit
 struct WelcomePage: View {
-    
     
     @StateObject var viewRouter: ViewRouter
     
@@ -20,6 +19,9 @@ struct WelcomePage: View {
             
             //background image for all pages throughout Motvitiy
             Image("Motivity Login Background").ignoresSafeArea()
+                .onAppear{
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
             
             
             //vertical stack for top text

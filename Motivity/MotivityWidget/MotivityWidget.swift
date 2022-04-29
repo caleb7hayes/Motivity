@@ -14,9 +14,7 @@ import Firebase
 
 
 struct Provider: TimelineProvider {
-    
-    //    var eventData: Data = Data()
-    
+        
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date())
     }
@@ -31,12 +29,8 @@ struct Provider: TimelineProvider {
         var entries: [SimpleEntry] = []
 
         let currentDate = Date()
-//        let midnight = Calendar.current.startOfDay(for: currentDate)
-//        let nextMidnight = Calendar.current.date(byAdding: .day, value: 1, to: midnight)
-//        for offset in 0 ..< 60 * 24{
         let entryDate = SimpleEntry(date: currentDate)
         entries.append(entryDate)
-//        }
         let refreshDate = Calendar.current.date(byAdding: .minute, value: 2, to: Date())!
         let timeline = Timeline(entries: entries, policy: .after(refreshDate))
         completion(timeline)
@@ -79,12 +73,13 @@ struct MotivityWidgetSmallView : View {
     
     var body: some View {
         ZStack {
-            Image("Motivity Login Background").ignoresSafeArea()
-                .padding(.leading, 20)
+            Image("Widget Background2").ignoresSafeArea()
+                .padding(.trailing, 100)
             VStack (alignment: .leading) {
                 HStack{
                     Text(currentData ?? "Please Log In")
                         .foregroundColor(Color.white)
+                        .bold()
                         .onAppear {
                             currentData = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "small")
                         }
@@ -106,29 +101,39 @@ struct MotivityWidgetMediumView : View {
     
     @State var currentData: String?
     @State var currentStarts: String?
+    @State var currentDay: String?
+    @State var userCat: String?
     
     var body: some View {
         ZStack {
-            Image("Motivity Login Background").ignoresSafeArea()
-                .padding(.leading, 20)
-            VStack (alignment: .leading) {
-                HStack{
-                    Text(currentData ?? "Please Log In")
-                        .foregroundColor(Color.white)
-                        .onAppear {
-                            currentData = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "medium")
-                        }
-                    Text(currentStarts ?? "")
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.trailing)
-                        .onAppear{
-                            currentStarts = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "mediumTimes")
-                        }
-                }
-                Text("You can do it!")
+            Image("Widget Background2").ignoresSafeArea()
+            HStack{
+                VStack (alignment: .leading) {
+                    HStack{
+                        Text(currentData ?? "Please Log In")
+                            .foregroundColor(Color.white)
+                            .bold()
+                            .onAppear {
+                                currentData = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "medium")
+                            }
+                        Text(currentStarts ?? "")
+                            .foregroundColor(Color.white)
+                            .bold()
+                            .multilineTextAlignment(.trailing)
+                            .onAppear{
+                                currentStarts = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "mediumTimes")
+                            }
+                    }
+                }.padding(.top, 20)
+                Text(userCat ?? "")
+                    .padding(.leading, 25)
                     .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                    .onAppear{
+                        userCat = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "mediumCat")
+                    }
+                
             }
-            .padding(.trailing, 175)
         }
     }
 }
@@ -138,12 +143,19 @@ struct MotivityWidgetLargeView : View {
     
     @State var currentData: String?
     @State var currentStarts: String?
+    @State var currentDay: String?
     
     var body: some View {
         ZStack {
-            Image("Motivity Login Background").ignoresSafeArea()
+            Image("Widget Background").ignoresSafeArea()
                 .padding(.leading, 20)
             VStack (alignment: .leading) {
+                Text(currentDay ?? "")
+                    .foregroundColor(Color.white)
+                    .onAppear{
+                        currentDay = UserDefaults(suiteName: "group.motivity.widget")?.string(forKey: "largeDay")
+                    }
+                    .padding(.bottom, 100)
                 HStack{
                     Text(currentData ?? "Please Log In")
                         .foregroundColor(Color.white)
@@ -183,7 +195,7 @@ struct MotivityWidget: Widget {
             MotivityWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Motivity")
-        .description("Motivity Widgets")
+        .description("Motivity Widgets!")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }
