@@ -164,6 +164,11 @@ class AuthRouter: ObservableObject {
         } else if categorey5 {
             self.ref.child("Users").child(userID!).child("Events").child("Go to Church").setValue(["StartDate": "29", "StartTime": "9:00", "Duration": "2", "EventType": "Rest"])
         }
+        else if categorey5 {
+            self.ref.child("Users").child(userID!).child("Events").child("Go to Church").setValue(["StartDate": "29", "StartTime": "9:00", "Duration": "2", "EventType": "Rest"])
+        }
+        
+        
         
     }
     
@@ -200,8 +205,8 @@ class AuthRouter: ObservableObject {
         for i in seq{
             let currentEvent = self.events[i]
             let currentEventStart = self.events[i+4]
-            if currentEvent.count > 12{
-                let index = currentEvent.index(currentEvent.startIndex, offsetBy: 11)
+            if currentEvent.count > 7{
+                let index = currentEvent.index(currentEvent.startIndex, offsetBy: 7)
                 let subString = currentEvent[..<index]
                 eventData += subString + "..."
                 eventStarts += currentEventStart
@@ -229,8 +234,8 @@ class AuthRouter: ObservableObject {
         for i in seq{
             let currentEvent = self.events[i]
             let currentEventStart = self.events[i+4]
-            if currentEvent.count > 9{
-                let index = currentEvent.index(currentEvent.startIndex, offsetBy: 11)
+            if currentEvent.count > 7{
+                let index = currentEvent.index(currentEvent.startIndex, offsetBy: 7)
                 let subString = currentEvent[..<index]
                 eventData += subString + "..."
                 eventStarts += currentEventStart

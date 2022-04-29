@@ -122,7 +122,7 @@ struct CalendarView: View {
                         
                         Text(date, style: .date)
                             .font(.system(size:16))
-                            .fontWeight(.bold)
+                            .fontWeight(.black)
                             .foregroundColor(Color.white)
                             .padding(.bottom, 10)
                         

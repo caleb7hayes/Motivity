@@ -17,7 +17,7 @@ struct CalendarView3: View {
         
         ZStack{
             
-            Image("ChangeView2").ignoresSafeArea()
+            Image("finalView2").ignoresSafeArea()
             
             
             Button(action: {
@@ -30,7 +30,7 @@ struct CalendarView3: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 39, height: 39)
-                .position(x: 80, y: 528)
+                .position(x: 80, y: 531)
             }
             
         }

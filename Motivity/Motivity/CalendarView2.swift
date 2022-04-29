@@ -17,7 +17,7 @@ struct CalendarView2: View {
         
         ZStack{
             
-            Image("ChangeView1").ignoresSafeArea()
+            Image("finalView1").ignoresSafeArea()
             
             
             
@@ -30,7 +30,7 @@ struct CalendarView2: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 39, height: 39)
-                .position(x: 80, y: 528)
+                .position(x: 80, y: 531)
             }
             
             
@@ -43,6 +43,10 @@ struct CalendarView2: View {
 
 struct CalendarView2_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView2(viewRouter: ViewRouter(), authRouter: AuthRouter())
+        
+        
+            CalendarView2(viewRouter: ViewRouter(), authRouter: AuthRouter())
+                   
+        
     }
 }
